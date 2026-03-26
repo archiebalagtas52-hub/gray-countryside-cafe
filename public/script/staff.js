@@ -168,6 +168,74 @@ function markTableAsPaid(tableNum) {
     updateTableStatus(tableNum, 'paid');
 }
 
+/**
+ * Add an active dine-in customer to localStorage
+ */
+async function addActiveTable(tableNumber, customerId, orderStatus = 'Preparing', notes = '') {
+    try {
+        console.log('=====================================');
+        console.log('🍽️ addActiveTable called');
+        console.log('Table:', tableNumber, 'Type:', typeof tableNumber);
+        console.log('Customer:', customerId, 'Type:', typeof customerId);
+        console.log('Status:', orderStatus);
+        
+        // Create customer object
+        const activeCustomer = {
+            tableNumber: parseInt(tableNumber),
+            customerId: customerId,
+            orderStatus: orderStatus || 'Preparing',
+            notes: notes || null,
+            timeIn: new Date().toISOString(),
+            hasLeft: false,
+            leftTime: null
+        };
+        
+        console.log('📦 Customer object created:', activeCustomer);
+        
+        // Get existing data
+        let customers = [];
+        const data = localStorage.getItem('activeDineInCustomers');
+        console.log('📋 Current localStorage:', data);
+        
+        if (data) {
+            try {
+                customers = JSON.parse(data);
+                console.log('✅ Parsed existing customers:', customers.length, 'total');
+            } catch (e) {
+                console.error('❌ Parse error:', e);
+                customers = [];
+            }
+        }
+        
+        // Check if table already exists and is active
+        const existing = customers.find(c => c.tableNumber === parseInt(tableNumber) && !c.hasLeft);
+        if (existing) {
+            console.warn('⚠️ Table already active:', existing);
+            showToast(`⚠️ Table #${tableNumber} already active`, 'warning', 2000);
+            return null;
+        }
+        
+        // Add and save
+        customers.push(activeCustomer);
+        console.log('➕ Added customer. Total now:', customers.length);
+        
+        localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+        console.log('💾 Saved to localStorage');
+        
+        const verify = localStorage.getItem('activeDineInCustomers');
+        console.log('✅ Verification - localStorage now contains:', verify);
+        console.log('=====================================');
+        
+        showToast(`✅ Table #${tableNumber} added to active customers`, 'success', 2000);
+        return activeCustomer;
+    } catch (error) {
+        console.error('❌ Error in addActiveTable:', error);
+        console.log('=====================================');
+        showToast('❌ Error adding table', 'error', 2000);
+        return null;
+    }
+}
+
 let servingwareInventory = {
     'plate': { name: 'Plate', current: 100, max: 100, unit: 'piece', minThreshold: 20 },
     'tray': { name: 'Party Tray', current: 100, max: 100, unit: 'piece', minThreshold: 15 },
@@ -1336,177 +1404,6 @@ function showToast(message, type = 'success', duration = 3000) {
     return toast;
 }
 
-// Success Alert Modal for table order completion
-function showSuccessModal(tableNumber) {
-    return new Promise((resolve) => {
-        // Remove existing modal if any
-        const existingModal = document.getElementById('successAlertModal');
-        if (existingModal) existingModal.remove();
-        
-        // Create overlay
-        const overlay = document.createElement('div');
-        overlay.id = 'successAlertModal';
-        overlay.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100000;
-            animation: fadeIn 0.3s ease-in-out;
-        `;
-        
-        // Create modal
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            animation: scaleIn 0.4s ease-in-out;
-        `;
-        
-        modal.innerHTML = `
-            <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
-            <h2 style="color: #2c3e50; margin-bottom: 10px; font-size: 24px;">Table Taken!</h2>
-            <p style="color: #666; margin-bottom: 30px; font-size: 16px;">
-                Table <strong>#${tableNumber}</strong> has been assigned<br>
-                <span style="font-size: 14px; color: #999;">Waiting for customer to leave...</span>
-            </p>
-            <button id="customerLeftBtn" style="
-                background: #dc3545;
-                color: white;
-                border: none;
-                padding: 12px 40px;
-                border-radius: 6px;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background 0.3s ease;
-                width: 100%;
-            " onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
-                Customer Left
-            </button>
-        `;
-        
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-        
-        // Mark table as occupied
-        setTableOccupied(tableNumber);
-        
-        // Add customer left button event
-        document.getElementById('customerLeftBtn').addEventListener('click', async () => {
-            // Mark table as available
-            setTableAvailable(tableNumber);
-            
-            // Close current modal
-            overlay.style.animation = 'fadeOut 0.3s ease-in-out';
-            setTimeout(() => {
-                overlay.remove();
-            }, 300);
-            
-            // Show table available alert
-            setTimeout(() => {
-                showTableAvailableModal(tableNumber);
-            }, 100);
-            
-            resolve();
-        });
-        
-        // Add keyboard close (only customer left, not escape)
-    });
-}
-
-// Alert modal when table becomes available
-function showTableAvailableModal(tableNumber) {
-    return new Promise((resolve) => {
-        // Remove existing modal if any
-        const existingModal = document.getElementById('tableAvailableModal');
-        if (existingModal) existingModal.remove();
-        
-        // Create overlay
-        const overlay = document.createElement('div');
-        overlay.id = 'tableAvailableModal';
-        overlay.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100000;
-            animation: fadeIn 0.3s ease-in-out;
-        `;
-        
-        // Create modal
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            animation: scaleIn 0.4s ease-in-out;
-        `;
-        
-        modal.innerHTML = `
-            <div style="font-size: 60px; margin-bottom: 20px;">🎉</div>
-            <h2 style="color: #28a745; margin-bottom: 10px; font-size: 24px;">Table Available!</h2>
-            <p style="color: #666; margin-bottom: 30px; font-size: 16px;">
-                Table <strong>#${tableNumber}</strong> is now available<br>
-                <span style="font-size: 14px; color: #28a745;">Ready for new order</span>
-            </p>
-            <button id="tableAvailableCloseBtn" style="
-                background: #28a745;
-                color: white;
-                border: none;
-                padding: 12px 40px;
-                border-radius: 6px;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background 0.3s ease;
-                width: 100%;
-            " onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
-                OK
-            </button>
-        `;
-        
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-        
-        // Add close button event
-        document.getElementById('tableAvailableCloseBtn').addEventListener('click', () => {
-            overlay.style.animation = 'fadeOut 0.3s ease-in-out';
-            setTimeout(() => {
-                overlay.remove();
-                resolve();
-            }, 300);
-        });
-        
-        // Add keyboard close
-        const closeOnEscape = (e) => {
-            if (e.key === 'Escape') {
-                overlay.remove();
-                document.removeEventListener('keydown', closeOnEscape);
-                resolve();
-            }
-        };
-        document.addEventListener('keydown', closeOnEscape);
-    });
-}
-
 // Waiting Modal for order processing
 function showWaitingModal(message = 'Processing your order...') {
     // Remove existing modal if any
@@ -2540,9 +2437,22 @@ async function Payment() {
         
         printReceipt(receiptHTML);
         
-        // If Dine In, show success modal with table number, then clear
-        if (orderType === 'Dine In') {
-            await showSuccessModal(tableNumber);
+        // If Dine In, add table to active tables with current user/customer info
+        if (orderType === 'Dine In' && tableNumber) {
+            console.log('=== PAYMENT: Adding Dine In Table ===');
+            console.log('orderType:', orderType);
+            console.log('tableNumber:', tableNumber);
+            console.log('currentUser:', currentUser);
+            
+            const customerIdentifier = currentUser?.id || currentUser?.username || 'Customer';
+            console.log('customerIdentifier:', customerIdentifier);
+            
+            addActiveTable(tableNumber, customerIdentifier, 1, 'Preparing');
+            showToast(`✅ Table #${tableNumber} added to active customers!`, 'success', 2000);
+        } else {
+            console.log('=== PAYMENT: Not a Dine In order ===');
+            console.log('orderType:', orderType);
+            console.log('tableNumber:', tableNumber);
         }
         
         setTimeout(() => {
@@ -2622,6 +2532,122 @@ function clearOrderAfterPayment() {
 }
 
 // ========== ACTIVE DINE IN CUSTOMERS MANAGEMENT ==========
+
+// Function to add a table to active dine-in customers (using correct localStorage key)
+function addActiveTable(tableNumber, customerName = 'Guest', guests = 1, orderStatus = 'Pending') {
+    try {
+        console.log('🍽️ addActiveTable called with:', { tableNumber, customerName, guests, orderStatus });
+        
+        // Get existing data from correct localStorage key
+        let customers = [];
+        const data = localStorage.getItem('activeDineInCustomers');
+        
+        if (data) {
+            try {
+                customers = JSON.parse(data);
+            } catch (e) {
+                console.warn('Could not parse existing data, starting fresh');
+                customers = [];
+            }
+        }
+        
+        // Check if table already exists
+        const existingCustomer = customers.find(c => c.tableNumber === parseInt(tableNumber));
+        if (!existingCustomer) {
+            // Generate random Customer ID with format CUST-XXXXXX
+            const customerId = `CUST-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
+            
+            const activeCustomer = {
+                tableNumber: parseInt(tableNumber),
+                customerId: customerId,
+                customerName: customerName || 'Customer',
+                guests: guests || 1,
+                orderStatus: orderStatus || 'Preparing',
+                timeIn: new Date().toISOString(),
+                hasLeft: false,
+                leftTime: null
+            };
+            
+            customers.push(activeCustomer);
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            
+            console.log(`✅ Table #${tableNumber} added to active customers with ID: ${customerId}`);
+            console.log('📊 Total active customers:', customers.length);
+            
+            // Trigger modal refresh if it's open
+            if (typeof loadActiveDineInCustomersModal === 'function') {
+                // Delay to allow localStorage to sync
+                setTimeout(() => {
+                    loadActiveDineInCustomersModal();
+                }, 100);
+            }
+        } else {
+            console.log(`⚠️ Table #${tableNumber} already exists`);
+        }
+    } catch (error) {
+        console.error('❌ Error adding active table:', error);
+    }
+}
+
+// Function to update table/customer status
+function updateTableStatus(tableNumber, orderStatus) {
+    try {
+        let customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        const customer = customers.find(c => c.tableNumber === parseInt(tableNumber));
+        
+        if (customer) {
+            customer.orderStatus = orderStatus;
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            console.log(`✅ Table #${tableNumber} status updated to ${orderStatus}`);
+            
+            // Refresh modal if open
+            if (typeof loadActiveDineInCustomersModal === 'function') {
+                setTimeout(() => loadActiveDineInCustomersModal(), 100);
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error updating table status:', error);
+    }
+}
+
+// Function to mark customer as left
+function markCustomerAsLeft(tableNumber) {
+    try {
+        let customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        const customer = customers.find(c => c.tableNumber === parseInt(tableNumber));
+        
+        if (customer) {
+            customer.hasLeft = true;
+            customer.leftTime = new Date().toISOString();
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            console.log(`✅ Table #${tableNumber} marked as LEFT`);
+            
+            // Refresh modal if open
+            if (typeof loadActiveDineInCustomersModal === 'function') {
+                setTimeout(() => loadActiveDineInCustomersModal(), 100);
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error marking customer as left:', error);
+    }
+}
+
+// Function to remove table from active customers
+function removeActiveTable(tableNumber) {
+    try {
+        let customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        const filteredCustomers = customers.filter(c => c.tableNumber !== parseInt(tableNumber));
+        localStorage.setItem('activeDineInCustomers', JSON.stringify(filteredCustomers));
+        console.log(`✅ Table #${tableNumber} removed from active customers`);
+        
+        // Refresh modal if open
+        if (typeof loadActiveDineInCustomersModal === 'function') {
+            setTimeout(() => loadActiveDineInCustomersModal(), 100);
+        }
+    } catch (error) {
+        console.error('❌ Error removing active table:', error);
+    }
+}
 
 // Load and render active dine in customers
 async function loadActiveDineInCustomers() {
@@ -2891,8 +2917,8 @@ async function markTableAsAvailable(tableNum, orderId) {
         // Mark table as available in local system
         setTableAvailable(tableNum);
         
-        // Show table available alert
-        await showTableAvailableModal(tableNum);
+        // Show success message
+        showToast(`✅ Table #${tableNum} is now available!`, 'success', 2000);
         
         // Refresh the list
         loadActiveDineInCustomers();
@@ -3726,6 +3752,39 @@ document.addEventListener('DOMContentLoaded', async function() {
     initializeTableOccupancy(); // Initialize table management system
     await getCurrentUser();
     
+    // Debug function to check localStorage
+    window.debugActiveDineIn = function() {
+        const data = localStorage.getItem('activeDineInCustomers');
+        console.log('=== DEBUG: Active Dine-In Data ===');
+        console.log('Raw localStorage:', data);
+        if (data) {
+            const parsed = JSON.parse(data);
+            console.log('Parsed:', parsed);
+            console.log('Count:', parsed.length);
+            parsed.forEach((customer, i) => {
+                console.log(`Customer ${i+1}:`, customer);
+            });
+        } else {
+            console.log('No data found');
+        }
+    };
+    
+    // Test function to create sample data
+    window.testActiveDineIn = function() {
+        const testCustomer = {
+            tableNumber: 1,
+            customerId: 'CUST-TEST001',
+            orderStatus: 'Preparing',
+            notes: null,
+            timeIn: new Date().toISOString(),
+            hasLeft: false,
+            leftTime: null
+        };
+        localStorage.setItem('activeDineInCustomers', JSON.stringify([testCustomer]));
+        console.log('✅ Test data added:', testCustomer);
+        console.log('Now open the modal and it should show Table #1');
+    };
+    
     const menuLoaded = await loadAllMenuItems();
     
     if (!menuLoaded) {
@@ -4091,6 +4150,98 @@ async function loadUserDataForModal(nameInput, roleInput, saveBtn) {
     }
 }
 
+// ==================== 🍽️ ACTIVE DINE-IN CUSTOMERS MANAGEMENT ====================
+
+/**
+ * Add a new dine-in customer to the active tables
+ * Called when a Dine-In order is completed/paid
+ */
+function addActiveDineInCustomer(tableNumber, orderStatus = 'Preparing') {
+    const activeTables = JSON.parse(localStorage.getItem('activeTables')) || [];
+    
+    // Check if table is already active
+    const existingTable = activeTables.find(t => t.tableNumber === parseInt(tableNumber));
+    if (existingTable) {
+        console.log(`Table #${tableNumber} is already active`);
+        return;
+    }
+    
+    // Generate random Customer ID with format CUST-XXXXXX
+    const customerId = `CUST-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
+    
+    const newDineInCustomer = {
+        tableNumber: parseInt(tableNumber),
+        customerId: customerId,
+        orderStatus: orderStatus,
+        timeIn: new Date().toISOString(),
+        hasLeft: false,
+        leftTime: null
+    };
+    
+    activeTables.push(newDineInCustomer);
+    localStorage.setItem('activeTables', JSON.stringify(activeTables));
+    
+    console.log(`✅ Added customer to Table #${tableNumber} with ID: ${customerId}`);
+}
+
+/**
+ * Remove customer from active dine-in customers (when they leave)
+ */
+function removeActiveDineInCustomer(tableNumber) {
+    const activeTables = JSON.parse(localStorage.getItem('activeTables')) || [];
+    const filteredTables = activeTables.filter(t => t.tableNumber !== parseInt(tableNumber));
+    localStorage.setItem('activeTables', JSON.stringify(filteredTables));
+    
+    // Update table occupancy status
+    updateTableStatus(parseInt(tableNumber), 'available');
+    
+    console.log(`✅ Removed customer from Table #${tableNumber}`);
+}
+
+/**
+ * Update order status for a dine-in customer
+ */
+function updateDineInOrderStatus(tableNumber, newStatus) {
+    const activeTables = JSON.parse(localStorage.getItem('activeTables')) || [];
+    const table = activeTables.find(t => t.tableNumber === parseInt(tableNumber));
+    
+    if (table) {
+        table.orderStatus = newStatus;
+        localStorage.setItem('activeTables', JSON.stringify(activeTables));
+        console.log(`✅ Updated Table #${tableNumber} status to: ${newStatus}`);
+    }
+}
+
+/**
+ * Get all active dine-in customers
+ */
+function getActiveDineInCustomers() {
+    return JSON.parse(localStorage.getItem('activeTables')) || [];
+}
+
+/**
+ * Get a specific customer by table number
+ */
+function getCustomerByTable(tableNumber) {
+    const activeTables = getActiveDineInCustomers();
+    return activeTables.find(t => t.tableNumber === parseInt(tableNumber));
+}
+
+/**
+ * Handle when customer marks "Left" - removes them from active list
+ */
+function handleCustomerLeft(tableNumber) {
+    removeActiveDineInCustomer(tableNumber);
+    showToast(`✔️ Table #${tableNumber} is now available!`, 'success', 3000);
+}
+
+/**
+ * Handle when customer marks "Not Left" - just shows notification
+ */
+function handleCustomerNotLeft(tableNumber) {
+    showToast(`✖️ Customer at Table #${tableNumber} is still dining.`, 'info', 2000);
+}
+
 window.requestStock = requestStock;
 window.showStockRequestModal = showStockRequestModal;
 window.closeStockRequestModal = closeStockRequestModal;
@@ -4107,4 +4258,11 @@ window.handleLogout = handleLogout;
 window.productCatalog = productCatalog;
 window.pendingStockRequests = pendingStockRequests;
 window.checkFulfilledStockRequests = checkFulfilledStockRequests;
-window.openSettingsModal = openSettingsModal; 
+window.openSettingsModal = openSettingsModal;
+window.addActiveDineInCustomer = addActiveDineInCustomer;
+window.removeActiveDineInCustomer = removeActiveDineInCustomer;
+window.updateDineInOrderStatus = updateDineInOrderStatus;
+window.getActiveDineInCustomers = getActiveDineInCustomers;
+window.getCustomerByTable = getCustomerByTable;
+window.handleCustomerLeft = handleCustomerLeft;
+window.handleCustomerNotLeft = handleCustomerNotLeft; 

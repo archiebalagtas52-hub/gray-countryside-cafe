@@ -39,6 +39,27 @@ const customerSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
+  },
+  // Dine-In tracking fields
+  isDiningIn: {
+    type: Boolean,
+    default: false,
+    index: true
+  },
+  tableNumber: {
+    type: Number,
+    default: null,
+    sparse: true,
+    index: true
+  },
+  orderStatus: {
+    type: String,
+    enum: ['Preparing', 'Ready', 'Served', 'Completed'],
+    default: 'Preparing'
+  },
+  timeIn: {
+    type: Date,
+    default: null
   }
 }, { 
   collection: 'customers',

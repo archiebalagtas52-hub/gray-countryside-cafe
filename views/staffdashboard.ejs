@@ -60,8 +60,8 @@
       <button class="category-btn" id="category11" data-category="Specialties">Specialties</button>
 
   <!-- ACTIVE DINE IN CUSTOMERS SECTION -->
-<button class="dine-in-header-btn" onclick="toggleDineInCustomers()">
-  <span>ACTIVE DINE IN CUSTOMERS</span>
+<button class="dine-in-header-btn" onclick="openActiveDineInCustomersModal()">
+  <span>🍽️ ACTIVE DINE IN CUSTOMERS</span>
 </button>
       
       <div id="activeDineInCustomers" class="dine-in-customers-list" style="display: none;">
@@ -255,7 +255,180 @@
     </div>
 </div>
 
+<!-- ACTIVE DINE-IN CUSTOMERS MODAL -->
+<div id="activeDineInCustomersModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto;">
+    <div style="background: white; margin: 20px auto; border-radius: 12px; max-width: 1400px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        <!-- HEADER -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
+            <h1 style="margin: 0; color: #2c3e50; font-size: 28px; display: flex; align-items: center; gap: 15px;">
+                <span style="font-size: 32px;">🍽️</span> Active Dine-In Customers
+            </h1>
+            <button onclick="closeDineInCustomersModal()" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #999; transition: color 0.2s;">×</button>
+        </div>
+        
+        <!-- INFO BOX -->
+        <div style="background: #d4edda; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #28a745; color: #155724; font-weight: 500;">
+            ✅ Displays all currently occupied tables and active dine-in customers.
+        </div>
+        
+        <!-- SEARCH BAR -->
+        <div style="margin-bottom: 25px; display: flex; gap: 10px;">
+            <div style="flex: 1; position: relative;">
+                <input type="text" id="activeDineInSearch" placeholder="Search table or customer..." 
+                    style="width: 100%; padding: 12px 15px 12px 40px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; transition: all 0.3s;">
+                <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #999; font-size: 16px;">🔍</span>
+            </div>
+        </div>
+        
+        <!-- TABLE -->
+        <div style="overflow-x: auto; border-radius: 8px; border: 1px solid #e0e0e0;">
+            <table style="width: 100%; border-collapse: collapse; background: white;">
+                <thead>
+                    <tr style="background: #f8f9fa; border-bottom: 2px solid #e0e0e0;">
+                        <th style="padding: 15px; text-align: left; font-weight: 600; color: #555; font-size: 14px;">#</th>
+                        <th style="padding: 15px; text-align: center; font-weight: 600; color: #555; font-size: 14px;">Table No.</th>
+                        <th style="padding: 15px; text-align: left; font-weight: 600; color: #555; font-size: 14px;">Customer ID</th>
+                        <th style="padding: 15px; text-align: center; font-weight: 600; color: #555; font-size: 14px;">Order Status</th>
+                        <th style="padding: 15px; text-align: center; font-weight: 600; color: #555; font-size: 14px;">Time In</th>
+                        <th style="padding: 15px; text-align: center; font-weight: 600; color: #555; font-size: 14px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="activeDineInTableBody">
+                    <!-- Empty State -->
+                    <tr style="text-align: center;">
+                        <td colspan="7" style="padding: 60px 20px; color: #999;">
+                            <div style="font-size: 64px; margin-bottom: 15px;">🪑</div>
+                            <h3 style="margin: 10px 0; color: #666; font-size: 18px;">No Active Tables</h3>
+                            <p style="margin: 5px 0; color: #999; font-size: 14px;">All tables are currently available.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e9ecef; color: #666; font-size: 14px;">
+            <div style="font-weight: 600; color: #333;">Active Tables: <span id="activeDineInCount" style="color: #4CAF50; font-size: 16px; font-weight: 700;">0</span></div>
+            <div>Last Updated: <span id="activeDineInLastUpdated" style="color: #4CAF50; font-weight: 600;">Just now</span></div>
+        </div>
+    </div>
+</div>
+
 <style>
+    #activeDineInSearch {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    #activeDineInSearch:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+    
+    #activeDineInCustomersModal tbody tr {
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.2s;
+    }
+    
+    #activeDineInCustomersModal tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    #activeDineInCustomersModal .status-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    #activeDineInCustomersModal .status-served {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    #activeDineInCustomersModal .status-preparing {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    #activeDineInCustomersModal .status-pending {
+        background: #e2e3e5;
+        color: #383d41;
+    }
+    
+    #activeDineInCustomersModal .action-btn {
+        padding: 6px 14px;
+        margin: 0 3px;
+        border: 1px solid #ddd;
+        background: white;
+        color: #333;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+    
+    #activeDineInCustomersModal .action-btn:hover {
+        background: #f5f5f5;
+        border-color: #bbb;
+    }
+    
+    #activeDineInCustomersModal .action-btn.end-session {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+    
+    #activeDineInCustomersModal .action-btn.end-session:hover {
+        background: #fff5f7;
+        border-color: #c82333;
+    }
+    
+    #activeDineInCustomersModal .action-btn.left-btn {
+        color: #28a745;
+        border-color: #28a745;
+    }
+    
+    #activeDineInCustomersModal .action-btn.left-btn:hover {
+        background: #d4edda;
+        border-color: #1e7e34;
+    }
+    
+    #activeDineInCustomersModal .action-btn.not-left-btn {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+    
+    #activeDineInCustomersModal .action-btn.not-left-btn:hover {
+        background: #f8d7da;
+        border-color: #c82333;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+
     #stockManagementModal {
         padding: 20px;
     }
@@ -790,6 +963,249 @@
         // Mark user as staff in sessionStorage so new windows know the role
         sessionManager.setRole('staff');
         console.log('✅ Staff interface loaded - sessionStorage updated');
+    });
+    
+    // ==================== 🔔 TOAST NOTIFICATION FUNCTION ====================
+    function showToast(message, type = 'info', duration = 3000) {
+        const container = document.getElementById('notificationContainer');
+        if (!container) return;
+        
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+            color: white;
+            padding: 16px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+        `;
+        toast.innerHTML = message;
+        container.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, duration);
+    }
+    
+    // ==================== 🍽️ ACTIVE DINE-IN CUSTOMERS MODAL ====================
+    
+    // Generate random Customer ID
+    function generateRandomCustomerId() {
+        const randomNumbers = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        return `CUST-${randomNumbers}`;
+    }
+    
+    function openActiveDineInCustomersModal() {
+        document.getElementById('activeDineInCustomersModal').style.display = 'block';
+        loadActiveDineInCustomersModal();
+    }
+    
+    function closeDineInCustomersModal() {
+        document.getElementById('activeDineInCustomersModal').style.display = 'none';
+    }
+    
+    function loadActiveDineInCustomersModal() {
+        console.log('=== LOADING MODAL ===');
+        const tableBody = document.getElementById('activeDineInTableBody');
+        const activeCount = document.getElementById('activeDineInCount');
+        
+        try {
+            // Get data from localStorage
+            const data = localStorage.getItem('activeDineInCustomers');
+            console.log('📦 Raw localStorage data:', data);
+            
+            let customers = data ? JSON.parse(data) : [];
+            console.log('✅ Parsed customers:', customers);
+            console.log('📊 Total customers:', customers.length);
+            
+            // Filter active customers only (not left)
+            customers = customers.filter(c => !c.hasLeft);
+            console.log('🔍 After filtering (not left):', customers.length);
+            
+            if (customers.length === 0) {
+                console.log('ℹ️ No active customers - showing empty state');
+                tableBody.innerHTML = `
+                    <tr style="text-align: center;">
+                        <td colspan="6" style="padding: 60px 20px; color: #999;">
+                            <div style="font-size: 64px; margin-bottom: 15px;">🪑</div>
+                            <h3 style="margin: 10px 0; color: #666; font-size: 18px;">No Active Tables</h3>
+                            <p style="margin: 5px 0; color: #999; font-size: 14px;">All tables are currently available.</p>
+                        </td>
+                    </tr>
+                `;
+                activeCount.textContent = '0';
+            } else {
+                console.log('📍 Rendering customers...');
+                let html = '';
+                customers.forEach((customer, index) => {
+                    console.log(`Row ${index + 1}:`, customer);
+                    
+                    const status = customer.orderStatus || 'Pending';
+                    let statusBadgeClass = 'status-pending';
+                    if (status === 'Served') statusBadgeClass = 'status-served';
+                    else if (status === 'Preparing') statusBadgeClass = 'status-preparing';
+                    else if (status === 'Ready') statusBadgeClass = 'status-ready';
+                    
+                    const timeIn = customer.timeIn ? new Date(customer.timeIn).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}) : '--:--';
+                    
+                    html += `
+                    <tr>
+                        <td style="padding: 15px; color: #555; font-weight: 600;">${index + 1}</td>
+                        <td style="padding: 15px; text-align: center; font-weight: 700; color: #2c3e50; font-size: 16px;">#${customer.tableNumber}</td>
+                        <td style="padding: 15px; color: #555; font-weight: 600; font-family: monospace;">${customer.customerId || 'N/A'}</td>
+                        <td style="padding: 15px; text-align: center;">
+                            <span class="status-badge ${statusBadgeClass}">
+                                ${status}
+                            </span>
+                        </td>
+                        <td style="padding: 15px; text-align: center; color: #666; font-size: 13px;">${timeIn}</td>
+                        <td style="padding: 15px; text-align: center; display: flex; gap: 5px; justify-content: center;">
+                            <button class="action-btn left-btn" onclick="markCustomerLeft(${customer.tableNumber})" style="padding: 6px 10px; font-size: 12px;">✔️ Left</button>
+                            <button class="action-btn not-left-btn" onclick="markCustomerNotLeft(${customer.tableNumber})" style="padding: 6px 10px; font-size: 12px;">✖️ Not Left</button>
+                        </td>
+                    </tr>
+                    `;
+                });
+                
+                tableBody.innerHTML = html;
+                activeCount.textContent = customers.length;
+                console.log('✅ HTML rendered successfully');
+            }
+            
+            document.getElementById('activeDineInLastUpdated').textContent = new Date().toLocaleTimeString();
+            console.log('=== MODAL LOADED ===');
+        } catch (error) {
+            console.error('❌ Error loading modal:', error);
+            tableBody.innerHTML = '<tr><td colspan="6" style="padding: 20px; color: red;">Error loading data: ' + error.message + '</td></tr>';
+        }
+    }
+    
+    function getStatusClass(status) {
+        switch(status) {
+            case 'Served': return 'status-served';
+            case 'Preparing': return 'status-preparing';
+            default: return 'status-pending';
+        }
+    }
+    
+    function formatTimeIn(timeString) {
+        if (!timeString) return '--:--';
+        try {
+            const time = new Date(timeString);
+            return time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        } catch {
+            return timeString;
+        }
+    }
+    
+    function refreshActiveDineInTable() {
+        loadActiveDineInCustomersModal();
+        showToast('✅ Active tables refreshed!', 'success', 2000);
+    }
+    
+    function viewTableOrder(tableNumber) {
+        showToast(`👁️ Viewing order for Table #${tableNumber}`, 'info', 2000);
+        console.log('View order for table:', tableNumber);
+    }
+    
+    function markCustomerLeft(tableNumber) {
+        if (!confirm(`Mark customer at Table #${tableNumber} as LEFT?`)) return;
+        
+        const data = localStorage.getItem('activeDineInCustomers');
+        let customers = data ? JSON.parse(data) : [];
+        
+        const customer = customers.find(c => c.tableNumber === tableNumber);
+        if (customer) {
+            customer.hasLeft = true;
+            customer.leftTime = new Date().toISOString();
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            loadActiveDineInCustomersModal();
+            showToast(`✔️ Table #${tableNumber} is now available`, 'success', 2000);
+        }
+    }
+    
+    function markCustomerNotLeft(tableNumber) {
+        const data = localStorage.getItem('activeDineInCustomers');
+        let customers = data ? JSON.parse(data) : [];
+        
+        const customer = customers.find(c => c.tableNumber === tableNumber);
+        if (customer) {
+            customer.hasLeft = false;
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            loadActiveDineInCustomersModal();
+            showToast(`✖️ Table #${tableNumber} still dining`, 'info', 2000);
+        }
+    }
+    
+    function endTableSession(tableNumber) {
+        if (confirm(`Are you sure you want to end the session for Table #${tableNumber}?`)) {
+            const activeTables = JSON.parse(localStorage.getItem('activeTables')) || [];
+            const filteredTables = activeTables.filter(t => t.tableNumber !== tableNumber);
+            localStorage.setItem('activeTables', JSON.stringify(filteredTables));
+            
+            loadActiveDineInCustomersModal();
+            showToast(`🚪 Table #${tableNumber} session ended!`, 'success', 2000);
+        }
+    }
+    
+    // Auto-refresh active dine-in customers every 10 seconds when modal is open
+    let autoRefreshInterval = null;
+    
+    function startAutoRefreshActiveDineIn() {
+        if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+        autoRefreshInterval = setInterval(() => {
+            const modal = document.getElementById('activeDineInCustomersModal');
+            if (modal && modal.style.display !== 'none') {
+                loadActiveDineInCustomersModal();
+            }
+        }, 10000); // Refresh every 10 seconds
+    }
+    
+    // Stop auto-refresh when modal is closed
+    function stopAutoRefreshActiveDineIn() {
+        if (autoRefreshInterval) {
+            clearInterval(autoRefreshInterval);
+            autoRefreshInterval = null;
+        }
+    }
+    
+    // Update modal functions to control auto-refresh
+    const originalOpenModal = openActiveDineInCustomersModal;
+    openActiveDineInCustomersModal = function() {
+        originalOpenModal();
+        startAutoRefreshActiveDineIn();
+    };
+    
+    const originalCloseModal = closeDineInCustomersModal;
+    closeDineInCustomersModal = function() {
+        originalCloseModal();
+        stopAutoRefreshActiveDineIn();
+    };
+    
+    // Add search functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('activeDineInSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const rows = document.querySelectorAll('#activeDineInTableBody tr');
+                
+                rows.forEach(row => {
+                    if (row.textContent.toLowerCase().includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
     });
    
 </script>
