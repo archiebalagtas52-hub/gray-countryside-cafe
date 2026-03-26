@@ -63,8 +63,23 @@ function getTableStatus(tableNum) {
 
 // Check if table is available for ordering
 function isTableAvailable(tableNum) {
-    const status = getTableStatus(tableNum);
-    return status === 'available';
+    try {
+        // Check localStorage for active customers
+        const customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        
+        // Filter out customers who have left
+        const activeCustomers = customers.filter(c => !c.hasLeft);
+        
+        // Check if this table number exists in active customers
+        const isOccupied = activeCustomers.some(c => c.tableNumber === parseInt(tableNum));
+        
+        console.log(`🔍 Checking table ${tableNum}: ${isOccupied ? 'OCCUPIED' : 'AVAILABLE'}`);
+        
+        return !isOccupied;  // Return true if NOT occupied
+    } catch (error) {
+        console.error('Error checking table availability:', error);
+        return true;  // Assume available if error
+    }
 }
 
 // Update table status
@@ -2050,21 +2065,53 @@ function setTableNumber() {
     const input = document.getElementById('tableNumber');
     const value = input.value.trim();
     
+    console.log('========== TABLE NUMBER VALIDATION ==========');
+    console.log('📥 Input value:', value);
+    
     // Only allow numbers
     if (value && !/^\d+$/.test(value)) {
+        console.warn('❌ Non-numeric input detected');
         showToast('❌ Table number must be numbers only', 'error', 2000);
         input.value = value.replace(/[^\d]/g, '');
         tableNumber = null;
     } else {
-        // Check if table is available
-        if (value && !isTableAvailable(value)) {
-            showToast(`❌ Table #${value} is currently occupied. Please select another table.`, 'error', 3000);
-            input.value = '';
-            tableNumber = null;
+        // Check if table is between 1-6 and if it's available
+        if (value) {
+            const tableNum = parseInt(value);
+            console.log('🔢 Parsed table number:', tableNum);
+            
+            // Validate table number range (1-6)
+            if (tableNum < 1 || tableNum > 6) {
+                console.warn(`❌ Table ${tableNum} out of range (1-6)`);
+                showToast('❌ Tables available: 1-6 only', 'error', 2000);
+                input.value = '';
+                tableNumber = null;
+            } else {
+                console.log(`✓ Table ${tableNum} is in valid range (1-6)`);
+                
+                // Check availability
+                const available = isTableAvailable(value);
+                console.log(`🔍 Table ${tableNum} availability: ${available ? 'AVAILABLE ✅' : 'OCCUPIED ❌'}`);
+                
+                if (!available) {
+                    console.log(`⚠️ Showing occupied modal for table ${tableNum}`);
+                    // Show alert modal for occupied table
+                    showTableOccupiedModal(tableNum);
+                    input.value = '';
+                    tableNumber = null;
+                } else {
+                    console.log(`✅ Table ${tableNum} accepted`);
+                    tableNumber = value || null;
+                }
+            }
         } else {
-            tableNumber = value || null;
+            console.log('ℹ️ No table number entered');
+            tableNumber = null;
         }
     }
+    
+    console.log('Final tableNumber:', tableNumber);
+    console.log('===========================================');
     
     updatePayButtonState();
 }
@@ -2529,6 +2576,117 @@ function clearOrderAfterPayment() {
     
     renderOrder();
     updatePayButtonState();
+}
+
+// ========== TABLE OCCUPIED ALERT MODAL ==========
+
+/**
+ * Shows a stylish alert modal when a table is already occupied
+ * @param {number} tableNum - The table number that is occupied
+ */
+function showTableOccupiedModal(tableNum) {
+    try {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'tableOccupiedOverlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease-in-out;
+        `;
+        
+        // Create modal
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 350px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideUp 0.4s ease-in-out;
+        `;
+        
+        // Icon
+        const icon = document.createElement('div');
+        icon.style.cssText = `
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 0.6s ease-in-out infinite;
+        `;
+        icon.textContent = '🪑';
+        modal.appendChild(icon);
+        
+        // Title
+        const title = document.createElement('h2');
+        title.style.cssText = `
+            color: #dc3545;
+            margin: 0 0 15px 0;
+            font-size: 22px;
+            font-weight: bold;
+        `;
+        title.textContent = `Table #${tableNum} is Occupied`;
+        modal.appendChild(title);
+        
+        // Message
+        const message = document.createElement('p');
+        message.style.cssText = `
+            color: #666;
+            margin: 0 0 25px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        `;
+        message.textContent = `This table is currently in use. Please select another table.`;
+        modal.appendChild(message);
+        
+        // Button
+        const button = document.createElement('button');
+        button.style.cssText = `
+            width: 100%;
+            padding: 12px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        `;
+        button.textContent = 'OK';
+        button.onmouseover = () => button.style.background = '#c82333';
+        button.onmouseout = () => button.style.background = '#dc3545';
+        button.onclick = () => {
+            overlay.style.animation = 'slideDown 0.3s ease-in-out';
+            setTimeout(() => overlay.remove(), 300);
+        };
+        modal.appendChild(button);
+        
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        
+        // Close on overlay click
+        overlay.onclick = (e) => {
+            if (e.target === overlay) {
+                overlay.style.animation = 'slideDown 0.3s ease-in-out';
+                setTimeout(() => overlay.remove(), 300);
+            }
+        };
+        
+    } catch (error) {
+        console.error('❌ Error showing table occupied modal:', error);
+        // Fallback to toast if modal fails
+        showToast(`❌ Table #${tableNum} is occupied`, 'error', 2000);
+    }
 }
 
 // ========== ACTIVE DINE IN CUSTOMERS MANAGEMENT ==========
