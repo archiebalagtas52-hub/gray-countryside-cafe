@@ -1481,7 +1481,6 @@ function autoFillItemFromCategory(category) {
         showRecipeInfo(firstItem);
         
         console.log(`✅ Auto-filled: ${firstItem}`);
-        showToast(`Auto-filled with "${firstItem}"`, 'info');
     }
 }
 
@@ -1767,7 +1766,6 @@ function showLogoutConfirmation(onConfirm, onCancel) {
 function openAddModal() {
     // 🚫 Only allow adding items in Waste Management section
     if (currentSection !== 'waste-management') {
-        showToast('❌ Items can only be added in Waste Management section', 'error');
         return;
     }
     

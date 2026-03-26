@@ -367,14 +367,16 @@ body {
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #333333;
     background: #ffffff;
+    border: 2px solid black;
 }
 
 .nav-link.active {
-    background: #4e8a6a;
-    color: white;
-    border-color: #4e8a6a;
+    background: transparent;
+    color: #333333;
+    border-color: #e0e0e0;
+    border: 2px solid black;
 }
 
 .nav-icon {
@@ -400,10 +402,10 @@ body {
 }
 
 .category-item.active {
-    background: #f0f7f3;
-    color: #4e8a6a;
-    font-weight: 500;
-    border-color: #4e8a6a;
+    background: transparent;
+    color: #333333;
+    font-weight: 400;
+    border-color: transparent;
 }
 
 .category-count {
@@ -1373,15 +1375,16 @@ body {
         text-decoration: none;
         border-radius: 8px;
         transition: all 0.3s;
-        border: 1px solid #e0e0e0;
+        border: 2px solid #333333;
         background: #ffffff;
         font-size: 14px;
     }
     
     .nav-link.active {
-        background: #4e8a6a;
-        color: white;
-        border-color: #4e8a6a;
+        background: transparent;
+        color: #333333;
+        border-color: #e0e0e0;
+        border: 2px solid black;
     }
     
     .category-list {
@@ -1404,10 +1407,10 @@ body {
     }
     
     .category-item.active {
-        background: #f0f7f3;
-        color: #4e8a6a;
-        font-weight: 500;
-        border-color: #4e8a6a;
+        background: transparent;
+        color: #333333;
+        font-weight: 400;
+        border-color: transparent;
     }
     
     .category-count {

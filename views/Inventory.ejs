@@ -80,7 +80,19 @@
                                     <div class="category-item" data-category="produce">Vegetables & Fruits
                                         <span class="category-count">0</span>
                                     </div>
+                                    <div class="category-item" data-category="condiment">Condiments & Sauces
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="oil">Oils & Vinegars
+                                        <span class="category-count">0</span>
+                                    </div>
                                     <div class="category-item" data-category="dry">Dry Goods
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="snacks">Snacks & Sides
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="bakery">Bakery
                                         <span class="category-count">0</span>
                                     </div>
                                     <div class="category-item" data-category="beverage">Beverages
@@ -346,58 +358,182 @@
                             <select id="itemName" class="form-control" required>
                                 <option value="">Select Ingredient</option>
                                 <!-- Meat & Poultry (meat) -->
-                                <option value="Pork slices" data-category="meat">Pork slices</option>
-                                <option value="Pork belly" data-category="meat">Pork belly</option>
-                                <option value="Chicken" data-category="meat">Chicken</option>
-                                <option value="Ground pork" data-category="meat">Ground pork</option>
-                                <option value="Beef shanks" data-category="meat">Beef shanks</option>
-                                <option value="Pork ribs" data-category="meat">Pork ribs</option>
+                                <option value="Pork" data-category="meat">Pork</option>
+                                <option value="Pork Belly" data-category="meat">Pork Belly</option>
+                                <option value="Pork Chop" data-category="meat">Pork Chop</option>
+                                <option value="Pork Hocks" data-category="meat">Pork Hocks</option>
+                                <option value="Ground Pork" data-category="meat">Ground Pork</option>
                                 <option value="Bacon" data-category="meat">Bacon</option>
                                 <option value="Ham" data-category="meat">Ham</option>
+                                <option value="Bagnet" data-category="meat">Bagnet</option>
+                                <option value="Hotdog" data-category="meat">Hotdog</option>
+                                <option value="Beef" data-category="meat">Beef</option>
+                                <option value="Beef Shank" data-category="meat">Beef Shank</option>
+                                <option value="Ground Meat" data-category="meat">Ground Meat</option>
+                                <option value="Oxtail" data-category="meat">Oxtail</option>
+                                <option value="Tripe" data-category="meat">Tripe</option>
+                                <option value="Chicken" data-category="meat">Chicken</option>
+                                <option value="Chicken Wings" data-category="meat">Chicken Wings</option>
                                 
                                 <!-- Seafood (seafood) -->
-                                <option value="Cream dory fillet" data-category="seafood">Cream dory fillet</option>
                                 <option value="Shrimp" data-category="seafood">Shrimp</option>
-                                <option value="Smoked fish" data-category="seafood">Smoked fish</option>
+                                <option value="Cream Dory" data-category="seafood">Cream Dory</option>
+                                <option value="Tuyo" data-category="seafood">Tuyo</option>
+                                <option value="Tinapa" data-category="seafood">Tinapa</option>
+                                <option value="Fish Fillet" data-category="seafood">Fish Fillet</option>
                                 
-                                <!-- Dairy & Eggs (dairy) -->
-                                <option value="Butter" data-category="dairy">Butter</option>
-                                <option value="Eggs" data-category="dairy">Eggs</option>
-                                <option value="Milk" data-category="dairy">Milk</option>
-                                <option value="Cheese" data-category="dairy">Cheese</option>
-                                
-                                <!-- Vegetables & Fruits (produce) -->
+                                <!-- Fresh Produce (produce) -->
                                 <option value="Garlic" data-category="produce">Garlic</option>
                                 <option value="Onion" data-category="produce">Onion</option>
-                                <option value="Carrots" data-category="produce">Carrots</option>
+                                <option value="Carrot" data-category="produce">Carrot</option>
                                 <option value="Cabbage" data-category="produce">Cabbage</option>
                                 <option value="Tomato" data-category="produce">Tomato</option>
                                 <option value="Lettuce" data-category="produce">Lettuce</option>
-                                <option value="Ginger" data-category="produce">Ginger</option>
-                                <option value="Calamansi" data-category="produce">Calamansi</option>
+                                <option value="Cucumber" data-category="produce">Cucumber</option>
                                 <option value="Lemon" data-category="produce">Lemon</option>
+                                <option value="Bell Pepper" data-category="produce">Bell Pepper</option>
+                                <option value="Calamansi" data-category="produce">Calamansi</option>
+                                <option value="Chili" data-category="produce">Chili</option>
+                                <option value="Siling Green" data-category="produce">Siling Green</option>
+                                <option value="Radish" data-category="produce">Radish</option>
+                                <option value="Kangkong" data-category="produce">Kangkong</option>
+                                <option value="Eggplant" data-category="produce">Eggplant</option>
+                                <option value="Squash" data-category="produce">Squash</option>
+                                <option value="Okra" data-category="produce">Okra</option>
+                                <option value="Ampalaya" data-category="produce">Ampalaya</option>
+                                <option value="Corn" data-category="produce">Corn</option>
                                 <option value="Potato" data-category="produce">Potato</option>
+                                <option value="String Beans" data-category="produce">String Beans</option>
+                                <option value="Pechay" data-category="produce">Pechay</option>
+                                <option value="Banana Blossom" data-category="produce">Banana Blossom</option>
+                                <option value="Banana Flower Bud" data-category="produce">Banana Flower Bud</option>
+                                <option value="Pineapple" data-category="produce">Pineapple</option>
                                 
-                                <!-- Dry Goods (dry) -->
-                                <option value="Soy sauce" data-category="dry">Soy sauce</option>
-                                <option value="Brown sugar" data-category="dry">Brown sugar</option>
+                                <!-- Dairy & Eggs (dairy) -->
+                                <option value="Butter" data-category="dairy">Butter</option>
+                                <option value="Egg" data-category="dairy">Egg</option>
+                                <option value="Milk" data-category="dairy">Milk</option>
+                                <option value="Cheese" data-category="dairy">Cheese</option>
+                                <option value="Cream" data-category="dairy">Cream</option>
+                                <option value="Ice Cream" data-category="dairy">Ice Cream</option>
+                                <option value="Whipped Cream" data-category="dairy">Whipped Cream</option>
+                                
+                                <!-- Condiments & Sauces (condiment) -->
+                                <option value="Soy Sauce" data-category="condiment">Soy Sauce</option>
+                                <option value="Vinegar" data-category="condiment">Vinegar</option>
+                                <option value="Oyster Sauce" data-category="condiment">Oyster Sauce</option>
+                                <option value="Fish Sauce" data-category="condiment">Fish Sauce</option>
+                                <option value="Shrimp Paste" data-category="condiment">Shrimp Paste</option>
+                                <option value="Bagoong" data-category="condiment">Bagoong</option>
+                                <option value="Tamarind Mix" data-category="condiment">Tamarind Mix</option>
+                                <option value="Tomato Sauce" data-category="condiment">Tomato Sauce</option>
+                                <option value="Sweet Tomato Sauce" data-category="condiment">Sweet Tomato Sauce</option>
+                                <option value="Pasta Sauce" data-category="condiment">Pasta Sauce</option>
+                                <option value="Cheese Sauce" data-category="condiment">Cheese Sauce</option>
+                                <option value="Gravy" data-category="condiment">Gravy</option>
+                                <option value="Buffalo Sauce" data-category="condiment">Buffalo Sauce</option>
+                                <option value="Gochujang" data-category="condiment">Gochujang</option>
+                                <option value="Mayonnaise" data-category="condiment">Mayonnaise</option>
+                                <option value="Honey" data-category="condiment">Honey</option>
+                                <option value="Peanut Butter" data-category="condiment">Peanut Butter</option>
+                                <option value="Basil Pesto" data-category="condiment">Basil Pesto</option>
+                                
+                                <!-- Oils (oil) -->
+                                <option value="Cooking Oil" data-category="oil">Cooking Oil</option>
+                                <option value="Sesame Oil" data-category="oil">Sesame Oil</option>
+                                <option value="Olive Oil" data-category="oil">Olive Oil</option>
+                                <option value="Annatto Oil" data-category="oil">Annatto Oil</option>
+                                
+                                <!-- Pantry Dry Goods (dry) -->
                                 <option value="Salt" data-category="dry">Salt</option>
-                                <option value="Black pepper" data-category="dry">Black pepper</option>
-                                <option value="Cooking oil" data-category="dry">Cooking oil</option>
-                                <option value="Flour" data-category="dry">Flour</option>
-                                <option value="Vinegar" data-category="dry">Vinegar</option>
                                 <option value="Sugar" data-category="dry">Sugar</option>
-                                <option value="Ice" data-category="dry">Ice</option>
-                                <option value="Water" data-category="dry">Water</option>
+                                <option value="Flour" data-category="dry">Flour</option>
+                                <option value="Rice Flour" data-category="dry">Rice Flour</option>
+                                <option value="Cornstarch" data-category="dry">Cornstarch</option>
+                                <option value="Breadcrumbs" data-category="dry">Breadcrumbs</option>
+                                <option value="Black Pepper" data-category="dry">Black Pepper</option>
+                                <option value="Peppercorn" data-category="dry">Peppercorn</option>
+                                <option value="Paprika" data-category="dry">Paprika</option>
+                                <option value="Bay Leaves" data-category="dry">Bay Leaves</option>
+                                <option value="Herbs" data-category="dry">Herbs</option>
+                                <option value="Rice" data-category="dry">Rice</option>
+                                <option value="Toasted Ground Rice" data-category="dry">Toasted Ground Rice</option>
+                                <option value="Fried Rice" data-category="dry">Fried Rice</option>
+                                <option value="Pine Nuts" data-category="dry">Pine Nuts</option>
+                                <option value="Ground Peanuts" data-category="dry">Ground Peanuts</option>
+                                <option value="Pancit Canton Noodles" data-category="dry">Pancit Canton Noodles</option>
+                                <option value="Spaghetti Pasta" data-category="dry">Spaghetti Pasta</option>
+                                <option value="Bihon Noodles" data-category="dry">Bihon Noodles</option>
+                                <option value="Coffee Beans" data-category="dry">Coffee Beans</option>
+                                <option value="Matcha Powder" data-category="dry">Matcha Powder</option>
+                                <option value="Matcha Green Tea Powder" data-category="dry">Matcha Green Tea Powder</option>
+                                <option value="Tapioca Pearls" data-category="dry">Tapioca Pearls</option>
+                                <option value="Cookie Crumbs" data-category="dry">Cookie Crumbs</option>
+                                <option value="Sweetener" data-category="dry">Sweetener</option>
+                                <option value="Nuts" data-category="dry">Nuts</option>
+                                <option value="Graham Crumbs" data-category="dry">Graham Crumbs</option>
                                 
-                                <!-- Beverages (beverage) -->
-                                <option value="Sprite" data-category="beverage">Sprite</option>
-                                <option value="Coke" data-category="beverage">Coke</option>
+                                <!-- Snacks & Sides (snacks) -->
+                                <option value="Nacho Chips" data-category="snacks">Nacho Chips</option>
+                                <option value="Tortilla Chips" data-category="snacks">Tortilla Chips</option>
+                                <option value="Lumpiang Wrapper" data-category="snacks">Lumpiang Wrapper</option>
+                                <option value="French Fries" data-category="snacks">French Fries</option>
+                                <option value="Marshmallows" data-category="snacks">Marshmallows</option>
+                                
+                                <!-- Bakery (bakery) -->
+                                <option value="Bread" data-category="bakery">Bread</option>
+                                
+                                <!-- Beverages & Syrups (beverage) -->
+                                <option value="Lemon Juice" data-category="beverage">Lemon Juice</option>
+                                <option value="Blue Syrup" data-category="beverage">Blue Syrup</option>
+                                <option value="Tea" data-category="beverage">Tea</option>
+                                <option value="Black Tea" data-category="beverage">Black Tea</option>
+                                <option value="Red Tea" data-category="beverage">Red Tea</option>
+                                <option value="Peppermint Tea" data-category="beverage">Peppermint Tea</option>
+                                <option value="Espresso" data-category="beverage">Espresso</option>
+                                <option value="Hot Water" data-category="beverage">Hot Water</option>
+                                <option value="Steamed Milk" data-category="beverage">Steamed Milk</option>
+                                <option value="Milk Tea Base" data-category="beverage">Milk Tea Base</option>
+                                <option value="Caramel Syrup" data-category="beverage">Caramel Syrup</option>
+                                <option value="Vanilla Syrup" data-category="beverage">Vanilla Syrup</option>
+                                <option value="Strawberry Syrup" data-category="beverage">Strawberry Syrup</option>
+                                <option value="Mango Syrup" data-category="beverage">Mango Syrup</option>
+                                <option value="Mango Flavor" data-category="beverage">Mango Flavor</option>
+                                <option value="Mango Puree" data-category="beverage">Mango Puree</option>
+                                <option value="Cream Cheese Flavor" data-category="beverage">Cream Cheese Flavor</option>
+                                <option value="White Chocolate Syrup" data-category="beverage">White Chocolate Syrup</option>
+                                <option value="Dark Chocolate Syrup" data-category="beverage">Dark Chocolate Syrup</option>
+                                <option value="Chocolate Syrup" data-category="beverage">Chocolate Syrup</option>
+                                <option value="Okinawa Syrup" data-category="beverage">Okinawa Syrup</option>
+                                <option value="Wintermelon Syrup" data-category="beverage">Wintermelon Syrup</option>
+                                <option value="Soda 1.5L Coke" data-category="beverage">Soda 1.5L Coke</option>
+                                <option value="Soda 1.5L Coke Zero" data-category="beverage">Soda 1.5L Coke Zero</option>
+                                <option value="Soda 1.5L Sprite" data-category="beverage">Soda 1.5L Sprite</option>
+                                <option value="Soda 1.5L Royal" data-category="beverage">Soda 1.5L Royal</option>
+                                <option value="Soda (Mismo) Coke" data-category="beverage">Soda (Mismo) Coke</option>
+                                <option value="Soda (Mismo) Sprite" data-category="beverage">Soda (Mismo) Sprite</option>
+                                <option value="Soda (Mismo) Royal" data-category="beverage">Soda (Mismo) Royal</option>
                                 
                                 <!-- Packaging (packaging) -->
-                                <option value="Paper cups" data-category="packaging">Paper cups</option>
+                                <option value="Plastic Containers (Small)" data-category="packaging">Plastic Containers (Small)</option>
+                                <option value="Plastic Containers (Medium)" data-category="packaging">Plastic Containers (Medium)</option>
+                                <option value="Plastic Containers (Large)" data-category="packaging">Plastic Containers (Large)</option>
+                                <option value="Plastic Cups (12oz)" data-category="packaging">Plastic Cups (12oz)</option>
+                                <option value="Plastic Cups (16oz)" data-category="packaging">Plastic Cups (16oz)</option>
+                                <option value="Plastic Cups (20oz)" data-category="packaging">Plastic Cups (20oz)</option>
+                                <option value="Collins Glass" data-category="packaging">Collins Glass</option>
+                                <option value="Plates (Small)" data-category="packaging">Plates (Small)</option>
+                                <option value="Plates (Medium)" data-category="packaging">Plates (Medium)</option>
+                                <option value="Plates (Large)" data-category="packaging">Plates (Large)</option>
+                                <option value="Straws (Regular)" data-category="packaging">Straws (Regular)</option>
+                                <option value="Straws (Boba)" data-category="packaging">Straws (Boba)</option>
                                 <option value="Straws" data-category="packaging">Straws</option>
                                 <option value="Napkins" data-category="packaging">Napkins</option>
+                                <option value="Plastic Utensils" data-category="packaging">Plastic Utensils</option>
+                                <option value="Plastic Utensils Set" data-category="packaging">Plastic Utensils Set</option>
+                                <option value="Tray S" data-category="packaging">Tray S</option>
+                                <option value="Tray M" data-category="packaging">Tray M</option>
+                                <option value="Tray L" data-category="packaging">Tray L</option>
                             </select>
                         </div>
                     </div>
