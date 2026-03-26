@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/settings.css">
+    <script src="/script/session-manager.js"></script>
+    <script src="/script/back-button-prevention.js"></script>
+
+</head>
+<body>
+    <div id="toastContainer"></div>
+
+    <div class="dashboard-container">
+        <nav class="navbar">
+            <div class="brandname">
+                <div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="/logo.png" alt="Logo" class="logo-img" title="Click to view settings">
+                </div>
+                <h2>Gray Countryside Cafe</h2>
+            </div>
+            <div class="logout-container">
+                <button onclick="handleLogout()" id="logoutBtn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="sidebar">
+            <div class="search-section">
+                <input type="text" class="search" placeholder="Search..">
+            </div>
+            
+            <ul class="dashboard-menu">
+                <li><a href="/admindashboard/dashboard" onclick="showSection('dashboard')" class="active">Dashboard</a></li>
+                <li><a href="/admindashboard/Inventory">Inventory</a></li>
+                <li><a href="/admindashboard/salesandreports">Sales Reports</a></li>
+                <li><a href="/admindashboard/orderhistory">Order History</a></li>
+                <li><a href="/admindashboard/addstaff">Add Staff</a></li>
+                <li><a href="/admindashboard/menumanagement">Menu Management</a></li>
+                <li><a href="/admindashboard/infosettings">Settings</a></li>
+            </ul>
+            <footer class="sidebar-footer">
+                &copy; 2026 For School Purposes Only. All rights reserved.
+            </footer>
+        </div>
+
+        <div class="main-content">
+            <div class="section-content active-section">
+                <div class="settings-container">
+                    <div class="settings-header">
+                        <h1>Settings</h1>
+                    </div>
+
+                   <div class="personal-info-section">
+    <h2><i class="fas fa-user"></i> User Information</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <label>Full Name</label>
+            <input type="text" class="info-value" id="fullNameDisplay" placeholder="Your full name">
+        </div>
+        <div class="info-item">
+            <label>Role</label>
+            <input type="text" class="info-value" id="roleDisplay" placeholder="Your role" readonly>
+        </div>
+    </div>
+    
+    <div class="settings-actions">
+        <button class="btn btn-primary" id="saveBtn">
+            <i class="fas fa-save"></i> Save Changes
+        </button>
+        <button class="btn btn-secondary" id="cancelBtn">
+            <i class="fas fa-times"></i> Cancel
+        </button>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/script/infosettings.js"></script>
+    <script>
+        // Mobile menu initialization
+        (function() {
+            function initMobileMenu() {
+                const navbar = document.querySelector('.navbar') || document.querySelector('.header-navbar');
+                if (!navbar) return;
+
+                if (document.querySelector('.hamburger-menu')) return;
+
+                const hamburger = document.createElement('div');
+                hamburger.className = 'hamburger-menu';
+                hamburger.id = 'hamburgerMenu';
+                hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+                navbar.insertBefore(hamburger, navbar.firstChild);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'sidebar-overlay';
+                overlay.id = 'sidebarOverlay';
+                document.body.appendChild(overlay);
+
+                const sidebar = document.querySelector('.sidebar');
+                if (!sidebar) return;
+
+                const sidebarHeader = document.createElement('div');
+                sidebarHeader.className = 'sidebar-header';
+                sidebarHeader.innerHTML = `
+                    <h3>Menu</h3>
+                    <button class="sidebar-close" id="closeSidebar"></button>
+                `;
+
+                sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+
+                function openMenu() {
+                    hamburger.classList.add('active');
+                    sidebar.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.classList.add('menu-open');
+                }
+
+                function closeMenu() {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (sidebar.classList.contains('active')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+
+                overlay.addEventListener('click', closeMenu);
+
+                const closeBtn = document.getElementById('closeSidebar');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeMenu);
+                }
+
+                const menuItems = sidebar.querySelectorAll('ul.dashboard-menu li a, .sidebar .category-btn, .sidebar button');
+                menuItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        menuItems.forEach(i => i.classList.remove('active'));
+                        if (this.tagName === 'A') {
+                            this.classList.add('active');
+                        }
+                        closeMenu();
+                    });
+                });
+
+                const currentPath = window.location.pathname;
+                const links = sidebar.querySelectorAll('ul.dashboard-menu li a');
+                links.forEach(item => {
+                    const href = item.getAttribute('href');
+                    if (href && currentPath.includes(href)) {
+                        item.classList.add('active');
+                    }
+                });
+
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        if (sidebar.classList.contains('active')) {
+                            closeMenu();
+                        }
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,3454 @@
+nohup: ignoring input
+
+> gray-countryside-cafe@1.0.0 start
+> node server.js
+
+[dotenv@17.2.3] injecting env (14) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+🔄 Connecting to MongoDB Atlas...
+(node:10211) [MONGOOSE] Warning: Duplicate schema index on {"date":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10211) [MONGOOSE] Warning: Duplicate schema index on {"userId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+✅ MongoDB Atlas Connected Successfully
+📊 Database: POSdb
+🏠 Host: ac-jtidsjy-shard-00-00.7maj4in.mongodb.net
+⚠️ Email service not configured: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2aece81378fsm10257205ad.66 - gsmtp
+💡 To enable email notifications:
+   1. Set GMAIL_USER and GMAIL_PASSWORD in .env
+   2. Use Gmail App Password (not your regular password)
+🔄 Initializing MongoDB Inventory Service...
+✅ MongoDB Service initialized (14 inventory items found)
+✅ Server is running at http://localhost:5050
+✅ WebSocket server running on ws://localhost:5050/ws
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+💰 Total Revenue: ₱12216.00
+📦 Total Orders: 5
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+💰 Total Revenue: ₱12216.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+💰 Total Revenue: ₱12216.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+💰 Total Revenue: ₱12216.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Inventory Status API Query:
+  - Limit: 5
+  - Items found: 5
+  [1] Honey - Stock: 0 liters (Active: true)
+  [2] Black Pepper - Stock: 0 kg (Active: true)
+  [3] Sesame oil - Stock: 0 liters (Active: true)
+  [4] Chicken - Stock: 0 kg (Active: true)
+  [5] Butter - Stock: 0 kg (Active: true)
+📦 Today's Orders: 2
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📋 Fetching up to 20 orders for today...
+👥 Total Customers: 14
+📊 Found 2 completed orders today
+📊 Fetching top items: limit=5, days=30, dateRange=Wed Feb 11 2026 13:24:36 GMT+0800 (Philippine Standard Time)
+🍽️ Total Menu Items: 2, Available: 0
+📋 Order counts: total=5, completed=5, recent(30d)=5
+✅ Top items aggregation returned: 2 items
+📋 Sample top items: [
+  { name: 'Buttered Honey Chicken', qty: 87, revenue: 11136 },
+  { name: 'Caramel Macchiato Hot', qty: 10, revenue: 1080 }
+]
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+💰 Total Revenue: ₱12216.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📊 Fetching top items: limit=5, days=30, dateRange=Wed Feb 11 2026 13:24:49 GMT+0800 (Philippine Standard Time)
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📋 Fetching up to 100 orders for today...
+📊 Found 2 completed orders today
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📋 Order counts: total=5, completed=5, recent(30d)=5
+✅ Top items aggregation returned: 2 items
+📋 Sample top items: [
+  { name: 'Buttered Honey Chicken', qty: 87, revenue: 11136 },
+  { name: 'Caramel Macchiato Hot', qty: 10, revenue: 1080 }
+]
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+📝 API: /api/infosettings/user - Fetching user data
+Token decoded user: {
+  id: '69836e510f159a0dba87ba44',
+  username: 'Admin',
+  role: 'admin',
+  iat: 1773377155,
+  exp: 1804913155
+}
+✅ User found: Admin
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+📝 API: /api/infosettings/user - Fetching user data
+Token decoded user: {
+  id: '69836e510f159a0dba87ba44',
+  username: 'Admin',
+  role: 'admin',
+  iat: 1773377155,
+  exp: 1804913155
+}
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+✅ User found: Admin
+✅ Successful login for Staff (Role: staff)
+✅ Login attempts reset for Staff
+🔐 Redirecting Staff to staff dashboard
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+✅ Successful login for Admin (Role: admin)
+✅ Login attempts reset for Admin
+🔐 Redirecting Admin to admin dashboard
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Inventory Status API Query:
+  - Limit: 5
+  - Items found: 5
+  [1] Honey - Stock: 0 liters (Active: true)
+  [2] Black Pepper - Stock: 0 kg (Active: true)
+  [3] Sesame oil - Stock: 0 liters (Active: true)
+  [4] Chicken - Stock: 0 kg (Active: true)
+  [5] Butter - Stock: 0 kg (Active: true)
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📋 Fetching up to 20 orders for today...
+📦 Today's Orders: 2
+📊 Found 2 completed orders today
+📊 Fetching top items: limit=5, days=30, dateRange=Wed Feb 11 2026 13:25:57 GMT+0800 (Philippine Standard Time)
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📋 Order counts: total=5, completed=5, recent(30d)=5
+✅ Top items aggregation returned: 2 items
+📋 Sample top items: [
+  { name: 'Buttered Honey Chicken', qty: 87, revenue: 11136 },
+  { name: 'Caramel Macchiato Hot', qty: 10, revenue: 1080 }
+]
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📊 Fetching top items: limit=5, days=30, dateRange=Wed Feb 11 2026 13:25:58 GMT+0800 (Philippine Standard Time)
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📋 Fetching up to 100 orders for today...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 Found 2 completed orders today
+📋 Order counts: total=5, completed=5, recent(30d)=5
+✅ Top items aggregation returned: 2 items
+📋 Sample top items: [
+  { name: 'Buttered Honey Chicken', qty: 87, revenue: 11136 },
+  { name: 'Caramel Macchiato Hot', qty: 10, revenue: 1080 }
+]
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+📦 Today's Orders: 2
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+👥 Total Customers: 14
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+🍽️ Total Menu Items: 2, Available: 0
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Inventory Status API Query:
+  - Limit: 5
+  - Items found: 5
+  [1] Honey - Stock: 0 liters (Active: true)
+  [2] Black Pepper - Stock: 0 kg (Active: true)
+  [3] Sesame oil - Stock: 0 liters (Active: true)
+  [4] Chicken - Stock: 0 kg (Active: true)
+  [5] Butter - Stock: 0 kg (Active: true)
+📦 Total Orders: 5
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📋 Fetching up to 20 orders for today...
+📦 Today's Orders: 2
+📊 Found 2 completed orders today
+📊 Fetching top items: limit=5, days=30, dateRange=Wed Feb 11 2026 13:28:07 GMT+0800 (Philippine Standard Time)
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📋 Order counts: total=5, completed=5, recent(30d)=5
+✅ Top items aggregation returned: 2 items
+📋 Sample top items: [
+  { name: 'Buttered Honey Chicken', qty: 87, revenue: 11136 },
+  { name: 'Caramel Macchiato Hot', qty: 10, revenue: 1080 }
+]
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 13
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: Updating inventory item 69a79dfd6e0fbbe41dc838da... {
+  "itemName": "Chicken",
+  "itemType": "raw",
+  "category": "meat",
+  "unit": "kg",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79dfd6e0fbbe41dc838da
+🍽️ Checking affected menu items for "Chicken"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=0
+   - Caramel Sauce: stock=0
+📦 API: Updating inventory item 69a79e196e0fbbe41dc838e2... {
+  "itemName": "Butter",
+  "itemType": "raw",
+  "category": "dry",
+  "unit": "kg",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79e196e0fbbe41dc838e2
+🍽️ Checking affected menu items for "Butter"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 11
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 API: Updating inventory item 69a79e846e0fbbe41dc838e7... {
+  "itemName": "Honey",
+  "itemType": "raw",
+  "category": "dry",
+  "unit": "liters",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79e846e0fbbe41dc838e7
+🍽️ Checking affected menu items for "Honey"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📦 API: Updating inventory item 69a79e9d6e0fbbe41dc838ef... {
+  "itemName": "Garlic",
+  "itemType": "raw",
+  "category": "produce",
+  "unit": "kg",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79e9d6e0fbbe41dc838ef
+🍽️ Checking affected menu items for "Garlic"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📦 API: Updating inventory item 69a79ec96e0fbbe41dc83912... {
+  "itemName": "Soy sauce",
+  "itemType": "raw",
+  "category": "dry",
+  "unit": "liters",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79ec96e0fbbe41dc83912
+🍽️ Checking affected menu items for "Soy sauce"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=0
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📦 API: Updating inventory item 69a79e936e0fbbe41dc838eb... {
+  "itemName": "Black Pepper",
+  "itemType": "raw",
+  "category": "dry",
+  "unit": "kg",
+  "currentStock": 5,
+  "minStock": 2,
+  "maxStock": 10,
+  "description": "",
+  "isActive": true
+}
+✅ Inventory item updated: 69a79e936e0fbbe41dc838eb
+🍽️ Checking affected menu items for "Black Pepper"...
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=5
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Today's Orders: 2
+👥 Total Customers: 14
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 5
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+📦 Today's Orders: 2
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+👥 Total Customers: 14
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+🍽️ Total Menu Items: 2, Available: 0
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 97 units = ₱12216.00
+💰 Total Revenue: ₱12216.00
+💰 Today's Revenue: ₱1848.00
+✅ Statistics calculation complete: {
+  totalOrders: 5,
+  todaysOrders: 2,
+  totalCustomers: 14,
+  totalRevenue: '₱12216.00',
+  todaysRevenue: '₱1848.00'
+}
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 2 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee (₱1080.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Coffee                    | ₱   1080.00 |  10 items |  58.4%
+  Rice Bowl Meals           | ₱    768.00 |   6 items |  41.6%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 1848,
+  totalItems: 16,
+  totalOrders: 2,
+  topCategory: 'Coffee'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱1848.00
+   Total Orders: 2
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱1848.00
+  Total Items: 16
+  Total Orders: 2
+  Top Category: Coffee
+============================================================
+
+✏️ API: Updating menu item 69b395ec89d3080cb52b7cc2... {
+  "name": "Caramel Macchiato Hot",
+  "itemName": "Caramel Macchiato Hot",
+  "category": "Cafe",
+  "price": 108,
+  "unit": "cup",
+  "currentStock": 5,
+  "minStock": 1,
+  "maxStock": 5,
+  "image": "default_food.jpg"
+}
+✅ Menu item updated successfully
+📦 Stock change: 0 → 5 = 5 added
+🧂 Deducting ingredients for added stock: Caramel Macchiato Hot (Qty: 5)
+🧂 Looking for recipe in reverseRecipeMapping...
+🧂 Found ingredients: [ 'Milk', 'Espresso', 'Caramel Sauce', 'Vanilla syrup', 'Hot water' ]
+  ✓ Milk: 0 → 0 liters [out_of_stock]
+  ✓ Espresso: 0 → 0 liters [out_of_stock]
+  ✓ Caramel Sauce: 0 → 0 kg [out_of_stock]
+  ✓ Vanilla syrup: 0 → 0 liters [out_of_stock]
+  ✓ Hot water: 0 → 0 liters [out_of_stock]
+✅ Menu item updated: 69b395ec89d3080cb52b7cc2
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=5
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+✅ Successful login for Staff (Role: staff)
+✅ Login attempts reset for Staff
+🔐 Redirecting Staff to staff dashboard
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📦 Stock update request for 69b395ec89d3080cb52b7cc2: 4
+📦 Stock calculation: 5 → 4 = -1 added
+✅ Stock updated for 69b395ec89d3080cb52b7cc2: 5 → 4 units (added: -1)
+📦 Stock update request for 69b395ec89d3080cb52b7cc2: 3
+📦 Stock calculation: 4 → 3 = -1 added
+✅ Stock updated for 69b395ec89d3080cb52b7cc2: 4 → 3 units (added: -1)
+📦 Stock update request for 69b395ec89d3080cb52b7cc2: 2
+📦 Stock calculation: 3 → 2 = -1 added
+✅ Stock updated for 69b395ec89d3080cb52b7cc2: 3 → 2 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 27
+📦 Stock calculation: 28 → 27 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 28 → 27 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 26
+📦 Stock calculation: 27 → 26 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 27 → 26 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 25
+📦 Stock calculation: 26 → 25 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 26 → 25 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 24
+📦 Stock calculation: 25 → 24 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 25 → 24 units (added: -1)
+📦 Stock update request for 69b395ec89d3080cb52b7cc2: 1
+📦 Stock calculation: 2 → 1 = -1 added
+✅ Stock updated for 69b395ec89d3080cb52b7cc2: 2 → 1 units (added: -1)
+📦 Stock update request for 69b395ec89d3080cb52b7cc2: 0
+📦 Stock calculation: 1 → 0 = -1 added
+✅ Stock updated for 69b395ec89d3080cb52b7cc2: 1 → 0 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 23
+📦 Stock calculation: 24 → 23 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 24 → 23 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 22
+📦 Stock calculation: 23 → 22 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 23 → 22 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 21
+📦 Stock calculation: 22 → 21 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 22 → 21 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 20
+📦 Stock calculation: 21 → 20 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 21 → 20 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 19
+📦 Stock calculation: 20 → 19 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 20 → 19 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 18
+📦 Stock calculation: 19 → 18 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 19 → 18 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 17
+📦 Stock calculation: 18 → 17 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 18 → 17 units (added: -1)
+📦 Stock update request for 69aad07a50fa90ba06987e52: 16
+📦 Stock calculation: 17 → 16 = -1 added
+✅ Stock updated for 69aad07a50fa90ba06987e52: 17 → 16 units (added: -1)
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+🆕 Creating new order for G'RAY COUNTRYSIDE CAFÉ: {
+  orderNumber: 'ORD-20260313-0003',
+  orderCountToday: 2,
+  currentTime: '3/13/2026, 1:30:25 PM'
+}
+  ✓ Item: Caramel Macchiato Hot | Qty: 5 | Price: ₱108
+  ✓ Item: Buttered Honey Chicken | Qty: 12 | Price: ₱128
+✅ Order created successfully: {
+  orderId: new ObjectId('69b3a0f1c31ebfb24b035938'),
+  orderNumber: 'ORD-20260313-0003',
+  customerId: 'CUST-QOKOWR',
+  itemCount: 2,
+  total: 2076,
+  vat: 249.12,
+  createdAt: '3/13/2026, 1:30:25 PM'
+}
+📉 Updated inventory: Caramel Macchiato Hot { quantitySold: 5, newStock: 0, status: 'out_of_stock' }
+📉 Updated inventory: Buttered Honey Chicken { quantitySold: 12, newStock: 4, status: 'in_stock' }
+ℹ️ Ingredient deduction DISABLED for customer orders - Only deducts when products are created
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 6
+📦 Today's Orders: 3
+👥 Total Customers: 15
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 114 units = ₱14292.00
+💰 Total Revenue: ₱14292.00
+💰 Today's Revenue: ₱3924.00
+✅ Statistics calculation complete: {
+  totalOrders: 6,
+  todaysOrders: 3,
+  totalCustomers: 15,
+  totalRevenue: '₱14292.00',
+  todaysRevenue: '₱3924.00'
+}
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 6
+📦 Today's Orders: 3
+👥 Total Customers: 15
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 114 units = ₱14292.00
+💰 Total Revenue: ₱14292.00
+💰 Today's Revenue: ₱3924.00
+✅ Statistics calculation complete: {
+  totalOrders: 6,
+  todaysOrders: 3,
+  totalCustomers: 15,
+  totalRevenue: '₱14292.00',
+  todaysRevenue: '₱3924.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 6
+📦 Today's Orders: 3
+👥 Total Customers: 15
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 114 units = ₱14292.00
+💰 Total Revenue: ₱14292.00
+💰 Today's Revenue: ₱3924.00
+✅ Statistics calculation complete: {
+  totalOrders: 6,
+  todaysOrders: 3,
+  totalCustomers: 15,
+  totalRevenue: '₱14292.00',
+  todaysRevenue: '₱3924.00'
+}
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+📊 API: Fetching dashboard stats...
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+📦 Total Orders: 6
+📦 Today's Orders: 3
+👥 Total Customers: 15
+🍽️ Total Menu Items: 2, Available: 0
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+📦 Found 3 orders with status (completed/served/ready/preparing) in this date range
+
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 114 units = ₱14292.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+💰 Total Revenue: ₱14292.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x12 @ ₱128.00 = ₱1536.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+💰 Today's Revenue: ₱3924.00
+✅ Statistics calculation complete: {
+  totalOrders: 6,
+  todaysOrders: 3,
+  totalCustomers: 15,
+  totalRevenue: '₱14292.00',
+  todaysRevenue: '₱3924.00'
+}
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱3924.00
+  Total Items: 33
+  Total Orders: 3
+  Top Category: Rice Bowl Meals (₱2304.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Rice Bowl Meals           | ₱   2304.00 |  18 items |  58.7%
+  Coffee                    | ₱   1620.00 |  15 items |  41.3%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 3924,
+  totalItems: 33,
+  totalOrders: 3,
+  topCategory: 'Rice Bowl Meals'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱3924.00
+   Total Orders: 3
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱3924.00
+  Total Items: 33
+  Total Orders: 3
+  Top Category: Rice Bowl Meals
+============================================================
+
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+
+============================================================
+📊 API: /api/revenue/breakdown REQUEST
+============================================================
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+Date: 2026-03-13
+Time Range: 3/13/2026, 8:00:00 AM to 3/14/2026, 7:59:59 AM
+
+======================================================================
+📊 REVENUE BREAKDOWN SERVICE - DETAILED CALCULATION
+======================================================================
+Date Range: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Found 3 orders with status (completed/served/ready/preparing) in this date range
+
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Rice Bowl Meals: Buttered Honey Chicken x12 @ ₱128.00 = ₱1536.00
+✅ Menu items loaded: 0 available, 2 out of stock
+✓ Rice Bowl Meals: Buttered Honey Chicken x6 @ ₱128.00 = ₱768.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+✓ Coffee: Caramel Macchiato Hot x5 @ ₱108.00 = ₱540.00
+
+📈 BREAKDOWN SUMMARY:
+  Total Revenue: ₱3924.00
+  Total Items: 33
+  Total Orders: 3
+  Top Category: Rice Bowl Meals (₱2304.00)
+  Categories with Revenue: 2
+
+📑 BREAKDOWN BY CATEGORY:
+  Rice Bowl Meals           | ₱   2304.00 |  18 items |  58.7%
+  Coffee                    | ₱   1620.00 |  15 items |  41.3%
+======================================================================
+
+✅ Revenue breakdown calculated: {
+  totalRevenue: 3924,
+  totalItems: 33,
+  totalOrders: 3,
+  topCategory: 'Rice Bowl Meals'
+}
+
+💾 Saving revenue breakdown for 2026-03-13...
+✅ Successfully saved revenue breakdown for 2026-03-13
+   Total Revenue: ₱3924.00
+   Total Orders: 3
+   Categories: 2
+
+
+✅ API Response: SUCCESS
+  Total Revenue: ₱3924.00
+  Total Items: 33
+  Total Orders: 3
+  Top Category: Rice Bowl Meals
+============================================================
+
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=5
+   - Butter: stock=5
+   - Caramel Sauce: stock=0
+📊 Calculating dashboard statistics...
+⏰ Date Range (PHT): 03/13/2026, 08:00:00 AM to 07:59:59 AM
+   UTC: 2026-03-13T00:00:00.000Z to 2026-03-13T23:59:59.999Z
+📦 Total Orders: 6
+📦 Today's Orders: 3
+👥 Total Customers: 15
+🍽️ Total Menu Items: 2, Available: 0
+📦 Total Inventory: 14, Low Stock: 0, Out of Stock: 7
+🔝 Top Selling Products from MongoDB: 1 items
+   [1] null: 114 units = ₱14292.00
+💰 Total Revenue: ₱14292.00
+💰 Today's Revenue: ₱3924.00
+✅ Statistics calculation complete: {
+  totalOrders: 6,
+  todaysOrders: 3,
+  totalCustomers: 15,
+  totalRevenue: '₱14292.00',
+  todaysRevenue: '₱3924.00'
+}
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📋 API: Fetching all menu items with inventory check...
+✅ Menu items loaded: 0 available, 2 out of stock
+📦 API: /api/inventory - Fetching ALL inventory items for availability check...
+📦 Inventory API returning 14 items
+   Sample items:
+   - Black Pepper: stock=5
+   - Butter: stock=5
+   - Caramel Sauce: stock=0

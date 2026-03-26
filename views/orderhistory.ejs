@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/historyorder.css">
+<title>Admin Dashboard</title>
+<script src="/script/session-manager.js"></script>
+<script src="/script/back-button-prevention.js"></script>
+
+</head>
+<body>
+    <nav class="navbar">
+      <div class="brandname">
+        <div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="/logo.png" alt="Logo" class="logo-img" title="Click to view settings">
+        </div>
+        <h2>Gray Countryside Cafe</h2>
+      </div>
+      <div class="logout-container">
+        <button onclick="handleLogout()">Logout</button>
+      </div>
+    </nav>
+
+    <div class="sidebar">
+      <div class="search-section">
+        <input type="text" class="search" id="menuSearch" placeholder="Search..">
+      </div>
+
+      <ul class="dashboard-menu">
+        <li><a href="/admindashboard/dashboard" onclick="showSection('dashboard')" class="active"></i> Dashboard</a></li>
+        <li><a href="/admindashboard/Inventory">Inventory</a></li>
+        <li><a href="/admindashboard/salesandreports">Sales Reports</a></li>
+        <li><a href="/admindashboard/orderhistory">Order History</a></li>
+        <li><a href="/admindashboard/addstaff">Add Staff</a></li>
+        <li><a href="/admindashboard/menumanagement">Menu Management</a></li>
+        <li><a href="/admindashboard/infosettings">Settings</a></li>
+      </ul>
+      <footer class="sidebar-footer">
+        &copy; 2026 For School Purposes Only. All rights reserved.
+      </footer>
+    </div>
+
+  
+<div class="main-content">
+  
+  <div id="dashboardSection" class="section-content"></div>
+  
+  <div id="historySection" class="section-content active-section">
+    <div class="section-header">
+      <h1><i class="fas fa-history"></i> Order History</h1>
+    </div>
+
+          <div class="chart-card">
+            <div class="table-header">
+              <h3>Top Selling Items</h3>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="topItemsBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dashboard-lower">
+          <div class="table-container">
+            <div class="table-header">
+              <div>
+                <h3>Inventory Status</h3>
+                <p style="font-size: 12px; color: #999; margin-top: 4px;">All Inventory Items</p>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryStatusBody">
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-container">
+            <div class="table-header">
+              <h3>Today's Orders</h3>
+            </div>
+            <table id="todaysOrdersTable">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Time</th>
+                  <th>Customer ID</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="todaysOrdersBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="/script/orderhistory.js"></script>
+<script src="/script/dashboard.js"></script>
+<script>
+  function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = '/login';
+    }
+  }
+
+  // Mobile menu initialization
+  (function() {
+      function initMobileMenu() {
+          const navbar = document.querySelector('.navbar') || document.querySelector('.header-navbar');
+          if (!navbar) return;
+
+          if (document.querySelector('.hamburger-menu')) return;
+
+          const hamburger = document.createElement('div');
+          hamburger.className = 'hamburger-menu';
+          hamburger.id = 'hamburgerMenu';
+          hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+          navbar.insertBefore(hamburger, navbar.firstChild);
+
+          const overlay = document.createElement('div');
+          overlay.className = 'sidebar-overlay';
+          overlay.id = 'sidebarOverlay';
+          document.body.appendChild(overlay);
+
+          const sidebar = document.querySelector('.sidebar');
+          if (!sidebar) return;
+
+          const sidebarHeader = document.createElement('div');
+          sidebarHeader.className = 'sidebar-header';
+          sidebarHeader.innerHTML = `
+              <h3>Menu</h3>
+              <button class="sidebar-close" id="closeSidebar"></button>
+          `;
+
+          sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+
+          function openMenu() {
+              hamburger.classList.add('active');
+              sidebar.classList.add('active');
+              overlay.classList.add('active');
+              document.body.classList.add('menu-open');
+          }
+
+          function closeMenu() {
+              hamburger.classList.remove('active');
+              sidebar.classList.remove('active');
+              overlay.classList.remove('active');
+              document.body.classList.remove('menu-open');
+          }
+
+          hamburger.addEventListener('click', function(e) {
+              e.stopPropagation();
+              if (sidebar.classList.contains('active')) {
+                  closeMenu();
+              } else {
+                  openMenu();
+              }
+          });
+
+          overlay.addEventListener('click', closeMenu);
+
+          const closeBtn = document.getElementById('closeSidebar');
+          if (closeBtn) {
+              closeBtn.addEventListener('click', closeMenu);
+          }
+
+          const menuItems = sidebar.querySelectorAll('ul.dashboard-menu li a, .sidebar .category-btn, .sidebar button');
+          menuItems.forEach(item => {
+              item.addEventListener('click', function() {
+                  menuItems.forEach(i => i.classList.remove('active'));
+                  if (this.tagName === 'A') {
+                      this.classList.add('active');
+                  }
+                  closeMenu();
+              });
+          });
+
+          const currentPath = window.location.pathname;
+          const links = sidebar.querySelectorAll('ul.dashboard-menu li a');
+          links.forEach(item => {
+              const href = item.getAttribute('href');
+              if (href && currentPath.includes(href)) {
+                  item.classList.add('active');
+              }
+          });
+
+          window.addEventListener('resize', function() {
+              if (window.innerWidth > 768) {
+                  if (sidebar.classList.contains('active')) {
+                      closeMenu();
+                  }
+                  document.body.classList.remove('menu-open');
+              }
+          });
+      }
+
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initMobileMenu);
+      } else {
+          initMobileMenu();
+      }
+  })();
+
+  // ==================== SETTINGS MODAL FUNCTIONS ====================
+  function openSettingsModal() {
+      const settingsModal = document.getElementById('settingsModal');
+      settingsModal.style.display = 'flex';
+      loadUserSettings();
+  }
+
+  function closeSettingsModal() {
+      document.getElementById('settingsModal').style.display = 'none';
+  }
+
+  async function loadUserSettings() {
+      try {
+          const response = await fetch('/api/settings', {
+              headers: { 'Accept': 'application/json' },
+              credentials: 'include'
+          });
+          if (response.ok) {
+              const data = await response.json();
+              if (data.success && data.data) {
+                  document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                  document.getElementById('settingsRole').textContent = data.data.role || 'Admin';
+              }
+          }
+      } catch (error) {
+          console.error('Error loading user settings:', error);
+      }
+  }
+
+  document.addEventListener('click', function(event) {
+      const settingsModal = document.getElementById('settingsModal');
+      if (settingsModal && event.target === settingsModal) {
+          closeSettingsModal();
+      }
+  });
+</script>

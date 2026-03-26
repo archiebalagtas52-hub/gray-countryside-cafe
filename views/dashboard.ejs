@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/dashboard.css">
+<title>Admin Dashboard</title>
+<script src="/script/session-manager.js"></script>
+<script src="/script/back-button-prevention.js"></script>
+
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="brandname">
+<div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+<img src="/logo.png" alt="Logo" class="logo-img" title="Click to view settings">
+</div>
+<h2>Gray Countryside Cafe</h2>
+</div>
+<div class="logout-container">
+<button onclick="handleLogout()">Logout</button>
+</div>
+</nav>
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+<!-- Left Column: Dashboard Sidebar -->
+<div class="sidebar">
+<div class="search-section">
+<input type="text" class="search" id="menuSearch" placeholder="Search..">
+</div>
+
+<ul class="dashboard-menu">
+<li><a href="/admindashboard/dashboard" onclick="showSection('dashboard')" class="active">Dashboard</a></li>
+<li><a href="/admindashboard/Inventory">Inventory</a></li>
+<li><a href="/admindashboard/salesandreports">Sales Reports</a></li>
+<li><a href="/admindashboard/orderhistory">Order History</a></li>
+<li><a href="/admindashboard/addstaff">Add Staff</a></li>
+<li><a href="/admindashboard/menumanagement">Menu Management</a></li>
+<li><a href="/admindashboard/infosettings">Settings</a></li>
+</ul>
+<footer class="sidebar-footer">
+&copy; 2026 For School Purposes Only. All rights reserved.
+</footer>
+</div>
+
+ <!-- Main Content Area -->
+    <div class="main-content">
+      
+      <!-- STATS SECTION -->
+      <section class="stats-container">
+        <div class="stat-card">
+          <h3>Total Orders</h3>
+          <p id="totalOrders"><%= stats.totalOrders || 0 %></p>
+          <small class="daily-message" id="dailyOrders"><%= stats.todaysOrders || stats.totalOrders || 0 %> Order's today</small>
+        </div>
+
+        <div class="stat-card revenue-card">
+          <div class="stat-info">
+            <h3>Total Revenue</h3>
+            <p class="revenue-amount">
+              <span id="totalRevenue" class="revenue-value"><%= stats.totalRevenue ? '₱' + stats.totalRevenue.toFixed(2) : '₱0.00' %></span>
+            </p>
+            <small class="daily-message" id="dailyRevenue"><%= stats.totalRevenue ? '₱' + stats.totalRevenue.toFixed(2) : '₱0.00' %> Revenue's today</small>
+            <div class="revenue-change">
+              <i class="fas fa-arrow-up"></i>
+            </div>
+          </div>
+          <div class="stat-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Total Customers</h3>
+          <p id="totalCustomers"><%= stats.totalCustomers || 0 %></p>
+          <small class="daily-message" id="dailyCustomers"><%= stats.todaysCustomers || stats.totalCustomers || 0 %> Customer's today</small>
+        </div>
+
+        <div class="stat-card">
+        <h3>Total Inventory</h3>
+        <p id="totalInventory"><%= stats.totalInventoryItems || stats.totalInventory || 0 %></p>
+        <small class="daily-message" id="dailyInventory">1 Inventory today</small>
+        </div>
+
+        <div class="stat-card">
+          <h3>Total Menu</h3>
+         <h2 id="totalMenuItems"><%= stats.totalMenuItems || 0 %></h2>
+         <small class="daily-message" id="dailyMenu">1 Menu's today</small>
+        </div>
+      </section>
+
+      <!-- SALES OVERVIEW -->
+      <div class="charts-container">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2>SALES OVERVIEW</h2>
+            <div class="chart-info-right">
+              <span id="chartSummary">Today's Sales</span>
+            </div>
+          </div>
+          
+          <div class="chart-placeholder">
+            <div class="mock-chart">
+              <div class="chart-bars" id="chartBars">
+                
+              </div>
+              <div class="chart-labels" id="chartLabels">
+              </div>
+            </div>
+          </div>
+          
+          <div class="chart-footer">
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA GRID (Inventory Status & Today's Orders) -->
+      <div class="data-grid">
+        <!-- Inventory Status -->
+        <div class="data-card">
+          <div class="data-header">
+            <div>
+              <h3>Inventory Status</h3>
+              <p style="font-size: 12px; color: #999; margin-top: 4px;">Low Stock & Out of Stock Items</p>
+            </div>
+            <span class="status-badge">Updated 3:00 PM</span>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Stock</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody">
+              <!-- Data will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Today's Orders -->
+        <div class="data-card">
+          <div class="data-header">
+            <h3>Today's Orders</h3>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Time</th>
+                <th>Customer ID</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- Data will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Top Selling Items -->
+        <div class="data-card">
+          <div class="data-header">
+            <h3>Top Selling Items</h3>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Total Sales</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="topItemsTableBody">
+              <!-- Data will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+<!-- Load external scripts -->
+<script src="/script/dashboard-realtime.js"></script>
+<script src="/script/dashboard.js"></script>
+
+<!-- Initialize session role for admin dashboard -->
+<script>
+  // ==================== SETTINGS MODAL FUNCTIONS ====================
+  function openSettingsModal() {
+      const settingsModal = document.getElementById('settingsModal');
+      settingsModal.style.display = 'flex';
+      
+      // Load user settings from server
+      loadUserSettings();
+  }
+
+  function closeSettingsModal() {
+      document.getElementById('settingsModal').style.display = 'none';
+  }
+
+  async function loadUserSettings() {
+      try {
+          const response = await fetch('/api/settings', {
+              headers: {
+                  'Accept': 'application/json'
+              },
+              credentials: 'include'
+          });
+
+          if (response.ok) {
+              const data = await response.json();
+              
+              if (data.success && data.data) {
+                  // Display user name and role
+                  document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                  document.getElementById('settingsRole').textContent = data.data.role || 'Admin';
+              } else {
+                  document.getElementById('settingsName').textContent = 'Unable to load';
+                  document.getElementById('settingsRole').textContent = 'Admin';
+              }
+          } else {
+              document.getElementById('settingsName').textContent = 'Error loading';
+              document.getElementById('settingsRole').textContent = 'Admin';
+          }
+      } catch (error) {
+          console.error('Error loading user settings:', error);
+          document.getElementById('settingsName').textContent = 'Error';
+          document.getElementById('settingsRole').textContent = 'Admin';
+      }
+  }
+
+  // Close settings modal when clicking outside of it
+  document.addEventListener('click', function(event) {
+      const settingsModal = document.getElementById('settingsModal');
+      if (settingsModal && event.target === settingsModal) {
+          closeSettingsModal();
+      }
+  });
+
+  // Initialize session manager
+  document.addEventListener('DOMContentLoaded', function() {
+    const sessionManager = new SessionManager();
+    sessionManager.initializeRoleFromData('admin');
+  });
+</script>
+

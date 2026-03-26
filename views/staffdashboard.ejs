@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/staff.css">
+<title>Staff Dashboard</title>
+<script src="/script/session-manager.js"></script>
+<script src="/script/back-button-prevention.js"></script>
+
+</head>
+<body>
+
+<!-- Notification Container -->
+<div id="notificationContainer"></div>
+
+<nav class="header-navbar">
+  <div class="brandname">
+    <div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="/logo.png" alt="Logo" class="logo-img" title="Click to view settings">
+    </div>
+    <h2>G'ray Countryside Cafe</h2>
+    
+    <div class="Contacts"><h6>Contact Number: 0997-4600154</h6></div>
+    <div class="Location"><h6>JD Building, Crossing, Norzagaray, Bulacan, Norzagaray, Philippines, 3013</h6></div>
+    </div>
+
+     <div class="logout-container">
+    <button onclick="handleLogout()">Logout</button>
+  </div>
+</nav>
+
+<div class="staffdashboard">
+  <div class="dashboard">
+
+    <div class="sidebar">
+      <h2>Category</h2>
+      <br>
+
+      <button class="category-btn active" id="category1" data-category="all">All Products</button>
+      <br>
+      <button class="category-btn" id="category2" data-category="Rice">Rice Bowl Meals</button>
+      <br>
+      <button class="category-btn" id="category3" data-category="Hot Sizzlers">Hot Sizzlers</button>
+      <br>
+      <button class="category-btn" id="category4" data-category="Party Tray">Party Tray</button>
+      <br>
+      <button class="category-btn" id="category5" data-category="Drinks">Drinks</button>
+      <br>
+      <button class="category-btn" id="category6" data-category="Cafe">Coffee</button>
+      <br>
+      <button class="category-btn" id="category7" data-category="Milk Tea">Milk Tea</button>
+      <br>
+      <button class="category-btn" id="category8" data-category="Frappe">Frappe</button>
+      <br>
+      <button class="category-btn" id="category9" data-category="Snack & Appetizer">Snacks & Appetizer</button>
+      <br>
+      <button class="category-btn" id="category10" data-category="Budget Meals Served with Rice">Budget Meals Served with Rice</button>
+      <br>
+      <button class="category-btn" id="category11" data-category="Specialties">Specialties</button>
+
+  <!-- ACTIVE DINE IN CUSTOMERS SECTION -->
+<button class="dine-in-header-btn" onclick="toggleDineInCustomers()">
+  <span>ACTIVE DINE IN CUSTOMERS</span>
+</button>
+      
+      <div id="activeDineInCustomers" class="dine-in-customers-list" style="display: none;">
+        <!-- Dynamic content will be inserted here -->
+      </div>
+
+      <!-- STOCK MANAGEMENT BUTTON -->
+      <button class="category-btn" id="stockManagementBtn" onclick="openStockManagementModal()" style="background: #4CAF50; color: white; margin-top: 20px;">
+        <i class="fas fa-boxes"></i> Request Stock
+      </button>
+
+      <footer>&copy; 2026 For School Purposes Only. All rights reserved.</footer>
+    </div>
+
+    <div class="center"> 
+      <input type="text" class="search" placeholder="Search Menu" onkeyup="searchFood(this.value)">
+      <div id="menuContainer" class="menu-grid">
+      </div>
+    </div>
+
+    <!-- CART -->
+<div class="product">
+  <h3>Products</h3>
+  <p>Payment Type: <span id="paymentMethodDisplay">None</span></p>
+  <p>Order Type: <span id="orderTypeDisplay">None</span></p>
+  <p>Change: ₱<span id="changeAmount">0.00</span></p>
+  
+  <div class="product-list-wrapper">
+    <ul id="productlist"></ul>
+  </div>
+
+  <div class="totals">
+  <p>Subtotal: <span id="subtotal">0.00</span></p>
+  <p>VAT (12%): <span id="tax">0.12</span></p>
+  <h3>Total Amount: ₱<span id="totals">0.00</span></h3>
+  </div>
+  
+  <div class="payment-section">
+  <div class="order-type-row">
+    <button class="dineinandtakeout-btn" Onclick="setDineIn()">Dine In</button>
+    <button class="dineinandtakeout-btn" Onclick="setTakeout()">Take Out</button>
+  </div>
+
+  <div class="customer-info">
+    <div class="form-group">
+      <label for="tableNumber">Table Number</label>
+      <input type="number" id="tableNumber" min="1" max="50" placeholder="Enter table " class="form-control">
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="payment-methods">
+  <h3>Payment Method</h3>
+  <br>
+  <button id="cash-btn" class="payment-method-btn" onclick="selectPaymentMethod('cash')">Cash</button>
+  <button id="gcash-btn" class="payment-method-btn" onclick="selectPaymentMethod('gcash')">Gcash</button>
+<div class="input-payment-section">
+  <h3>Input Payment</h3>
+  <input type="number" id="inputPayment" class="input-payment" placeholder="Enter payment amount" required>
+   <div id="changeSection"></div>
+  <br><br>
+ 
+  
+  </div>
+    </div>
+<button class="pay-btn" onclick="showOrderConfirmation()" id="payment-btn">Pay</button>
+</div>
+</div>
+
+<div id="receipt" style="display: none;">
+  <div style="text-align: center; margin-bottom: 15px;">
+    <h2>G'RAY COUNTRYSIDE CAFE</h2>
+    <p>Est. 2018</p>
+    <p>Contact: (XXX) XXX-XXXX</p>
+    <div class="separator"></div>
+  </div>
+  
+  <p style="text-align: center;"><strong>ORDER RECEIPT</strong></p>
+  <p id="receiptOrderType" style="text-align: center;">[Order Type]</p>
+  <p id="receiptDateTime" style="text-align: center;">[Date/Time]</p>
+  <div class="separator"></div>
+  
+  <table id="receiptTable">
+    <thead>
+      <tr>
+        <th style="display: none;">Item</th>
+        <th style="display: none;">Qty</th>
+        <th style="display: none;">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  
+  <div class="separator"></div>
+  
+  <div class="totals-section">
+    <p>
+      <span>Subtotal:</span>
+      <span>₱<span id="receiptSubtotal">0.00</span></span>
+    </p>
+    <p>
+      <span>VAT (12%):</span>
+      <span>₱<span id="receiptTax">0.12</span></span>
+    </p>
+    <h3>
+      <span>TOTAL:</span>
+      <span>₱<span id="receiptTotal">0.00</span></span>
+    </h3>
+  </div>
+  <div class="footer">
+  <div class="thank-you">
+    THANK YOU. PLEASE COME AGAIN.
+  </div>
+  <div class="receipt-info">
+    ${dateString.split('/')[2]}${dateString.split('/')[0]}${dateString.split('/')[1]}-${timeString}-00000<br>
+    This serves as a SALES INVOICE
+  </div>
+</div>
+</div>
+
+
+<!-- STOCK MANAGEMENT MODAL -->
+<div id="stockManagementModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto;">
+    <div style="background: white; margin: 20px auto; border-radius: 10px; max-width: 1400px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <h1 style="margin: 0; color: #333; font-size: 28px; border-bottom: none; padding-bottom: 0; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-shipping-fast" style="color: #4CAF50;"></i> Request Stocks
+            </h1>
+            <button onclick="closeStockManagementModal()" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666;">×</button>
+        </div>
+        
+        <!-- INFO MESSAGE -->
+        <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #2196f3;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-info-circle" style="color: #2196f3; font-size: 20px;"></i>
+                <div>
+                    <strong style="color: #0d47a1;">Note:</strong>
+                    <span style="color: #333;">You can only request stock when quantity is 0. Products with existing stock cannot be requested until they run out.</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div style="position: relative; flex: 1; max-width: 400px;">
+                <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #777;"></i>
+                <input type="text" id="searchInput" placeholder="Search stocks by name, category, or description..." style="width: 100%; padding: 12px 20px 12px 45px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; background: #f9f9f9;">
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="filter-btn active" onclick="filterTable('all')" style="padding: 10px 20px; background: #4CAF50; color: white; border: 1px solid #4CAF50; border-radius: 6px; cursor: pointer; font-size: 14px;">All Stocks</button>
+            <button class="filter-btn" onclick="filterTable('Rice Bowl Meals')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Rice Bowl Meals</button>
+            <button class="filter-btn" onclick="filterTable('Hot Sizzlers')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Hot Sizzlers</button>
+            <button class="filter-btn" onclick="filterTable('Party Tray')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Party Tray</button>
+            <button class="filter-btn" onclick="filterTable('Drinks')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Drinks</button>
+            <button class="filter-btn" onclick="filterTable('Coffee')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Coffee</button>
+            <button class="filter-btn" onclick="filterTable('Milk Tea')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Milk Tea</button>
+            <button class="filter-btn" onclick="filterTable('Frappe')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Frappe</button>
+            <button class="filter-btn" onclick="filterTable('Snacks & Appetizer')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Snacks & Appetizer</button>
+            <button class="filter-btn" onclick="filterTable('Budget Meals')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Budget Meals</button>
+            <button class="filter-btn" onclick="filterTable('Specialties')" style="padding: 10px 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; cursor: pointer; font-size: 14px;">Specialties</button>
+        </div>
+        
+        <div style="overflow-x: auto;">
+            <table id="stocksTable" style="width: 100%; border-collapse: collapse; margin-top: 10px; background: white;">
+                <thead style="background: #f8f9fa;">
+                    <tr>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">#</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Name</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Category</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Description</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Quantity</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Price</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Status</th>
+                        <th style="padding: 18px 15px; text-align: left; font-weight: 600; color: #333; border-bottom: 2px solid #dee2e6; font-size: 15px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e9ecef; color: #666; font-size: 14px;">
+            <div style="font-weight: 600; color: #333;">Total Items: <span id="totalItems">0</span></div>
+            <div>Last Updated: <span id="lastUpdated">Just now</span></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #stockManagementModal {
+        padding: 20px;
+    }
+    
+    #stockManagementModal .filter-btn {
+        transition: all 0.3s;
+    }
+    
+    #stockManagementModal .filter-btn:hover:not(.active) {
+        background: #e9ecef !important;
+    }
+    
+    #stockManagementModal tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    #stockManagementModal .status {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    
+    #stockManagementModal .status-available {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    #stockManagementModal .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    #stockManagementModal .status-shipped {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+    
+    #stockManagementModal .status-low {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    #stockManagementModal .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    #stockManagementModal .quantity-input {
+        width: 80px;
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    #stockManagementModal .quantity-btn {
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 4px;
+        background: #f8f9fa;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+    
+    #stockManagementModal .quantity-btn:hover {
+        background: #e9ecef;
+    }
+    
+    #stockManagementModal .quantity-btn:active {
+        transform: scale(0.95);
+    }
+    
+    #stockManagementModal .quantity-btn.increase {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    #stockManagementModal .quantity-btn.increase:hover {
+        background: #c3e6cb;
+    }
+    
+    #stockManagementModal .quantity-btn.decrease {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    #stockManagementModal .quantity-btn.decrease:hover {
+        background: #f5c6cb;
+    }
+    
+    #stockManagementModal td {
+        padding: 16px 15px;
+        border-bottom: 1px solid #e9ecef;
+        color: #555;
+    }
+    
+</style>
+
+
+<script>
+    // Stock Management Data
+ let stocksData = [
+    // ==================== RICE BOWL MEALS ====================
+    { id: 1, name: "Korean Spicy Bulgogi (Pork)", category: "Rice Bowl Meals", description: "Korean spicy pork bulgogi served with rice", quantity: 0, price: "₱158.00", status: "out of stock", unit: "plate" },
+    { id: 2, name: "Korean Salt and Pepper (Pork)", category: "Rice Bowl Meals", description: "Korean style salt and pepper pork", quantity: 0, price: "₱158.00", status: "out of stock", unit: "plate" },
+    { id: 3, name: "Crispy Pork Lechon Kawali", category: "Rice Bowl Meals", description: "Crispy fried pork belly with rice", quantity: 0, price: "₱158.00", status: "out of stock", unit: "plate" },
+    { id: 4, name: "Cream Dory Fish Fillet", category: "Rice Bowl Meals", description: "Cream dory fish fillet with rice", quantity: 0, price: "₱138.00", status: "out of stock", unit: "plate" },
+    { id: 5, name: "Buttered Honey Chicken", category: "Rice Bowl Meals", description: "Chicken in butter honey sauce", quantity: 0, price: "₱128.00", status: "out of stock", unit: "plate" },
+    { id: 6, name: "Buttered Spicy Chicken", category: "Rice Bowl Meals", description: "Spicy buttered chicken", quantity: 0, price: "₱128.00", status: "out of stock", unit: "plate" },
+    { id: 7, name: "Chicken Adobo", category: "Rice Bowl Meals", description: "Classic Filipino chicken adobo", quantity: 0, price: "₱128.00", status: "out of stock", unit: "plate" },
+    { id: 8, name: "Pork Shanghai", category: "Rice Bowl Meals", description: "Filipino spring rolls with rice", quantity: 0, price: "₱128.00", status: "out of stock", unit: "plate" },
+    
+    // ==================== HOT SIZZLERS ====================
+    { id: 9, name: "Sizzling Pork Sisig", category: "Hot Sizzlers", description: "Sizzling pork sisig on hot plate", quantity: 0, price: "₱168.00", status: "out of stock", unit: "sizzling plate" },
+    { id: 10, name: "Sizzling Liempo", category: "Hot Sizzlers", description: "Sizzling pork belly", quantity: 0, price: "₱168.00", status: "out of stock", unit: "sizzling plate" },
+    { id: 11, name: "Sizzling Porkchop", category: "Hot Sizzlers", description: "Sizzling pork chop", quantity: 0, price: "₱148.00", status: "out of stock", unit: "sizzling plate" },
+    { id: 12, name: "Sizzling Fried Chicken", category: "Hot Sizzlers", description: "Sizzling fried chicken", quantity: 0, price: "₱148.00", status: "out of stock", unit: "sizzling plate" },
+    
+    // ==================== PARTY TRAY ====================
+    { id: 13, name: "Pansit Bihon", category: "Party Tray", description: "Pancit bihon party tray", quantity: 0, price: "₱300.00", status: "out of stock", unit: "tray" },
+    { id: 14, name: "Pancit Canton", category: "Party Tray", description: "Pancit canton party tray", quantity: 0, price: "₱300.00", status: "out of stock", unit: "tray" },
+    { id: 15, name: "Spaghetti", category: "Party Tray", description: "Spaghetti party tray", quantity: 0, price: "₱400.00", status: "out of stock", unit: "tray" },
+    { id: 16, name: "Creamy Carbonara", category: "Party Tray", description: "Creamy carbonara party tray", quantity: 0, price: "₱500.00", status: "out of stock", unit: "tray" },
+    { id: 17, name: "Creamy Pesto", category: "Party Tray", description: "Creamy pesto party tray", quantity: 0, price: "₱500.00", status: "out of stock", unit: "tray" },
+    { id: 18, name: "Tuyo Pesto", category: "Party Tray", description: "Tuyo pesto party tray", quantity: 0, price: "₱600.00", status: "out of stock", unit: "tray" },
+    { id: 19, name: "Kare-Kare", category: "Party Tray", description: "Kare-kare party tray", quantity: 0, price: "₱600.00", status: "out of stock", unit: "tray" },
+    { id: 20, name: "Chicken Buffalo Wings", category: "Party Tray", description: "Chicken buffalo wings party tray", quantity: 0, price: "₱400.00", status: "out of stock", unit: "tray" },
+    { id: 21, name: "Lumpia Shanghai", category: "Party Tray", description: "Lumpia shanghai party tray", quantity: 0, price: "₱300.00", status: "out of stock", unit: "tray" },
+    
+    // ==================== DRINKS ====================
+    { id: 22, name: "Cucumber Lemonade (Glass)", category: "Drinks", description: "Refreshing cucumber lemonade", quantity: 0, price: "₱38.00", status: "out of stock", unit: "glass" },
+    { id: 23, name: "Cucumber Lemonade (Pitcher)", category: "Drinks", description: "Cucumber lemonade pitcher", quantity: 0, price: "₱114.00", status: "out of stock", unit: "pitcher" },
+    { id: 24, name: "Blue Lemonade (Glass)", category: "Drinks", description: "Blue lemonade drink", quantity: 0, price: "₱38.00", status: "out of stock", unit: "glass" },
+    { id: 25, name: "Blue Lemonade (Pitcher)", category: "Drinks", description: "Blue lemonade pitcher", quantity: 0, price: "₱114.00", status: "out of stock", unit: "pitcher" },
+    { id: 26, name: "Red Tea (Glass)", category: "Drinks", description: "Red tea drink", quantity: 0, price: "₱38.00", status: "out of stock", unit: "glass" },
+    { id: 27, name: "Red Tea (Pitcher)", category: "Drinks", description: "Red tea pitcher", quantity: 0, price: "₱114.00", status: "out of stock", unit: "pitcher" },
+    { id: 28, name: "Calamansi Juice (Glass)", category: "Drinks", description: "Fresh calamansi juice", quantity: 0, price: "₱38.00", status: "out of stock", unit: "glass" },
+    { id: 29, name: "Calamansi Juice (Pitcher)", category: "Drinks", description: "Calamansi juice pitcher", quantity: 0, price: "₱114.00", status: "out of stock", unit: "pitcher" },
+    { id: 30, name: "Soda (Mismo) Coke", category: "Drinks", description: "Coke mismo soda", quantity: 0, price: "₱28.00", status: "out of stock", unit: "bottle" },
+    { id: 31, name: "Soda (Mismo) Sprite", category: "Drinks", description: "Sprite mismo soda", quantity: 0, price: "₱28.00", status: "out of stock", unit: "bottle" },
+    { id: 32, name: "Soda (Mismo) Royal", category: "Drinks", description: "Royal mismo soda", quantity: 0, price: "₱28.00", status: "out of stock", unit: "bottle" },
+    { id: 33, name: "Soda 1.5L Coke", category: "Drinks", description: "1.5 liter Coke", quantity: 0, price: "₱118.00", status: "out of stock", unit: "bottle" },
+    { id: 34, name: "Soda 1.5L Coke Zero", category: "Drinks", description: "1.5 liter Coke Zero", quantity: 0, price: "₱118.00", status: "out of stock", unit: "bottle" },
+    { id: 35, name: "Soda 1.5L Sprite", category: "Drinks", description: "1.5 liter Sprite", quantity: 0, price: "₱118.00", status: "out of stock", unit: "bottle" },
+    { id: 36, name: "Soda 1.5L Royal", category: "Drinks", description: "1.5 liter Royal", quantity: 0, price: "₱118.00", status: "out of stock", unit: "bottle" },
+    
+    // ==================== COFFEE ====================
+    { id: 37, name: "Espresso Hot", category: "Coffee", description: "Hot espresso shot", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    { id: 38, name: "Café Americano Hot", category: "Coffee", description: "Hot Americano coffee", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 39, name: "Cappuccino Hot", category: "Coffee", description: "Hot cappuccino", quantity: 0, price: "₱98.00", status: "out of stock", unit: "cup" },
+    { id: 40, name: "Café Latte Hot", category: "Coffee", description: "Hot cafe latte", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 41, name: "Mocha Latte Hot", category: "Coffee", description: "Hot mocha latte", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 42, name: "Vanilla Latte Hot", category: "Coffee", description: "Hot vanilla latte", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 43, name: "Caramel Macchiato Hot", category: "Coffee", description: "Hot caramel macchiato", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 44, name: "Green Tea Latte Hot", category: "Coffee", description: "Hot green tea latte", quantity: 0, price: "₱118.00", status: "out of stock", unit: "cup" },
+    { id: 45, name: "White Chocolate Hot", category: "Coffee", description: "Hot white chocolate", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 46, name: "Green Tea Matcha Hot", category: "Coffee", description: "Hot matcha green tea", quantity: 0, price: "₱118.00", status: "out of stock", unit: "cup" },
+    { id: 47, name: "Hot Ceylon Tea Black", category: "Coffee", description: "Hot black ceylon tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 48, name: "Hot Ceylon Tea Lemon", category: "Coffee", description: "Hot lemon ceylon tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 49, name: "Hot Ceylon Tea Peppermint", category: "Coffee", description: "Hot peppermint ceylon tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 50, name: "Iced Café Latte", category: "Coffee", description: "Iced cafe latte", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 51, name: "Iced Mocha Latte", category: "Coffee", description: "Iced mocha latte", quantity: 0, price: "₱118.00", status: "out of stock", unit: "cup" },
+    { id: 52, name: "Iced Vanilla Latte", category: "Coffee", description: "Iced vanilla latte", quantity: 0, price: "₱118.00", status: "out of stock", unit: "cup" },
+    { id: 53, name: "Iced Caramel Macchiato", category: "Coffee", description: "Iced caramel macchiato", quantity: 0, price: "₱128.00", status: "out of stock", unit: "cup" },
+    { id: 54, name: "Iced White Chocolate Latte", category: "Coffee", description: "Iced white chocolate latte", quantity: 0, price: "₱98.00", status: "out of stock", unit: "cup" },
+    { id: 55, name: "Iced Dark Chocolate", category: "Coffee", description: "Iced dark chocolate", quantity: 0, price: "₱98.00", status: "out of stock", unit: "cup" },
+    
+    // ==================== MILK TEA ====================
+    { id: 56, name: "Milk Tea Regular", category: "Milk Tea", description: "Regular milk tea", quantity: 0, price: "₱68.00", status: "out of stock", unit: "cup" },
+    { id: 57, name: "Caramel Milk Tea", category: "Milk Tea", description: "Caramel milk tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 58, name: "Cookies & Cream Milk Tea", category: "Milk Tea", description: "Cookies and cream milk tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 59, name: "Dark Choco Milk Tea", category: "Milk Tea", description: "Dark chocolate milk tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 60, name: "Okinawa Milk Tea", category: "Milk Tea", description: "Okinawa milk tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 61, name: "Wintermelon Milk Tea", category: "Milk Tea", description: "Wintermelon milk tea", quantity: 0, price: "₱78.00", status: "out of stock", unit: "cup" },
+    { id: 62, name: "Matcha Green Tea Milk Tea", category: "Milk Tea", description: "Matcha green tea milk tea", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    
+    // ==================== FRAPPE ====================
+    { id: 63, name: "Matcha Green Tea Frappe", category: "Frappe", description: "Matcha green tea frappe", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 64, name: "Salted Caramel Frappe", category: "Frappe", description: "Salted caramel frappe", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 65, name: "Strawberry Cheesecake Frappe", category: "Frappe", description: "Strawberry cheesecake frappe", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 66, name: "Mango Cheesecake Frappe", category: "Frappe", description: "Mango cheesecake frappe", quantity: 0, price: "₱108.00", status: "out of stock", unit: "cup" },
+    { id: 67, name: "Strawberry Cream Frappe", category: "Frappe", description: "Strawberry cream frappe", quantity: 0, price: "₱98.00", status: "out of stock", unit: "cup" },
+    { id: 68, name: "Cookies & Cream Frappe", category: "Frappe", description: "Cookies and cream frappe", quantity: 0, price: "₱98.00", status: "out of stock", unit: "cup" },
+    { id: 69, name: "Rocky Road Frappe", category: "Frappe", description: "Rocky road frappe", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    { id: 70, name: "Choco Fudge Frappe", category: "Frappe", description: "Choco fudge frappe", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    { id: 71, name: "Choco Mousse Frappe", category: "Frappe", description: "Choco mousse frappe", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    { id: 72, name: "Coffee Crumble Frappe", category: "Frappe", description: "Coffee crumble frappe", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    { id: 73, name: "Vanilla Cream Frappe", category: "Frappe", description: "Vanilla cream frappe", quantity: 0, price: "₱88.00", status: "out of stock", unit: "cup" },
+    
+    // ==================== SNACKS & APPETIZER ====================
+    { id: 74, name: "Cheesy Nachos", category: "Snacks & Appetizer", description: "Cheesy nachos snack", quantity: 0, price: "₱150.00", status: "out of stock", unit: "serving" },
+    { id: 75, name: "Nachos Supreme", category: "Snacks & Appetizer", description: "Supreme nachos with toppings", quantity: 0, price: "₱180.00", status: "out of stock", unit: "serving" },
+    { id: 76, name: "French Fries", category: "Snacks & Appetizer", description: "Classic French fries", quantity: 0, price: "₱90.00", status: "out of stock", unit: "serving" },
+    { id: 77, name: "Clubhouse Sandwich", category: "Snacks & Appetizer", description: "Clubhouse sandwich", quantity: 0, price: "₱120.00", status: "out of stock", unit: "sandwich" },
+    { id: 78, name: "Fish and Fries", category: "Snacks & Appetizer", description: "Fish fillet with fries", quantity: 0, price: "₱160.00", status: "out of stock", unit: "serving" },
+    { id: 79, name: "Cheesy Dynamite Lumpia", category: "Snacks & Appetizer", description: "Cheesy dynamite spring rolls", quantity: 0, price: "₱25.00", status: "out of stock", unit: "piece" },
+    { id: 80, name: "Lumpiang Shanghai", category: "Snacks & Appetizer", description: "Pork spring rolls", quantity: 0, price: "₱20.00", status: "out of stock", unit: "piece" },
+    
+    // ==================== BUDGET MEALS SERVED WITH RICE ====================
+    { id: 81, name: "Fried Chicken", category: "Budget Meals Served with Rice", description: "Fried chicken meal", quantity: 0, price: "₱95.00", status: "out of stock", unit: "meal" },
+    { id: 82, name: "Budget Fried Chicken", category: "Budget Meals Served with Rice", description: "Budget fried chicken meal", quantity: 0, price: "₱85.00", status: "out of stock", unit: "meal" },
+    { id: 83, name: "Tinapa Rice", category: "Budget Meals Served with Rice", description: "Smoked fish rice meal", quantity: 0, price: "₱85.00", status: "out of stock", unit: "meal" },
+    { id: 84, name: "Tuyo Pesto", category: "Budget Meals Served with Rice", description: "Dried fish pesto meal", quantity: 0, price: "₱80.00", status: "out of stock", unit: "meal" },
+    { id: 85, name: "Fried Rice", category: "Budget Meals Served with Rice", description: "Fried rice serving", quantity: 0, price: "₱50.00", status: "out of stock", unit: "serving" },
+    { id: 86, name: "Plain Rice", category: "Budget Meals Served with Rice", description: "Plain rice bowl", quantity: 0, price: "₱25.00", status: "out of stock", unit: "bowl" },
+    
+    // ==================== SPECIALTIES ====================
+    { id: 87, name: "Sinigang (Pork)", category: "Specialties", description: "Pork sinigang soup", quantity: 0, price: "₱280.00", status: "out of stock", unit: "serving" },
+    { id: 88, name: "Sinigang (Shrimp)", category: "Specialties", description: "Shrimp sinigang soup", quantity: 0, price: "₱320.00", status: "out of stock", unit: "serving" },
+    { id: 89, name: "Paknet (Pakbet w/ Bagnet)", category: "Specialties", description: "Vegetable stew with crispy pork", quantity: 0, price: "₱260.00", status: "out of stock", unit: "serving" },
+    { id: 90, name: "Buttered Shrimp", category: "Specialties", description: "Buttered shrimp specialty", quantity: 0, price: "₱300.00", status: "out of stock", unit: "serving" },
+    { id: 91, name: "Special Bulalo (good for 2-3 Persons)", category: "Specialties", description: "Special beef marrow soup", quantity: 0, price: "₱450.00", status: "out of stock", unit: "pot" },
+    { id: 92, name: "Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)", category: "Specialties", description: "Special bulalo buy 1 take 1", quantity: 0, price: "₱850.00", status: "out of stock", unit: "pot" },
+    
+    // ==================== PACKAGING SUPPLIES ====================
+    { id: 93, name: "Paper Cups (12oz)", category: "Packaging Supplies", description: "12oz paper cups pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 94, name: "Paper Cups (16oz)", category: "Packaging Supplies", description: "16oz paper cups pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 95, name: "Straws (Regular)", category: "Packaging Supplies", description: "Regular straws pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 96, name: "Straws (Boba)", category: "Packaging Supplies", description: "Boba straws pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 97, name: "Food Containers (Small)", category: "Packaging Supplies", description: "Small food containers pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 98, name: "Food Containers (Medium)", category: "Packaging Supplies", description: "Medium food containers pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 99, name: "Food Containers (Large)", category: "Packaging Supplies", description: "Large food containers pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" },
+    { id: 100, name: "Plastic Utensils Set", category: "Packaging Supplies", description: "Plastic utensils set pack", quantity: 0, price: "₱0.00", status: "out of stock", unit: "set" },
+    { id: 101, name: "Napkins (Pack of 50)", category: "Packaging Supplies", description: "Napkins pack of 50", quantity: 0, price: "₱0.00", status: "out of stock", unit: "pack" }
+];
+
+    const changes = new Map();
+
+    // Store current filter
+    let currentStockFilter = 'all';
+
+    function openStockManagementModal() {
+        document.getElementById('stockManagementModal').style.display = 'block';
+        currentStockFilter = 'all';
+        renderTable();
+    }
+
+    function closeStockManagementModal() {
+        document.getElementById('stockManagementModal').style.display = 'none';
+    }
+
+    // ==================== SETTINGS MODAL FUNCTIONS ====================
+    function openSettingsModal() {
+        const settingsModal = document.getElementById('settingsModal');
+        settingsModal.style.display = 'flex';
+        settingsModal.style.alignItems = 'center';
+        settingsModal.style.justifyContent = 'center';
+        
+        // Load user settings from server
+        loadUserSettings();
+    }
+
+    function closeSettingsModal() {
+        document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    async function loadUserSettings() {
+        try {
+            const response = await fetch('/api/settings', {
+                headers: {
+                    'Accept': 'application/json'
+                },
+                credentials: 'include'
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    // Display user name and role
+                    document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                    document.getElementById('settingsRole').textContent = data.data.role || 'Staff';
+                } else {
+                    document.getElementById('settingsName').textContent = 'Unable to load';
+                    document.getElementById('settingsRole').textContent = 'Staff';
+                }
+            } else {
+                document.getElementById('settingsName').textContent = 'Error loading';
+                document.getElementById('settingsRole').textContent = 'Staff';
+            }
+        } catch (error) {
+            console.error('Error loading user settings:', error);
+            document.getElementById('settingsName').textContent = 'Error';
+            document.getElementById('settingsRole').textContent = 'Staff';
+        }
+    }
+
+    // Close settings modal when clicking outside of it
+    document.addEventListener('click', function(event) {
+        const settingsModal = document.getElementById('settingsModal');
+        if (settingsModal && event.target === settingsModal) {
+            closeSettingsModal();
+        }
+    });
+
+    function renderTable() {
+        const tableBody = document.getElementById('tableBody');
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        // Category mapping for display names to actual category names in data
+        const categoryMap = {
+            'all': 'all',
+            'Rice Bowl Meals': 'Rice Bowl Meals',
+            'Hot Sizzlers': 'Hot Sizzlers',
+            'Party Tray': 'Party Tray',
+            'Drinks': 'Drinks',
+            'Coffee': 'Coffee',
+            'Milk Tea': 'Milk Tea',
+            'Frappe': 'Frappe',
+            'Snacks & Appetizer': 'Snacks & Appetizer',
+            'Budget Meals Served with Rice': 'Budget Meals Served with Rice',
+            'Budget Meals': 'Budget Meals Served with Rice',
+            'Specialties': 'Specialties'
+        };
+        
+        let filteredData = stocksData;
+        
+        if (searchTerm) {
+            filteredData = filteredData.filter(item => 
+                item.name.toLowerCase().includes(searchTerm) || 
+                item.category.toLowerCase().includes(searchTerm) ||
+                item.description.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        // Apply category filter
+        if (currentStockFilter !== 'all') {
+            const mappedCategory = categoryMap[currentStockFilter] || currentStockFilter;
+            filteredData = filteredData.filter(item => item.category === mappedCategory);
+        }
+        
+        tableBody.innerHTML = '';
+        filteredData.forEach(stock => {
+            const row = document.createElement('tr');
+            
+            let statusClass = 'status-available';
+            let statusText = 'Available';
+            
+            if (stock.quantity <= 0) {
+                statusClass = 'status-low';
+                statusText = 'Out of Stock';
+            } else if (stock.quantity <= 10) {
+                statusClass = 'status-pending';
+                statusText = 'Low Stock';
+            } else if (stock.quantity <= 20) {
+                statusClass = 'status-shipped';
+                statusText = 'Medium Stock';
+            }
+            
+            row.innerHTML = `
+                <td>${stock.id}</td>
+                <td><strong>${stock.name}</strong></td>
+                <td>${stock.category}</td>
+                <td>${stock.description}</td>
+                <td>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn decrease" onclick="decreaseQuantity(${stock.id})">-</button>
+                        <input type="number" 
+                               class="quantity-input" 
+                               id="quantity-${stock.id}" 
+                               value="${stock.quantity}" 
+                               min="0" 
+                               max="1000"
+                               onchange="updateQuantity(${stock.id}, this.value)">
+                        <button class="quantity-btn increase" onclick="increaseQuantity(${stock.id})">+</button>
+                        <span>${stock.unit}</span>
+                    </div>
+                </td>
+                <td>${stock.price}</td>
+                <td><span class="status ${statusClass}">${statusText}</span></td>
+                <td>
+                    <button class="request-stock-btn" onclick="requestStock('${stock.name}')" style="padding: 10px 20px; background: #2196F3; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-paper-plane"></i> Request Stocks
+                    </button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+        
+        document.getElementById('totalItems').textContent = filteredData.length;
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
+    }
+
+    function updateQuantity(id, value) {
+        const quantity = parseInt(value) || 0;
+        if (quantity < 0 || quantity > 1000) {
+            alert('Quantity must be between 0 and 1000');
+            renderTable();
+            return;
+        }
+        
+        const stockIndex = stocksData.findIndex(item => item.id === id);
+        if (stockIndex !== -1) {
+            stocksData[stockIndex].quantity = quantity;
+            changes.set(id, quantity);
+            updateStatus(id);
+        }
+    }
+
+    function increaseQuantity(id) {
+        const stockIndex = stocksData.findIndex(item => item.id === id);
+        if (stockIndex !== -1 && stocksData[stockIndex].quantity < 1000) {
+            stocksData[stockIndex].quantity++;
+            changes.set(id, stocksData[stockIndex].quantity);
+            document.getElementById(`quantity-${id}`).value = stocksData[stockIndex].quantity;
+            updateStatus(id);
+        }
+    }
+
+    function decreaseQuantity(id) {
+        const stockIndex = stocksData.findIndex(item => item.id === id);
+        if (stockIndex !== -1 && stocksData[stockIndex].quantity > 0) {
+            stocksData[stockIndex].quantity--;
+            changes.set(id, stocksData[stockIndex].quantity);
+            document.getElementById(`quantity-${id}`).value = stocksData[stockIndex].quantity;
+            updateStatus(id);
+        }
+    }
+
+    function updateStatus(id) {
+        const stock = stocksData.find(item => item.id === id);
+        if (!stock) return;
+        
+        const row = document.querySelector(`#stockManagementModal tr:has(#quantity-${id})`);
+        if (!row) return;
+        
+        let statusClass = 'status-available';
+        let statusText = 'Available';
+        
+        if (stock.quantity <= 0) {
+            statusClass = 'status-low';
+            statusText = 'Out of Stock';
+        } else if (stock.quantity <= 10) {
+            statusClass = 'status-pending';
+            statusText = 'Low Stock';
+        } else if (stock.quantity <= 20) {
+            statusClass = 'status-shipped';
+            statusText = 'Medium Stock';
+        }
+        
+        const statusElement = row.querySelector('.status');
+        if (statusElement) {
+            statusElement.className = `status ${statusClass}`;
+            statusElement.textContent = statusText;
+        }
+    }
+
+    function filterTable(filter) {
+        console.log('🔍 Filtering stock requests by category:', filter);
+        
+        // Update currentStockFilter with the selected filter
+        currentStockFilter = filter;
+        
+        // Update button styles
+        document.querySelectorAll('#stockManagementModal .filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.background = '#f8f9fa';
+            btn.style.color = '#333';
+        });
+        
+        // Mark the clicked button as active
+        event.target.classList.add('active');
+        event.target.style.background = '#4CAF50';
+        event.target.style.color = 'white';
+        
+        console.log(`✅ Filter changed to: ${filter}`);
+        renderTable();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderTable);
+
+    function saveAllChanges() {
+        if (changes.size === 0) {
+            showToast('❌ No changes to save', 'info', 2000);
+            return;
+        }
+        
+        const changesArray = Array.from(changes.entries()).map(([id, quantity]) => {
+            const stock = stocksData.find(item => item.id === id);
+            return `${stock.name}: ${quantity} ${stock.unit}`;
+        });
+        
+        console.log(`✅ Saved ${changes.size} stock changes:`, changesArray);
+        showToast(`✅ Saved ${changes.size} changes!`, 'success', 3000);
+        changes.clear();
+    }
+
+    function sendStockBatch() {
+        if (changes.size === 0) {
+            showToast('❌ No changes to send', 'warning', 2000);
+            return;
+        }
+        
+        console.log('📦 Sending stock batch with', changes.size, 'changes');
+        showToast(`📦 Batch sent with ${changes.size} items!`, 'success', 3000);
+        changes.clear();
+    }
+
+    // ✅ Fixed requestStock function - now properly calls the staff.js function
+    function requestStock(id) {
+        const stock = stocksData.find(item => item.id === id);
+        if (!stock) {
+            showToast('❌ Stock item not found', 'error', 2000);
+            return;
+        }
+        
+        console.log(`📦 Requesting stock for ID: ${id}, Name: ${stock.name}`);
+        
+        // Call the requestStock function from staff.js (imported below)
+        // This will show the modal and allow quantity input
+        if (typeof window.requestStock === 'function') {
+            window.requestStock(id);
+        } else {
+            showToast('❌ Stock request function not available', 'error', 3000);
+        }
+    }
+
+    // ==================== 🔐 STORE USER ROLE IN SESSION ====================
+    window.addEventListener('load', function() {
+        // Mark user as staff in sessionStorage so new windows know the role
+        sessionManager.setRole('staff');
+        console.log('✅ Staff interface loaded - sessionStorage updated');
+    });
+   
+</script>
+
+
+<script src="/script/staff.js"></script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Report Viewer - Gray Countryside Café</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .pdf-viewer-container {
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* BLACK NAVBAR HEADER */
+        .pdf-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            min-height: 55px;
+        }
+
+        .pdf-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdf-logo {
+            font-size: 26px;
+        }
+
+        .pdf-header-title h1 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .pdf-header-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pdf-header-actions button {
+            background-color: #ffffff;
+            color: #2c3e50;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pdf-header-actions button:hover {
+            background-color: #ecf0f1;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .pdf-header-actions .btn-close {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .pdf-header-actions .btn-close:hover {
+            background-color: #c0392b;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        }
+
+        /* WHITE CONTENT AREA */
+        .pdf-content-area {
+            flex: 1;
+            background-color: #f8f9fa;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .pdf-document {
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-top: 10px;
+        }
+
+        /* Scrollbar styling */
+        .pdf-content-area::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .pdf-content-area::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+
+        .pdf-content-area::-webkit-scrollbar-thumb {
+            background: #bdc3c7;
+            border-radius: 5px;
+        }
+
+        .pdf-content-area::-webkit-scrollbar-thumb:hover {
+            background: #95a5a6;
+        }
+
+        /* Print styles */
+        @media print {
+            .pdf-header {
+                display: none;
+            }
+            .pdf-content-area {
+                padding: 0;
+                background: white;
+                overflow: visible;
+                height: auto;
+            }
+            .pdf-document {
+                max-width: 100%;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                border-radius: 0;
+            }
+            @page {
+                margin: 20mm;
+            }
+        }
+
+        /* Document styling */
+        .pdf-header-section {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .pdf-header-section h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .pdf-header-section .subtitle {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin: 4px 0;
+        }
+
+        .pdf-cafe-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34495e;
+            margin: 8px 0;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-top: 28px;
+            margin-bottom: 16px;
+            padding-left: 0;
+            font-weight: 600;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .summary-card {
+            border: 1px solid #e0e6ed;
+            padding: 18px;
+            border-radius: 6px;
+            background: #f8fafb;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            border-color: #bdc3c7;
+            background: #fcfcfc;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 11px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .summary-card .value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 22px 0;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        th:nth-child(2),
+        th:nth-child(3) {
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ecf0f1;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        td:nth-child(2),
+        td:nth-child(3) {
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafb;
+        }
+
+        tr:hover {
+            background-color: #f5f7fb;
+        }
+
+        .total-row {
+            background: #ecf0f1 !important;
+            font-weight: 600;
+            border-top: 2px solid #2c3e50;
+        }
+
+        .total-row:hover {
+            background: #ecf0f1 !important;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 28px;
+            margin-bottom: 16px;
+        }
+
+        .section-title .emoji {
+            font-size: 18px;
+        }
+
+        .pdf-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+
+        .pdf-footer p {
+            margin: 4px 0;
+            font-weight: 500;
+        }
+
+        /* Loading state */
+        .pdf-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #333;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .pdf-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                min-height: auto;
+                padding: 10px 16px;
+            }
+            .pdf-header-right {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .pdf-content-area {
+                padding: 12px;
+            }
+            .pdf-document {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-viewer-container">
+        <!-- BLACK NAVBAR HEADER -->
+        <div class="pdf-header">
+            <div class="pdf-header-left">
+                <div class="pdf-header-title">
+                    <h1>Sales Report</h1>
+                </div>
+            </div>
+            <div class="pdf-header-right">
+                <button onclick="printPDF()" title="Print report">🖨️ Print</button>
+                <button class="btn-close" onclick="closePDFViewer()" title="Close viewer">✕</button>
+            </div>
+        </div>
+
+        <!-- WHITE BORDERED CONTENT AREA -->
+        <div class="pdf-content-area">
+            <div class="pdf-document" id="pdfContent">
+                <div class="pdf-loading">
+                    <div class="spinner"></div>
+                    <span>Loading report...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize PDF viewer
+        function initPDFViewer() {
+            console.log('📄 Initializing PDF Viewer...');
+            
+            // Get report data from parent window
+            const reportData = window.opener?.lastExportedReport;
+            
+            if (reportData && reportData.html) {
+                try {
+                    // Extract just the content from the HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = reportData.html;
+                    
+                    // Try to find container class first
+                    let container = tempDiv.querySelector('.container');
+                    
+                    // If no container found, try to extract body content
+                    if (!container) {
+                        const bodyContent = tempDiv.querySelector('body');
+                        if (bodyContent) {
+                            container = bodyContent.querySelector('.container') || bodyContent;
+                        }
+                    }
+                    
+                    // If still no container, create one and add all body content
+                    if (!container) {
+                        container = document.createElement('div');
+                        container.innerHTML = reportData.html;
+                    }
+                    
+                    // Insert the content
+                    document.getElementById('pdfContent').innerHTML = container.innerHTML;
+                    console.log('✅ PDF content loaded successfully');
+                } catch (error) {
+                    console.error('Error parsing report HTML:', error);
+                    showError('Failed to parse report content');
+                }
+            } else {
+                showError('No report data available. Please generate a report first.');
+            }
+        }
+
+        // Generate complete PDF report HTML
+        function generatePDFReport(reportData) {
+            if (!reportData) return '';
+            
+            const {
+                title = '📊 Sales Report',
+                date = new Date().toLocaleDateString(),
+                cafeName = "G'RAY COUNTRYSIDE CAFÉ",
+                generatedTime = new Date().toLocaleTimeString(),
+                period = 'Today',
+                performanceSummary = {},
+                revenueBreakdown = [],
+                financialSummary = {},
+                reportId = '',
+                footerNote = '© 2026 For School Purposes Only'
+            } = reportData;
+
+            let html = `
+                <div class="pdf-header-section">
+                    <h1>${title} - ${date}</h1>
+                    <p class="pdf-cafe-name">${cafeName}</p>
+                    <p class="subtitle">Generated on ${date}, ${generatedTime}</p>
+                    <p class="subtitle">Report Period: ${period}</p>
+                </div>
+
+                <h2 class="section-title">
+                    <span class="emoji">💰</span> Performance Summary
+                </h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total Revenue</h3>
+                        <div class="value">${performanceSummary.totalRevenue || '₱0.00'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Primary Income</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Orders</h3>
+                        <div class="value">${performanceSummary.totalOrders || '0'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Transactions Today</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Customers</h3>
+                        <div class="value">${performanceSummary.totalCustomers || '0'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Unique Visitors</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Average Order Value</h3>
+                        <div class="value">${performanceSummary.avgOrderValue || '₱0.00'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Per Transaction</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Gross Profit</h3>
+                        <div class="value">${financialSummary.grossProfit || '₱0.00'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Total Profit</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Profit Margin</h3>
+                        <div class="value">${financialSummary.profitMargin || '0%'}</div>
+                        <p style="font-size: 12px; color: #7f8c8d; margin: 0;">Profit %</p>
+                    </div>
+                </div>
+            `;
+
+            // Revenue Breakdown Table
+            if (revenueBreakdown && revenueBreakdown.length > 0) {
+                html += `
+                    <h2 class="section-title">
+                        <span class="emoji">📊</span> Revenue Breakdown
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Revenue</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                revenueBreakdown.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.category || '—'}</td>
+                            <td>₱${parseFloat(item.revenue || 0).toFixed(2)}</td>
+                            <td>${parseFloat(item.percentage || 0).toFixed(1)}%</td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Financial Summary Table
+            if (financialSummary && Object.keys(financialSummary).length > 0) {
+                html += `
+                    <h2 class="section-title">
+                        <span class="emoji">📈</span> Financial Summary
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Revenue</td>
+                                <td>${financialSummary.totalRevenue || '₱0.00'}</td>
+                            </tr>
+                            <tr>
+                                <td>Cost of Goods (${financialSummary.costPercentage || 35}%)</td>
+                                <td>${financialSummary.costOfGoods || '₱0.00'}</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td>Gross Profit (${financialSummary.profitPercentage || 65}%)</td>
+                                <td>${financialSummary.grossProfit || '₱0.00'}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Footer
+            html += `
+                <div class="pdf-footer">
+                    <p>Generated by Gray Countryside Café POS System</p>
+                    ${reportId ? `<p>Report ID: ${reportId}</p>` : ''}
+                    <p>${footerNote}</p>
+                </div>
+            `;
+
+            return html;
+        }
+
+        function printPDF() {
+            console.log('🖨️ Printing PDF...');
+            window.print();
+        }
+
+        function closePDFViewer() {
+            window.close();
+        }
+
+        function showError(message) {
+            document.getElementById('pdfContent').innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #f44336;">
+                    <h2>⚠️ Error</h2>
+                    <p>${message}</p>
+                    <button onclick="window.close()" style="
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        background-color: #f44336;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    ">Close</button>
+                </div>
+            `;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initPDFViewer);
+
+        // Helper function to generate Revenue Breakdown table HTML
+        function generateRevenueBreakdownTable(data) {
+            if (!data || !Array.isArray(data)) return '';
+            
+            let html = `
+                <h2 class="section-title">
+                    <span class="emoji">📊</span> Revenue Breakdown
+                </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Revenue</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            let totalRevenue = 0;
+            data.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.category || '—'}</td>
+                        <td>₱${parseFloat(item.revenue || 0).toFixed(2)}</td>
+                        <td>${parseFloat(item.percentage || 0).toFixed(1)}%</td>
+                    </tr>
+                `;
+                totalRevenue += parseFloat(item.revenue || 0);
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+            `;
+            
+            return html;
+        }
+
+        // Helper function to generate Financial Summary table HTML
+        function generateFinancialSummaryTable(data) {
+            if (!data) return '';
+            
+            return `
+                <h2 class="section-title">
+                    <span class="emoji">📈</span> Financial Summary
+                </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Revenue</td>
+                            <td>₱${parseFloat(data.totalRevenue || 0).toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Cost of Goods (${data.costPercentage || 35}%)</td>
+                            <td>₱${parseFloat(data.costOfGoods || 0).toFixed(2)}</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>Gross Profit (${data.profitPercentage || 65}%)</td>
+                            <td>₱${parseFloat(data.grossProfit || 0).toFixed(2)}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+    </script>
+</body>
+</html>

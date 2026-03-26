@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/sales.css">
+<title>Sales & Reports</title>
+<script src="/script/session-manager.js"></script>
+<script src="/script/back-button-prevention.js"></script>
+
+<!-- no inline styles – pure HTML structure, zero sample data in donuts -->
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="brandname">
+      <div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" title="Click to view settings">
+        <div class="logo-img">☕</div>
+      </div>
+      <h2>Gray Countryside Cafe</h2>
+    </div>
+    <div class="logout-container">
+      <button onclick="handleLogout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <!-- Left Column: Dashboard Sidebar -->
+    <div class="sidebar">
+      <div class="search-section">
+        <input type="text" class="search" placeholder="Search..">
+      </div>
+
+      <ul class="dashboard-menu">
+        <li><a href="/admindashboard/dashboard" class=""> Dashboard</a></li>
+        <li><a href="/admindashboard/Inventory">Inventory</a></li>
+        <li><a href="/admindashboard/salesandreports" class="active">Sales Reports</a></li>
+        <li><a href="/admindashboard/orderhistory">Order History</a></li>
+        <li><a href="/admindashboard/addstaff">Add Staff</a></li>
+        <li><a href="/admindashboard/menumanagement">Menu Management</a></li>
+        <li><a href="/admindashboard/infosettings">Settings</a></li>
+      </ul>
+      <footer class="sidebar-footer">
+        &copy; 2026 For School Purposes Only. All rights reserved.
+      </footer>
+    </div>
+
+    <!-- Main Content Area - SALES REPORT -->
+    <div class="main-content">
+      <!-- Sales Report Header -->
+      <div class="sales-report-header">
+        <div class="header-top">
+          <div class="header-left">
+            <h1>Sales Report</h1>
+            <div class="report-period" id="reportPeriod">No period selected</div>
+            <!-- Time Period Tabs -->
+            <div class="period-tabs">
+              <button class="period-tab active" onclick="switchPeriod('daily')" id="dailyTab">📅 Daily</button>
+              <button class="period-tab" onclick="switchPeriod('weekly')" id="weeklyTab">📊 Weekly</button>
+              <button class="period-tab" onclick="switchPeriod('monthly')" id="monthlyTab">📈 Monthly</button>
+            </div>
+          </div>
+          <div class="header-right">
+            <!-- Export Button -->
+            <div class="export-btn-dropdown">
+              <button class="export-btn" id="exportBtn">
+                <span class="export-icon"></span>
+                Export Report
+                <span class="export-arrow">▼</span>
+              </button>
+              <div class="export-btn-dropdown-content">
+                <div class="export-btn-dropdown-item" onclick="handleExport('pdf')">
+                  <span class="export-icon"></span> PDF Document
+                </div>
+                <div class="export-btn-dropdown-item" onclick="handleExport('excel')">
+                  <span class="export-icon"></span> Excel Spreadsheet
+                </div>
+                <div class="export-btn-dropdown-item" onclick="handleExport('csv')">
+                  <span class="export-icon"></span> CSV File
+                </div>
+                <div class="export-btn-dropdown-item" onclick="handleExport('print')">
+                  <span class="export-icon"></span> Print Report
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+          <div class="stat-card">
+            <h3>Total Revenue</h3>
+            <div class="stat-value" id="totalRevenueCard">₱0.00</div>
+          </div>
+          <div class="stat-card">
+            <h3>Total Orders</h3>
+            <div class="stat-value" id="totalOrdersCard">0</div>
+            <div class="stat-change" id="ordersChange">No previous data</div>
+          </div>
+          <div class="stat-card">
+            <h3>Total Customers</h3>
+            <div class="stat-value" id="totalCustomersCard">0</div>
+            <div class="stat-change" id="customersChange">No previous data</div>
+          </div>
+          <div class="stat-card">
+            <h3>Average Order Value</h3>
+            <div class="stat-value" id="avgOrderValue">₱0.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gross Profit Section -->
+      <div class="gross-profit-section">
+        <div class="gross-profit-card">
+          <h3>Gross Profit</h3>
+          <div class="profit-value" id="grossProfit">₱0.00</div>
+        </div>
+        <div class="gross-profit-card">
+          <h3>Margin</h3>
+          <div class="margin-value" id="marginValue">0%</div>
+        </div>
+      </div>
+
+     <!-- ===== TWO REVENUE BREAKDOWN DONUTS – NO SAMPLE DATA, PURE CONTAINERS ===== -->
+      <!-- both donut charts are empty shells – no hardcoded percentages, no ₱ values, no sample text -->
+      <div style="display: flex; flex-wrap: wrap; gap: 24px; margin: 24px 0 8px;">
+
+        <!-- DONUT 1 – Revenue Breakdown (Top set) : all content placeholders, no sample figures -->
+        <div style="flex: 1 1 300px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 4px; color: #1e293b;">Revenue Breakdown</h3>
+          <div style="color: #475569; font-size: 14px; margin-bottom: 20px;" id="revenuePeriod1">—</div>
+          <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+            <!-- donut chart shell: neutral gray background, no conic-gradient data -->
+            <div id="donutChart1" style="width: 120px; height: 120px; border-radius: 50%; background: #e2e8f0; position: relative; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+              <div style="width: 76px; height: 76px; background: white; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #94a3b8;">—</div>
+            </div>
+            <!-- legend with empty placeholders for 11 categories -->
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; width: 160px;">
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name1">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent1">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name2">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent2">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name3">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent3">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name4">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent4">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name5">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent5">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name6">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent6">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name7">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent7">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name8">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent8">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name9">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent9">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name10">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent10">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat1_name11">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat1_percent11">—</span></li>
+            </ul>
+          </div>
+          <!-- footer placeholder, no sample total -->
+          <div style="font-size: 12px; color: #64748b; margin-top: 16px; border-top: 1px solid #f1f5f9; padding-top: 12px;" id="revenueNote1">—</div>
+        </div>
+
+        <!-- DONUT 2 – Revenue Breakdown (Bottom set) : all placeholders, zero sample percentages or values -->
+        <div style="flex: 1 1 300px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 4px; color: #1e293b;">Revenue Breakdown</h3>
+          <div style="color: #475569; font-size: 14px; margin-bottom: 20px;" id="revenuePeriod2">—</div>
+          <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+            <!-- donut chart shell: neutral gray, no data preset -->
+            <div id="donutChart2" style="width: 120px; height: 120px; border-radius: 50%; background: #e2e8f0; position: relative; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+              <div style="width: 76px; height: 76px; background: white; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #94a3b8;">—</div>
+            </div>
+            <!-- legend with empty dynamic IDs for 11 categories -->
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; width: 160px;">
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name1">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent1">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name2">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent2">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name3">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent3">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name4">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent4">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name5">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent5">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name6">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent6">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name7">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent7">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name8">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent8">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name9">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent9">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name10">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent10">—</span></li>
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><span style="display: inline-block; width: 14px; height: 14px; background: #cbd5e1; border-radius: 4px;"></span> <span id="cat2_name11">—</span> <span style="font-weight: 600; color: #0f172a; margin-left: 4px;" id="cat2_percent11">—</span></li>
+            </ul>
+          </div>
+          <div style="font-size: 12px; color: #64748b; margin-top: 16px; border-top: 1px solid #f1f5f9; padding-top: 12px;" id="revenueNote2">—</div>
+        </div>
+
+      </div>
+      
+      <!-- ===== END TWO REVENUE BREAKDOWN DONUTS – NO SAMPLE DATA ===== -->
+
+      <!-- Financial Summary Section -->
+      <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin: 24px 0;">
+        <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #1e293b; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">📈</span> Financial Summary
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <!-- Total Revenue Card -->
+          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 20px; color: white; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);">
+            <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-bottom: 8px;">Total Revenue</div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 8px;" id="summaryTotalRevenue">₱0.00</div>
+            <div style="font-size: 12px; opacity: 0.8;" id="summaryRevenueTrend">↑ 0% vs last period</div>
+          </div>
+
+          <!-- Total Costs Card -->
+          <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; padding: 20px; color: white; box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);">
+            <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-bottom: 8px;">Total Costs</div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 8px;" id="summaryTotalCosts">₱0.00</div>
+            <div style="font-size: 12px; opacity: 0.8;" id="summaryCostsTrend">↑ 0% vs last period</div>
+          </div>
+
+          <!-- Net Profit Card -->
+          <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; padding: 20px; color: white; box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);">
+            <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-bottom: 8px;">Net Profit</div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 8px;" id="summaryNetProfit">₱0.00</div>
+            <div style="font-size: 12px; opacity: 0.8;" id="summaryProfitTrend">↑ 0% vs last period</div>
+          </div>
+
+          <!-- Profit Margin Card -->
+          <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; padding: 20px; color: white; box-shadow: 0 4px 12px rgba(67, 233, 123, 0.3);">
+            <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-bottom: 8px;">Profit Margin</div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 8px;" id="summaryProfitMargin">0%</div>
+            <div style="font-size: 12px; opacity: 0.8;" id="summaryMarginTrend">↑ 0% vs last period</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Overview Chart -->
+      <div class="sales-overview">
+        <h2>Sales Overview</h2>
+        <div class="graph-header">
+          <div><strong id="graphStatus">Loading sales data...</strong></div>
+          <div class="graph-labels">
+            <div class="graph-label">
+              <div class="color-dot blue-dot"></div>
+              <span id="chartSummary">Today: ₱0.00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="graph-container">
+          <div class="graph-visual" id="chartBars">
+            <!-- Chart bars will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Summary Table -->
+      <div class="sales-summary">
+        <h2>Sales Summary</h2>
+        <div class="table-container">
+          <table class="sales-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Orders</th>
+                <th>Revenue</th>
+                <th>Cost</th>
+                <th>Profit</th>
+                <th>Customers</th>
+              </tr>
+            </thead>
+            <tbody id="salesTableBody">
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 20px;">No sales data available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="/script/sales.js"></script>
+<script>
+  // No sample data – pure logout and export handlers.
+  // All donut containers are empty placeholders; ready for dynamic injection via sales.js
+  function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = '/login';
+    }
+  }
+  
+  function handleExport(format = 'pdf') {
+    console.log('Handling export for:', format);
+    if (typeof window.exportSalesReport === 'function') {
+      window.exportSalesReport(format);
+    } else {
+      console.error('Export function not loaded yet');
+      alert('Export function is still loading. Please wait a moment and try again.');
+    }
+  }
+
+  // Expose placeholder IDs for sales.js to populate – no sample text injected
+  window.revenueBreakdownPlaceholders = {
+    donut1: {
+      period: document.getElementById('revenuePeriod1'),
+      catNames: ['cat1_name1', 'cat1_name2', 'cat1_name3', 'cat1_name4'].map(id => document.getElementById(id)),
+      catPercents: ['cat1_percent1', 'cat1_percent2', 'cat1_percent3', 'cat1_percent4'].map(id => document.getElementById(id)),
+      note: document.getElementById('revenueNote1'),
+      donutContainer: document.querySelectorAll('[style*="border-radius: 50%; background: #e2e8f0;"]')[0], // first gray donut
+      innerText: document.querySelectorAll('[style*="background: white; border-radius: 50%; position: absolute;"][style*="display: flex; align-items: center; justify-content: center;"]')[0]
+    },
+    donut2: {
+      period: document.getElementById('revenuePeriod2'),
+      catNames: ['cat2_name1', 'cat2_name2', 'cat2_name3', 'cat2_name4'].map(id => document.getElementById(id)),
+      catPercents: ['cat2_percent1', 'cat2_percent2', 'cat2_percent3', 'cat2_percent4'].map(id => document.getElementById(id)),
+      note: document.getElementById('revenueNote2'),
+      donutContainer: document.querySelectorAll('[style*="border-radius: 50%; background: #e2e8f0;"]')[1], // second gray donut
+      innerText: document.querySelectorAll('[style*="background: white; border-radius: 50%; position: absolute;"][style*="display: flex; align-items: center; justify-content: center;"]')[1]
+    }
+  };
+  
+</script>
+<script>
+    // Mobile menu initialization
+    (function() {
+        function initMobileMenu() {
+            const navbar = document.querySelector('.navbar') || document.querySelector('.header-navbar');
+            if (!navbar) return;
+
+            if (document.querySelector('.hamburger-menu')) return;
+
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger-menu';
+            hamburger.id = 'hamburgerMenu';
+            hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+            navbar.insertBefore(hamburger, navbar.firstChild);
+
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            overlay.id = 'sidebarOverlay';
+            document.body.appendChild(overlay);
+
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
+
+            const sidebarHeader = document.createElement('div');
+            sidebarHeader.className = 'sidebar-header';
+            sidebarHeader.innerHTML = `
+                <h3>Menu</h3>
+                <button class="sidebar-close" id="closeSidebar"></button>
+            `;
+
+            sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+
+            function openMenu() {
+                hamburger.classList.add('active');
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.classList.add('menu-open');
+            }
+
+            function closeMenu() {
+                hamburger.classList.remove('active');
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (sidebar.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            const closeBtn = document.getElementById('closeSidebar');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeMenu);
+            }
+
+            const menuItems = sidebar.querySelectorAll('ul.dashboard-menu li a, .sidebar .category-btn, .sidebar button');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    if (this.tagName === 'A') {
+                        this.classList.add('active');
+                    }
+                    closeMenu();
+                });
+            });
+
+            const currentPath = window.location.pathname;
+            const links = sidebar.querySelectorAll('ul.dashboard-menu li a');
+            links.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href && currentPath.includes(href)) {
+                    item.classList.add('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    if (sidebar.classList.contains('active')) {
+                        closeMenu();
+                    }
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
+    })();
+
+    // ==================== SETTINGS MODAL FUNCTIONS ====================
+    function openSettingsModal() {
+        const settingsModal = document.getElementById('settingsModal');
+        settingsModal.style.display = 'flex';
+        loadUserSettings();
+    }
+
+    function closeSettingsModal() {
+        document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    async function loadUserSettings() {
+        try {
+            const response = await fetch('/api/settings', {
+                headers: { 'Accept': 'application/json' },
+                credentials: 'include'
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.data) {
+                    document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                    document.getElementById('settingsRole').textContent = data.data.role || 'Admin';
+                }
+            }
+        } catch (error) {
+            console.error('Error loading user settings:', error);
+        }
+    }
+
+    document.addEventListener('click', function(event) {
+        const settingsModal = document.getElementById('settingsModal');
+        if (settingsModal && event.target === settingsModal) {
+            closeSettingsModal();
+        }
+    });
+</script>
+
+
+</body>
+</html>

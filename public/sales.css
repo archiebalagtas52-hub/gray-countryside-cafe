@@ -1,0 +1,1372 @@
+/* ===== sales.css – fully mobile responsive, desktop untouched ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: white;
+    font-size: 14px;
+    color: black;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* DASHBOARD CONTAINER */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #4e8a6a;
+    padding: 0 15px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.logo-img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-image: url("logo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.brandname {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brandname h2 {
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    margin: 0;
+}
+
+.navbar .logout-container button {
+    padding: 6px 12px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* ==================== USER PROFILE DISPLAY ==================== */
+.navbar .logout-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-profile-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.user-profile-container:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    border: 2px solid white;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-role {
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Mobile responsive user profile */
+@media (max-width: 768px) {
+    .user-profile-container {
+        padding: 4px 8px;
+        gap: 5px;
+    }
+
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .user-role {
+        font-size: 9px;
+    }
+}
+
+/* MAIN LAYOUT */
+.sidebar {
+    width: 250px;
+    background-color: #4e8a6a;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 99;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    margin-top: 50px;
+    min-height: calc(100vh - 50px);
+}
+
+/* SEARCH SECTION */
+.search-section {
+    margin-bottom: 15px;
+}
+
+.search-section .search {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.search-section .search::placeholder {
+    color: #666;
+}
+
+.sidebar h2 {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+/* DASHBOARD MENU */
+.dashboard-menu {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.dashboard-menu li {
+    margin-bottom: 6px;
+}
+
+.dashboard-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 3px;
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    border: 1px solid black;
+}
+
+.dashboard-menu a.active {
+    background-color: #f0f0f0;
+}
+
+.sidebar-footer {
+    margin-top: 110px;
+    padding-top: 8px;
+    border: #000000 1px solid;
+    text-align: center;
+    font-size: 10px;
+    color: black;
+    padding: 30px;
+    background-color: white;
+}
+
+/* Sales Report Header */
+.sales-report-header {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sales-report-header h1 {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.report-period {
+    color: black;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+/* Period Tabs */
+.period-tabs {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.period-tab {
+    padding: 10px 16px;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.period-tab:hover {
+    border-color: #4e8a6a;
+    color: #4e8a6a;
+    background-color: rgba(78, 138, 106, 0.05);
+}
+
+.period-tab.active {
+    background-color: #4e8a6a;
+    color: white;
+    border-color: #4e8a6a;
+    box-shadow: 0 2px 8px rgba(78, 138, 106, 0.3);
+}
+
+/* Summary stats */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    margin: 0;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+}
+
+.stat-change {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: black;
+}
+
+.revenue-card .stat-info {
+    text-align: center;
+}
+
+.revenue-amount {
+    font-size: 28px;
+    font-weight: 600;
+    color: black;
+    margin: 8px 0;
+}
+
+.revenue-change {
+    color: black;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.stat-icon {
+    font-size: 2em;
+    color: black;
+    opacity: 0.1;
+}
+
+.positive {
+    color: black;
+    font-weight: 600;
+}
+
+/* Gross profit section */
+.gross-profit-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.gross-profit-card {
+    text-align: center;
+}
+
+.gross-profit-card h3 {
+    color: black;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.profit-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: black;
+}
+
+.margin-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: black;
+}
+
+/* Sales overview */
+.sales-overview {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.sales-overview h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.graph-container {
+    margin-top: 20px;
+}
+
+.graph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.graph-labels {
+    display: flex;
+    gap: 15px;
+}
+
+.graph-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: black;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.blue-dot {
+    background-color: #3498db;
+}
+
+.green-dot {
+    background-color: #27ae60;
+}
+
+/* Graph visualization */
+.graph-visual {
+    height: 250px;
+    position: relative;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-left: 40px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding-right: 10px;
+}
+
+.y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.y-label {
+    color: black;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.x-axis {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.x-label {
+    color: black;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.graph-lines {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 0;
+    bottom: 30px;
+}
+
+.line {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.data-point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.blue-point {
+    background-color: #3498db;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #3498db;
+}
+
+.green-point {
+    background-color: #27ae60;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #27ae60;
+}
+
+/* Sales table */
+.sales-summary {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.sales-summary h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sales-table th {
+    background-color: white;
+    padding: 15px;
+    text-align: left;
+    color: black;
+    font-weight: 600;
+    border-bottom: 2px solid black;
+}
+
+.sales-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    color: black;
+}
+
+.sales-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.currency {
+    color: black;
+    font-weight: 600;
+}
+
+/* Export Button Styles */
+.sales-report-header {
+    position: relative;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-left h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.header-right {
+    margin-top: 10px;
+}
+
+/* Export Button Container */
+.export-btn-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Main Export Button */
+.export-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+    min-width: 150px;
+    justify-content: center;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+.export-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.export-icon {
+    font-size: 16px;
+}
+
+.export-arrow {
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* Dropdown Menu */
+.export-btn-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.export-btn-dropdown:hover .export-btn-dropdown-content {
+    display: block;
+}
+
+.export-btn-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.export-btn-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.export-btn-dropdown-item:hover {
+    background: #f5f5f5;
+    color: #4CAF50;
+}
+
+.export-btn-dropdown-item .export-icon {
+    width: 20px;
+    text-align: center;
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Success Animation */
+@keyframes exportSuccess {
+    0% { background-color: #4CAF50; }
+    50% { background-color: #45a049; }
+    100% { background-color: #4CAF50; }
+}
+
+.export-success {
+    animation: exportSuccess 0.5s ease-in-out;
+}
+
+/* Notification Styles */
+.export-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10000;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.export-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.export-notification-success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.export-notification-error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+.export-notification-info {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.notification-icon {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Donut chart styles – added without breaking existing layout */
+.revenue-breakdown-donut {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    padding: 20px 24px;
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.donut-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1e293b;
+}
+
+.donut-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.donut-chart {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #3b82f6 0deg 126.36deg,   /* 35.1% → 126.36° */
+        #f59e0b 126.36deg 240.48deg, /* 31.7% → 114.12° */
+        #10b981 240.48deg 310.68deg, /* 19.5% → 70.2° */
+        #8b5cf6 310.68deg 360deg   /* 13.7% → 49.32° */
+    );
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+.donut-inner {
+    width: 90px;
+    height: 90px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #0f172a;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.donut-legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.donut-legend li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #334155;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+.legend-percent {
+    font-weight: 600;
+    color: #0f172a;
+    margin-left: 4px;
+}
+
+.legend-value {
+    margin-left: auto;
+    color: #475569;
+}
+
+/* keep existing styles untouched, just addition */
+.gross-profit-section + .revenue-breakdown-donut {
+    margin-top: 20px;
+}
+
+/* ==================== 📊 REVENUE BREAKDOWN SECTION ==================== */
+.revenue-breakdown-section {
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4e8a6a;
+    padding-bottom: 12px;
+}
+
+.breakdown-header h2 {
+    font-size: 18px;
+    color: #0f172a;
+    margin: 0;
+    font-weight: 600;
+}
+
+.breakdown-date {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.breakdown-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    margin-bottom: 20px;
+    background: #f3f4f6;
+    padding: 15px 20px;
+    border-radius: 6px;
+}
+
+.breakdown-total p {
+    font-size: 14px;
+    color: #4b5563;
+    font-weight: 500;
+    margin: 0;
+}
+
+.breakdown-total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4e8a6a;
+}
+
+.breakdown-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.revenue-breakdown-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 120px;
+    gap: 15px;
+    align-items: center;
+    padding: 12px;
+    background: #f9fafb;
+    border-left: 4px solid #4e8a6a;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.revenue-breakdown-row:hover {
+    background: #eff6ff;
+    box-shadow: 0 2px 4px rgba(78, 138, 106, 0.1);
+}
+
+.breakdown-category {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.category-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.category-count {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.breakdown-amounts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.breakdown-amount {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4e8a6a;
+}
+
+.breakdown-percentage {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.breakdown-bar {
+    display: flex;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+
+.bar-fill {
+    background: linear-gradient(90deg, #4e8a6a, #6ba88a);
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+    box-shadow: 0 0 4px rgba(78, 138, 106, 0.3);
+}
+
+/* Loading and empty states */
+.breakdown-container p {
+    text-align: center;
+    color: #9ca3af;
+    padding: 20px;
+}
+
+/* ==================== HAMBURGER MENU STYLES ==================== */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    position: fixed;
+    top: 12px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: #f5f5f5;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* Sidebar Header (only visible on mobile) */
+.sidebar-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-close:hover {
+    transform: scale(1.2);
+}
+
+.sidebar-close::before {
+    content: '✕';
+}
+
+/* ========== MOBILE RESPONSIVE (only kicks in below 768px) ========== */
+/* desktop layout stays exactly as originally defined */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .brandname h2 {
+        font-size: 14px;
+    }
+    
+    /* hamburger appears */
+    .hamburger-menu {
+        display: flex !important;
+        position: fixed !important;
+        top: 12px !important;
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 1001 !important;
+    }
+
+    /* transform sidebar into off-canvas */
+    .sidebar {
+        width: 250px;
+        position: fixed;
+        left: -250px;           /* hidden by default */
+        top: 50px;
+        bottom: 0;
+        height: calc(100vh - 50px);
+        transition: left 0.3s ease;
+        z-index: 999;
+        overflow-y: auto;
+        padding-top: 0;          /* because sidebar-header adds spacing */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* show sidebar header only on mobile */
+    .sidebar-header {
+        display: flex;
+    }
+
+    /* main content fills width */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* stack summary stats */
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);  /* 2 columns on mobile */
+        gap: 12px;
+    }
+
+    /* gross profit section column */
+    .gross-profit-section {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* graph header wrap */
+    .graph-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .graph-labels {
+        flex-wrap: wrap;
+    }
+
+    /* make graph container scrollable if needed (but keep proportions) */
+    .graph-visual {
+        width: 100%;
+        overflow-x: auto;
+        padding-left: 35px;
+    }
+
+    /* sales table horizontal scroll */
+    .sales-summary {
+        overflow-x: auto;
+    }
+
+    .sales-table {
+        min-width: 600px;        /* ensures table content is readable */
+    }
+
+    /* revenue breakdown rows adjust */
+    .revenue-breakdown-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .breakdown-amounts {
+        align-items: flex-start;
+    }
+
+    .breakdown-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .breakdown-total {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* donut container stacks */
+    .donut-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .donut-legend {
+        width: 100%;
+    }
+
+    /* header top for export */
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-right {
+        align-self: flex-start;
+        width: 100%;
+    }
+
+    .export-btn-dropdown {
+        width: 100%;
+    }
+
+    .export-btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .export-btn-dropdown-content {
+        width: 100%;
+    }
+
+    /* reduce padding on cards */
+    .sales-report-header,
+    .gross-profit-section,
+    .sales-overview,
+    .sales-summary,
+    .revenue-breakdown-section {
+        padding: 18px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    /* ensure no horizontal overflow */
+    body, .dashboard-container {
+        overflow-x: hidden;
+    }
+}
+
+/* small mobile (max-width: 480px) – further refinements */
+@media (max-width: 480px) {
+    .summary-stats {
+        grid-template-columns: 1fr;    /* single column */
+    }
+
+    .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+
+    .brandname h2 {
+        font-size: 12px;
+    }
+
+    .navbar {
+        padding: 0 10px;
+    }
+
+    .logo-img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .hamburger-menu {
+        width: 25px;
+        height: 20px;
+    }
+
+    .hamburger-menu span {
+        height: 2.5px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .sales-report-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profit-value {
+        font-size: 2rem;
+    }
+
+    .margin-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* ensure desktop hover & large layout never changes – all original values remain */
+/* No changes above 768px – your design is untouched */
+
+/* FOOTER */
+footer {
+    background-color: #4e8a6a;
+    color: white;
+    padding: 12px 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 100;
+}
+
+footer h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+/* © 2026 For School Purposes Only. All rights reserved. */

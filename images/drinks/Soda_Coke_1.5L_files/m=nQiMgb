@@ -1,0 +1,7 @@
+loaded_h_0(function(_){var window=this;
+_.v("nQiMgb");
+var pbh;_.qbh=function(a){const b=Symbol(`${++pbh}`);a.oa={token:b};for(const c of a.zS){let d,e;(e=(d=c).wNa)==null||e.call(d)}a.notify("E82MWb");return b};_.rbh=function(a,b,c){let d;if(!c||c===((d=a.oa)==null?void 0:d.token)){a.oa?a.oa.result=b:a.oa={token:Symbol(`${++pbh}`),result:b};_.VQ(a.Aa);for(const e of a.zS){let f,g;(g=(f=e).eWa)==null||g.call(f,b)}a.notify("E82MWb")}};
+_.sbh=class extends _.oi{constructor(){super();this.Aa=new _.WQ;this.zS=[]}eFb(){let a;return(a=this.oa)==null?void 0:a.result}U4a(a){if(this.oa)if(this.oa.result){let b;(b=a.eWa)==null||b.call(a,this.oa.result)}else{let b;(b=a.wNa)==null||b.call(a)}this.zS.push(a);return()=>_.Aa(this.zS,a)}U7b(a){let b;((b=this.oa)==null?0:b.result)&&a();return this.Aa.register(a)}};pbh=0;_.Kr(_.obh,_.sbh);
+_.w();
+});
+// Google Inc.

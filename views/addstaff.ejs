@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/register.css">
+<title>Add Staff</title>
+<script src="/script/session-manager.js"></script>
+<script src="/script/back-button-prevention.js"></script>
+</head>hello
+<body>
+  <nav class="navbar">
+    <div class="brandname">
+      <div class="logo" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="/logo.png" alt="Logo" class="logo-img" title="Click to view settings">
+      </div>
+      <h2>Gray Countryside Cafe</h2>
+    </div>
+    <div class="logout-container">
+      <button onclick="handleLogout()">Logout</button>
+    </div>
+  </nav>
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <div class="search-section">
+        <input type="text" class="search" id="menuSearch" placeholder="Search..">
+      </div>
+
+      <ul class="dashboard-menu">
+        <li><a href="/admindashboard/dashboard" onclick="showSection('dashboard')" class="active"></i> Dashboard</a></li>
+        <li><a href="/admindashboard/Inventory">Inventory</a></li>
+        <li><a href="/admindashboard/salesandreports">Sales Reports</a></li>
+        <li><a href="/admindashboard/orderhistory">Order History</a></li>
+        <li><a href="/admindashboard/addstaff">Add Staff</a></li>
+        <li><a href="/admindashboard/menumanagement">Menu Management</a></li>
+        <li><a href="/admindashboard/infosettings">Settings</a></li>
+      </ul>
+      <footer class="sidebar-footer">
+        &copy; 2026 For School Purposes Only. All rights reserved.
+      </footer>
+    </div>
+
+    <!-- Main Content Area - Simple Form -->
+    <div class="main-content">
+      <div class="simple-form-container">
+        <div class="form-header">
+          <h2>Register</h2>
+        </div>
+        
+        <!-- Notification container -->
+        <div id="notificationContainer"></div>
+        
+        <form id="registerForm">
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="user" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" name="pass" required>
+              <span class="toggle-password" onclick="togglePassword()">
+                <img src="/see.png" alt="Show password" id="eyeIcon">
+              </span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="role">Role</label>
+            <select name="role" id="role" required>
+              <option value="staff">Staff</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="submit-btn">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Form submission handler
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+
+      // Clear previous notifications
+      const notificationContainer = document.getElementById('notificationContainer');
+      notificationContainer.innerHTML = '';
+
+      // Basic validation
+      if (!username || !password) {
+        showToast('Username and password are required', 'error');
+        return;
+      }
+
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user: username,
+            pass: password,
+            role: role
+          })
+        });
+
+        if (response.ok) {
+          showToast('✅ Staff Successfully Registered!', 'success');
+          // Clear form
+          document.getElementById('registerForm').reset();
+          // Optionally redirect after delay
+          setTimeout(() => {
+            window.location.reload();
+          }, 2500);
+        } else if (response.status === 409) {
+          showToast('⚠️ User already exists', 'error');
+        } else if (response.status === 400) {
+          showToast('⚠️ Username and password are required', 'error');
+        } else {
+          showToast('❌ Registration failed. Please try again.', 'error');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        showToast('❌ Server error. Please try again.', 'error');
+      }
+    });
+
+    // Function to show toast notification
+    function showToast(message, type = 'info') {
+      const notificationContainer = document.getElementById('notificationContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast-notification ${type}`;
+      toast.innerHTML = message;
+      notificationContainer.appendChild(toast);
+
+      // Auto-remove after 5 seconds
+      setTimeout(() => {
+        toast.style.animation = 'slideOutLeft 0.5s ease forwards';
+        setTimeout(() => toast.remove(), 500);
+      }, 4500);
+    }
+
+    // Toggle password visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eyeIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.src = '/hide.png';
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.src = '/see.png';
+      }
+    }
+
+    (function() {
+    // Create hamburger menu element and add it to navbar
+    function initMobileMenu() {
+        const navbar = document.querySelector('.navbar') || document.querySelector('.header-navbar');
+        if (!navbar) return;
+
+        // Check if hamburger menu already exists
+        if (document.querySelector('.hamburger-menu')) return;
+
+        // Create hamburger menu
+        const hamburger = document.createElement('div');
+        hamburger.className = 'hamburger-menu';
+        hamburger.id = 'hamburgerMenu';
+        hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+        // Insert hamburger menu at the beginning of navbar
+        navbar.insertBefore(hamburger, navbar.firstChild);
+
+        // Create sidebar overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        overlay.id = 'sidebarOverlay';
+        document.body.appendChild(overlay);
+
+        // Get sidebar
+        const sidebar = document.querySelector('.sidebar');
+        if (!sidebar) return;
+
+        // Create sidebar header with close button
+        const sidebarHeader = document.createElement('div');
+        sidebarHeader.className = 'sidebar-header';
+        sidebarHeader.innerHTML = `
+            <h3>Menu</h3>
+            <button class="sidebar-close" id="closeSidebar"></button>
+        `;
+
+        // Insert sidebar header at the beginning of sidebar
+        sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+
+        // Functions to open/close menu
+        function openMenu() {
+            hamburger.classList.add('active');
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Event listeners
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (sidebar.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        const closeBtn = document.getElementById('closeSidebar');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a menu item
+        const menuItems = sidebar.querySelectorAll('ul.dashboard-menu li a, .sidebar .category-btn, .sidebar button');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                menuItems.forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item if it's a menu link
+                if (this.tagName === 'A') {
+                    this.classList.add('active');
+                }
+                // Close menu
+                closeMenu();
+            });
+        });
+
+        // Set active menu item based on current URL
+        const currentPath = window.location.pathname;
+        const links = sidebar.querySelectorAll('ul.dashboard-menu li a');
+        links.forEach(item => {
+            const href = item.getAttribute('href');
+            if (href && currentPath.includes(href)) {
+                item.classList.add('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                // Reset everything for desktop
+                if (sidebar.classList.contains('active')) {
+                    closeMenu();
+                }
+                // Remove inline styles
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+        initMobileMenu();
+    }
+})();
+
+    // Logout function
+    function handleLogout() {
+      window.location.href = '/logout';
+    }
+
+    // ==================== SETTINGS MODAL FUNCTIONS ====================
+    function openSettingsModal() {
+        const settingsModal = document.getElementById('settingsModal');
+        settingsModal.style.display = 'flex';
+        loadUserSettings();
+    }
+
+    function closeSettingsModal() {
+        document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    async function loadUserSettings() {
+        try {
+            const response = await fetch('/api/settings', {
+                headers: { 'Accept': 'application/json' },
+                credentials: 'include'
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.data) {
+                    document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                    document.getElementById('settingsRole').textContent = data.data.role || 'Admin';
+                }
+            }
+        } catch (error) {
+            console.error('Error loading user settings:', error);
+        }
+    }
+
+    document.addEventListener('click', function(event) {
+        const settingsModal = document.getElementById('settingsModal');
+        if (settingsModal && event.target === settingsModal) {
+            closeSettingsModal();
+        }
+    });
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Management - Gray Countryside Cafe</title>
+    <link rel="stylesheet" href="/menu.css">
+    <script src="/script/session-manager.js"></script>
+    <script src="/script/back-button-prevention.js"></script>
+
+</head>
+<body>
+    <div id="toastContainer"></div>
+
+    <div class="dashboard-container">
+        <nav class="navbar">
+            <div class="brandname">
+                <div class="logo-img" onclick="openSettingsModal()" style="cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" title="Click to view settings"></div>
+                <h2>Gray Countryside Cafe</h2>
+            </div>
+            <div class="logout-container">
+                <button onclick="handleLogout()" type="button">Logout</button>
+            </div>
+        </nav>
+
+        <div class="sidebar">
+            <div class="search-section">
+                <input type="text" class="search" placeholder="Search.." aria-label="Search menu">
+            </div>
+            
+            <ul class="dashboard-menu">
+                <li><a href="/admindashboard/dashboard">Dashboard</a></li>
+                <li><a href="/admindashboard/Inventory">Inventory</a></li>
+                <li><a href="/admindashboard/salesandreports">Sales Reports</a></li>
+                <li><a href="/admindashboard/orderhistory">Order History</a></li>
+                <li><a href="/admindashboard/addstaff">Add Staff</a></li>
+                <li><a href="/admindashboard/menumanagement" class="active" aria-current="page">Menu Management</a></li>
+                <li><a href="/admindashboard/infosettings">Settings</a></li>
+            </ul>
+            <footer class="sidebar-footer">
+                &copy; 2026 For School Purposes Only. All rights reserved.
+            </footer>
+        </div>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="logo-section">
+                    <h1>Menu Management</h1>
+                </div>
+            </header>
+
+            <div class="container">
+                <aside class="menu-sidebar">
+                    <div class="nav-section">
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active" data-section="dashboard" aria-current="page">
+                                    <span class="nav-icon">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-section="menu">
+                                    <span class="nav-icon">Product Menu</span>
+                                </a>
+                                <div class="category-list">
+                                    <div class="category-item active" data-category="all" data-fullname="All Products">
+                                        All Products
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Rice" data-fullname="Rice Bowl Meals">
+                                        Rice
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Sizzling" data-fullname="Hot Sizzlers">
+                                        Sizzling
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Party" data-fullname="Party Trays">
+                                        Party
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Drink" data-fullname="Drinks">
+                                        Drink
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Cafe" data-fullname="Coffee">
+                                        Cafe
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Milk" data-fullname="Milk Tea">
+                                        Milk
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Frappe" data-fullname="Frappe">
+                                        Frappe
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Snack & Appetizer" data-fullname="Snacks & Appetizers">
+                                        Snack
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Budget Meals Served with Rice" data-fullname="Budget Meals">
+                                        Budget
+                                        <span class="category-count">0</span>
+                                    </div>
+                                    <div class="category-item" data-category="Specialties" data-fullname="Specialties">
+                                        Specialty
+                                        <span class="category-count">0</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <main class="inventory-content">
+                    <section class="section-content active-section" id="dashboard">
+                        <div class="content-header">
+                            <div class="content-title">
+                                <h2>Menu Dashboard</h2>                 
+                            </div>
+                        </div>
+
+                        <div class="stats-dashboard">
+                            <div class="stat-card">
+                                <div class="stat-icon icon-total">Total Products</div>
+                                <h3>Total Products</h3>
+                                <div class="stat-value" id="totalProducts">0</div>
+                            
+                            </div>
+                            <div class="stat-card warning">
+                                <div class="stat-icon icon-warning">Low Stock</div>
+                                <h3>Low Stock Products</h3>
+                                <div class="stat-value" id="lowStock">0</div>
+                              
+                            </div>
+                            <div class="stat-card critical">
+                                <div class="stat-icon icon-critical">Out of Stock</div>
+                                <h3>Out of Stock</h3>
+                                <div class="stat-value" id="outOfStock">0</div>
+                                
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon icon-instock">In Stock</div>
+                                <h3>In Stock</h3>
+                                <div class="stat-value" id="inStock">0</div>
+                                
+                            </div>
+                            <div class="stat-card info">
+                                <div class="stat-icon icon-value">Menu Value</div>
+                                <h3>Menu Value</h3>
+                                <div class="stat-value" id="menuValue">₱0</div>
+                            </div>
+                        </div>
+
+                        <div class="inventory-grid" id="dashboardGrid">
+                            <div class="empty-state" id="emptyDashboardState" style="display: none;">
+                                <div class="empty-state-icon icon-empty">No Products</div>
+                                <h3>No Products Available</h3>
+                                <p>Add your first menu item to see analytics here</p>
+                                <button class="btn btn-primary" id="addFirstItemBtn" type="button" title="Add first product">Add First Product</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section-content" id="menu">
+                        <div class="content-header">
+                            <div class="content-title">
+                                <h2 id="currentCategoryTitle">Product Menu</h2>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary" id="addNewItem" type="button" title="Click to add a new product to the menu">Add New Product</button>
+                            </div>
+                        </div>
+
+                        <div class="inventory-grid" id="menuGrid">
+                            <div class="empty-state" id="emptyMenuState" style="display: none;">
+                                <div class="empty-state-icon icon-empty">No Products</div>
+                                <h3>No Products Available</h3>
+                                <p>Get started by adding your first menu item</p>
+                                <button class="btn btn-primary" id="addFirstMenuBtn" type="button" title="Add first menu product">Add New Product</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- PRODUCT MISSING INGREDIENTS MODAL -->
+    <div class="modal" id="productMissingIngredientsModal" role="dialog" aria-modal="true" aria-labelledby="productMissingTitle" style="display: none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header" style="background-color: #f0f0f0; border-bottom: 2px solid #2196f3;">
+                <h2 id="productMissingTitle" style="margin: 0;">📋 Missing Ingredients</h2>
+                <button class="close" type="button" onclick="document.getElementById('productMissingIngredientsModal').style.display='none'" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="productMissingContent" style="min-height: 250px;">
+                    <!-- Content will be populated here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="document.getElementById('productMissingIngredientsModal').style.display='none'">Close</button>
+            </div>
+        </div>
+    </div>
+
+                    <!-- ALL PRODUCTS MISSING INGREDIENTS MODAL -->
+    <div class="modal" id="allProductsMissingIngredientsModal" role="dialog" aria-modal="true" aria-labelledby="allProductsMissingTitle" style="display: none;">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header" style="background-color: #f0f0f0; border-bottom: 2px solid #2196f3;">
+                <h2 id="allProductsMissingTitle" style="margin: 0;">📋 Products Missing Ingredients</h2>
+                <button class="close" type="button" onclick="document.getElementById('allProductsMissingIngredientsModal').style.display='none'" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="allProductsMissingContent" style="min-height: 300px;">
+                    <!-- Content will be populated here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="document.getElementById('allProductsMissingIngredientsModal').style.display='none'">Close</button>
+            </div>
+        </div>
+    </div>
+
+                    <!-- MISSING INGREDIENTS NOTIFICATION MODAL -->
+    <div class="modal" id="missingIngredientsModal" role="dialog" aria-modal="true" aria-labelledby="missingIngredientsTitle" style="display: none;">
+        <div class="modal-content notification-modal">
+            <div class="modal-header alert-header">
+                <h2 id="missingIngredientsTitle">⚠️ Missing Ingredients</h2>
+                <button class="close" id="closeMissingIngredientsModal" type="button" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="alert-text">Cannot add "<span id="missingProductName"></span>" to menu.</p>
+                <p style="font-weight: bold; margin-top: 15px;">Required but missing ingredients:</p>
+                <ul id="missingIngredientsList" style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 10px 0;
+                ">
+                    <!-- Missing ingredients will be populated here -->
+                </ul>
+                <div style="
+                    background-color: #fff3cd;
+                    border-left: 4px solid #ffc107;
+                    padding: 10px;
+                    margin-top: 15px;
+                    border-radius: 4px;
+                ">
+                    <p style="margin: 0; color: #856404;">
+                        ✓ Please restock these ingredients first in the <strong>Inventory</strong> section.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="closeMissingIngredientsBtn">Understood</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+    <div class="modal" id="itemModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Product</h2>
+                <button class="close" id="closeModal" type="button" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="itemForm" method="dialog">
+                <div class="modal-body">
+                    <!-- Row 1: Category & Product Name -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemCategories">Category <span class="required">*</span></label>
+                            <select id="itemCategories" class="form-control" required>
+                                <option value="">Select Category</option>
+                                <option value="Rice">Rice Bowl Meals</option>
+                                <option value="Sizzling">Hot Sizzlers</option>
+                                <option value="Party">Party Trays</option>
+                                <option value="Drink">Drinks</option>
+                                <option value="Cafe">Coffee</option>
+                                <option value="Milk">Milk Tea</option>
+                                <option value="Frappe">Frappe</option>
+                                <option value="Snack & Appetizer">Snacks & Appetizers</option>
+                                <option value="Budget Meals Served with Rice">Budget Meals</option>
+                                <option value="Specialties">Specialties</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="itemName">Product Name <span class="required">*</span></label>
+                            <select id="itemName" name="itemName" class="form-control" required>
+                                <option value="">Select Product</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2: Unit -->
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="itemUnit">Unit <span class="required">*</span></label>
+                            <select id="itemUnit" name="itemUnit" class="form-control" required>
+                                <option value="">Select Unit</option>
+                                <option value="pcs">Pieces</option>
+                                <option value="trays">Trays</option>
+                                <option value="glasses">Collins Glass Cups</option>
+                                <option value="pitchers">Pitchers</option>
+                                <option value="Plastic Bottles">Plastic Bottles</option>
+                                <option value="cups">Plastic Cups</option>
+                                <option value="servings">Servings</option>
+                                <option value="sandwiches">Sandwiches</option>
+                                <option value="meals">Meals</option>
+                                <option value="bowls">Bowls</option>
+                                <option value="pots">Pots</option>
+                                <option value="set">Set</option>
+                                <option value="pack">Pack</option>
+                                <option value="box">Box</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Stock Fields Group -->
+                    <div class="stock-fields-group">
+                        <div class="stock-field">
+                            <label for="currentStock">Current Stock <span class="required">*</span></label>
+                            <input type="number" id="currentStock" name="currentStock" class="form-control" min="0" step="1" required value="0">
+                            <span class="form-hint">Current quantity in stock</span>
+                        </div>
+                        
+                        <div class="stock-field">
+                            <label for="minimumStock">Minimum Stock <span class="required">*</span></label>
+                            <input type="number" id="minimumStock" name="minimumStock" class="form-control" min="0" step="1" required value="20">
+                            <span class="form-hint">Stock level before low-stock alert</span>
+                        </div>
+                        
+                        <div class="stock-field">
+                            <label for="maximumStock">Maximum Stock <span class="required">*</span></label>
+                            <input type="number" id="maximumStock" name="maximumStock" class="form-control" min="0" step="1" required placeholder="Auto-calculated from ingredients">
+                            <span class="form-hint">Max capacity (auto-calculated based on available ingredients)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Field -->
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="itemPrice">Price (₱) <span class="required">*</span></label>
+                            <input type="number" id="itemPrice" name="itemPrice" class="form-control" min="0" step="0.01" required placeholder="0.00" value="0.00">
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" id="itemId" name="itemId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveItemBtn">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/script/inventory-manager.js"></script>
+    <script src="/script/menu.js"></script>
+    <script>
+        // Mobile menu initialization
+        (function() {
+            function initMobileMenu() {
+                const navbar = document.querySelector('.navbar') || document.querySelector('.header-navbar');
+                if (!navbar) return;
+
+                if (document.querySelector('.hamburger-menu')) return;
+
+                const hamburger = document.createElement('div');
+                hamburger.className = 'hamburger-menu';
+                hamburger.id = 'hamburgerMenu';
+                hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+                navbar.insertBefore(hamburger, navbar.firstChild);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'sidebar-overlay';
+                overlay.id = 'sidebarOverlay';
+                document.body.appendChild(overlay);
+
+                const sidebar = document.querySelector('.sidebar');
+                if (!sidebar) return;
+
+                const sidebarHeader = document.createElement('div');
+                sidebarHeader.className = 'sidebar-header';
+                sidebarHeader.innerHTML = `
+                    <h3>Menu</h3>
+                    <button class="sidebar-close" id="closeSidebar"></button>
+                `;
+
+                sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+
+                function openMenu() {
+                    hamburger.classList.add('active');
+                    sidebar.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.classList.add('menu-open');
+                }
+
+                function closeMenu() {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (sidebar.classList.contains('active')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+
+                overlay.addEventListener('click', closeMenu);
+
+                const closeBtn = document.getElementById('closeSidebar');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeMenu);
+                }
+
+                const menuItems = sidebar.querySelectorAll('ul.dashboard-menu li a, .sidebar .category-btn, .sidebar button');
+                menuItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        menuItems.forEach(i => i.classList.remove('active'));
+                        if (this.tagName === 'A') {
+                            this.classList.add('active');
+                        }
+                        closeMenu();
+                    });
+                });
+
+                const currentPath = window.location.pathname;
+                const links = sidebar.querySelectorAll('ul.dashboard-menu li a');
+                links.forEach(item => {
+                    const href = item.getAttribute('href');
+                    if (href && currentPath.includes(href)) {
+                        item.classList.add('active');
+                    }
+                });
+
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        if (sidebar.classList.contains('active')) {
+                            closeMenu();
+                        }
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+
+        // ==================== SETTINGS MODAL FUNCTIONS ====================
+        function openSettingsModal() {
+            const settingsModal = document.getElementById('settingsModal');
+            settingsModal.style.display = 'flex';
+            loadUserSettings();
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        async function loadUserSettings() {
+            try {
+                const response = await fetch('/api/settings', {
+                    headers: { 'Accept': 'application/json' },
+                    credentials: 'include'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.data) {
+                        document.getElementById('settingsName').textContent = data.data.name || 'Not Set';
+                        document.getElementById('settingsRole').textContent = data.data.role || 'Admin';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading user settings:', error);
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const settingsModal = document.getElementById('settingsModal');
+            if (settingsModal && event.target === settingsModal) {
+                closeSettingsModal();
+            }
+        });
+    </script>
+
+
+</body>
+</html>

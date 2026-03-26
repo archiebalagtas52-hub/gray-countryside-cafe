@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login</title>
+    <script src="/script/session-manager.js"></script>
+    <style>
+        .error-message {
+            color: #dc3545;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .lockout-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .lockout-countdown {
+            font-weight: bold;
+            font-size: 18px;
+            color: #dc3545;
+            margin-top: 10px;
+        }
+        
+        .input-type:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+        
+        .button-container button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+<form action="/login" method="post" id="loginForm">
+
+    <div class="login-border">
+        <div class="login-container">
+            <div class="logo-container">
+                <img src="/logo.png" alt="Logo" class="logo">
+            </div>
+            <div class="gray-brandname">
+                Gray Countryside Cafe
+            <h2>Login</h2>
+            
+            <!-- ==================== ERROR MESSAGE WITH ATTEMPTS ====================  -->
+            <% if (error && !isLocked) { %>
+                <div class="error-message" id="errorMessage">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <% if (isLocked) { %>
+                <div class="lockout-warning">
+                    <strong>Account Temporarily Locked</strong>
+                    <div class="lockout-countdown" id="lockoutTimer">
+                        Please wait: <span id="lockoutMinutes">5</span>:<span id="lockoutSeconds">00</span>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 14px;">Too many failed login attempts</p>
+                </div>
+            <% } %>
+            
+            <div class="input-container">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="input-type" name="user" required <% if (isLocked) { %>disabled<% } %>>
+            </div>
+            <div class="input-container password-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" class="input-type" name="pass" required <% if (isLocked) { %>disabled<% } %>>
+                    <span class="toggle-password" onclick="togglePassword()">
+                        <img src="/see.png" alt="Show password" id="eyeIcon">
+                    </span>
+                </div>
+            </div>
+                <div class="button-container">
+                <button type="submit" <% if (isLocked) { %>disabled<% } %>>Login</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+<footer>
+    <h5>&copy; 2026 For School Purposes Only. All rights reserved.</h5>
+</footer>
+<script>
+// ==================== 🔐 CHECK IF ALREADY LOGGED IN ====================
+window.addEventListener('load', function() {
+    // Check if user has a valid session
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+    const role = sessionManager.getRole();
+    
+    if (token && role && sessionManager.isLoggedIn()) {
+        // User is already logged in with valid session
+        console.log('🔓 Active session found - redirecting to ' + role + ' interface');
+        window.location.href = sessionManager.getDashboardUrl();
+    } else if (token) {
+        // Token exists but no role in sessionStorage, let server verify
+        console.log('🔄 Token exists, verifying with server...');
+        window.location.href = '/';
+    }
+    
+    // ==================== ⏱️ LOCKOUT TIMER ====================
+    const lockoutTimer = document.getElementById('lockoutTimer');
+    if (lockoutTimer) {
+        const remainingSecondsStr = '<%= typeof remainingSeconds !== "undefined" ? remainingSeconds : 0 %>';
+        let remainingLockout = parseInt(remainingSecondsStr) || 0;
+        
+        if (remainingLockout > 0) {
+            updateLockoutTimer(remainingLockout);
+            
+            // Update timer every second
+            const timerInterval = setInterval(function() {
+                remainingLockout--;
+                updateLockoutTimer(remainingLockout);
+                
+                if (remainingLockout <= 0) {
+                    // Enable inputs and button after lockout expires
+                    clearInterval(timerInterval);
+                    document.getElementById('username').disabled = false;
+                    document.getElementById('password').disabled = false;
+                    document.querySelector('.button-container button').disabled = false;
+                    const errorMsg = document.getElementById('errorMessage');
+                    if (errorMsg) errorMsg.style.display = 'none';
+                    if (lockoutTimer.parentElement) lockoutTimer.parentElement.style.display = 'none';
+                    console.log('✅ Lockout period expired - login enabled');
+                }
+            }, 1000);
+        }
+    }
+});
+
+function updateLockoutTimer(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    
+    const minutesSpan = document.getElementById('lockoutMinutes');
+    const secondsSpan = document.getElementById('lockoutSeconds');
+    
+    if (minutesSpan && secondsSpan) {
+        minutesSpan.textContent = String(minutes).padStart(2, '0');
+        secondsSpan.textContent = String(secs).padStart(2, '0');
+    }
+}
+
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = "/blind.png";
+        eyeIcon.alt = "Hide password";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.src = "/see.png";
+        eyeIcon.alt = "Show password";
+    }
+}
+
+// ==================== 🎯 HANDLE LOGOUT REDIRECT ====================
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromLogout = urlParams.get('logout');
+    
+    if (fromLogout === 'true') {
+        console.log('✅ Logged out successfully');
+        sessionManager.clearSession();
+        // Clean up URL
+        window.history.replaceState({}, document.title, '/login');
+    }
+});
+</script>
+</body>
+</html>

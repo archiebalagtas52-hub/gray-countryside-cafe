@@ -1,0 +1,11 @@
+loaded_h_0(function(_){var window=this;
+_.aqe=_.y("CHCSlb",[]);_.gd(_.aqe);
+_.Xpe=_.y("mzzZzc",[]);_.gd(_.Xpe);
+_.Ete=_.y("fmklff",[_.hi,_.Xpe,_.aqe]);
+_.v("TdC3Wc");
+_.sph=class extends _.Vn{static Ra(){return{service:{clipboard:_.oy,window:_.Jih}}}constructor(a){super();this.WE=a.service.clipboard;this.oa=a.service.window}copy(a,b=0){this.WE.copy(a,!1,this.oa.getDocument())?(a=_.na(),_.ja(a,"SamsungBrowser")||(_.ja(a,"Version/0.")||_.ja(a,"Version/1.")||_.ja(a,"Version/2.")||_.ja(a,"Version/3."))&&(_.ja(a,"SAMSUNG")||_.ja(a,"SM-")||_.ja(a,"SGH-"))||this.Li("Text copied to clipboard",b)):this.Li("Failed to copy text",b)}async Li(a,b){var c=(0,_.Ff)(),d=c();c=
+c(1);try{a:switch(b){case 0:var e="yuChW";break a;case 1:e="yuChW YEw87d";break a;default:e=null}(b=e)&&c(await d(_.rph(this,"snackbar",_.Ete))).qt({label:a,kF:!0,Ua:b})}finally{d()}}};_.Qf(_.qph,_.sph);
+
+_.w();
+});
+// Google Inc.
