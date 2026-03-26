@@ -2770,23 +2770,50 @@ function updateTableStatus(tableNumber, orderStatus) {
 
 // Function to mark customer as left
 function markCustomerAsLeft(tableNumber) {
+    console.log(`🚪 Marking Table #${tableNumber} as LEFT...`);
+    
+    if (!confirm(`Mark customer at Table #${tableNumber} as LEFT?`)) {
+        console.log(`❌ Cancelled marking Table #${tableNumber} as left`);
+        return;
+    }
+    
     try {
         let customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        
+        console.log('📋 Before marking left:', customers.length, 'customers');
+        
         const customer = customers.find(c => c.tableNumber === parseInt(tableNumber));
         
         if (customer) {
+            console.log(`✅ Found customer at Table #${tableNumber}:`, customer);
             customer.hasLeft = true;
             customer.leftTime = new Date().toISOString();
             localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
-            console.log(`✅ Table #${tableNumber} marked as LEFT`);
+            
+            console.log('💾 Saved to localStorage');
+            console.log('📋 After marking left:', customers.filter(c => !c.hasLeft).length, 'active customers');
             
             // Refresh modal if open
             if (typeof loadActiveDineInCustomersModal === 'function') {
+                console.log('🔄 Reloading modal...');
                 setTimeout(() => loadActiveDineInCustomersModal(), 100);
+            }
+            
+            console.log(`✅ Table #${tableNumber} marked as LEFT successfully`);
+            if (typeof showToast === 'function') {
+                showToast(`✔️ Table #${tableNumber} is now available`, 'success', 2000);
+            }
+        } else {
+            console.warn(`⚠️ Customer not found at Table #${tableNumber}`);
+            if (typeof showToast === 'function') {
+                showToast(`❌ Customer not found at Table #${tableNumber}`, 'error', 2000);
             }
         }
     } catch (error) {
         console.error('❌ Error marking customer as left:', error);
+        if (typeof showToast === 'function') {
+            showToast(`❌ Error marking table as left`, 'error', 2000);
+        }
     }
 }
 
@@ -4394,10 +4421,45 @@ function handleCustomerLeft(tableNumber) {
 }
 
 /**
- * Handle when customer marks "Not Left" - just shows notification
+ * Handle when customer marks "Not Left" - reverts the hasLeft flag
  */
 function handleCustomerNotLeft(tableNumber) {
-    showToast(`✖️ Customer at Table #${tableNumber} is still dining.`, 'info', 2000);
+    console.log(`🔄 Marking Table #${tableNumber} as NOT LEFT...`);
+    
+    try {
+        let customers = JSON.parse(localStorage.getItem('activeDineInCustomers')) || [];
+        
+        const customer = customers.find(c => c.tableNumber === parseInt(tableNumber));
+        if (customer) {
+            console.log(`✅ Found customer at Table #${tableNumber}:`, customer);
+            customer.hasLeft = false;
+            localStorage.setItem('activeDineInCustomers', JSON.stringify(customers));
+            
+            console.log('💾 Saved to localStorage');
+            console.log('📋 Active customers:', customers.filter(c => !c.hasLeft).length);
+            
+            // Refresh modal if open
+            if (typeof loadActiveDineInCustomersModal === 'function') {
+                console.log('🔄 Reloading modal...');
+                setTimeout(() => loadActiveDineInCustomersModal(), 100);
+            }
+            
+            console.log(`✅ Table #${tableNumber} marked as NOT LEFT successfully`);
+            if (typeof showToast === 'function') {
+                showToast(`✖️ Table #${tableNumber} still dining`, 'info', 2000);
+            }
+        } else {
+            console.warn(`⚠️ Customer not found at Table #${tableNumber}`);
+            if (typeof showToast === 'function') {
+                showToast(`❌ Customer not found at Table #${tableNumber}`, 'error', 2000);
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error marking customer as not left:', error);
+        if (typeof showToast === 'function') {
+            showToast(`❌ Error updating table status`, 'error', 2000);
+        }
+    }
 }
 
 window.requestStock = requestStock;
