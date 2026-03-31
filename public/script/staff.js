@@ -168,9 +168,109 @@ function handleTableWaiting(tableNum) {
 
 // Handle Table Left status
 function handleTableLeft(tableNum) {
-    updateTableStatus(tableNum, 'left');
-    showToast(`👋 Table #${tableNum} - Customer left`, 'info', 2000);
+    console.log(`🔔 Attempting to mark Table #${tableNum} as LEFT`);
+    
+    // Remove any existing modal
+    const existingModal = document.getElementById('tableLeftConfirmModal');
+    if (existingModal) existingModal.remove();
+    
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.id = 'tableLeftConfirmModal';
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+    `;
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: slideUp 0.3s ease;
+    `;
+    
+    // Add animation styles
+    if (!document.getElementById('tableLeftModalStyles')) {
+        const style = document.createElement('style');
+        style.id = 'tableLeftModalStyles';
+        style.textContent = `
+            @keyframes slideUp {
+                from { transform: translateY(20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    modalContent.innerHTML = `
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
+            <h2 style="color: #333; margin: 0 0 10px 0; font-size: 22px;">Mark Table as LEFT</h2>
+            <p style="color: #666; margin: 0; font-size: 14px;">Are you sure you want to mark Table #${tableNum} as LEFT?</p>
+        </div>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 30px;">
+            <button id="cancelTableLeftBtn" style="
+                flex: 1;
+                padding: 12px 20px;
+                background: #f0f0f0;
+                color: #666;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            " onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f0f0f0'">
+                Cancel
+            </button>
+            <button id="confirmTableLeftBtn" style="
+                flex: 1;
+                padding: 12px 20px;
+                background: #28a745;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            " onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
+                Mark as LEFT
+            </button>
+        </div>
+    `;
+    
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    // Add event listeners
+    document.getElementById('cancelTableLeftBtn').addEventListener('click', () => {
+        console.log(`❌ Cancelled: Did not mark Table #${tableNum} as LEFT`);
+        modal.remove();
+    });
+    
+    document.getElementById('confirmTableLeftBtn').addEventListener('click', () => {
+        console.log(`✅ Confirmed: Marking Table #${tableNum} as LEFT`);
+        updateTableStatus(tableNum, 'left');
+        console.log(`📍 Table #${tableNum} status updated to: LEFT`);
+        modal.remove();
+    });
 }
+
 
 // Handle Next Order status
 function handleNextOrder(tableNum) {
@@ -1374,6 +1474,13 @@ const productImageMap = {
     'Vanilla Cream Frappe': '/images/frappe/Vanilla_Cream_Frappe.png',
     'Matcha Green Tea Frappe': '/images/frappe/Matcha_Green_Tea_Frappe.png',
     'Salted Caramel Frappe': '/images/frappe/Salted_Caramel_Frappe.png',
+    'Buffalo Chicken Wings (S)': '/images/snacks/Chicken_Buffalo_WingsS.png',
+    'Buffalo Chicken Wings (M)': '/images/snacks/Chicken_Buffalo_WingsM.png',
+    'Buffalo Chicken Wings (L)': '/images/snacks/Chicken_Buffalo_WingsL.png',
+    'Cheesy Dynamite Lumpia': '/images/snacks/Cheesy_dynamite.png',
+    'Lumpiang Shanghai': '/images/snacks/lumpiang_shanghai.png',
+    'Clubhouse Sandwich': '/images/snacks/club_house_sandwich.png',
+
 };
 
 const BACKEND_URL = window.location.origin;

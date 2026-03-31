@@ -12,7 +12,6 @@ const categorySchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  description: String,
   image: String,
   displayOrder: {
     type: Number,

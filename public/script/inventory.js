@@ -224,6 +224,7 @@ const validRawIngredients = {
     'Steamed Milk': 'beverage',
     'Milk Tea Base': 'beverage',
     'Coffee Beans': 'dry',
+    'Chocolate Coffee Beans': 'dry',
     'Matcha Powder': 'dry',
     'Matcha Green Tea Powder': 'dry',
     'Caramel Syrup': 'beverage',
@@ -290,7 +291,7 @@ const recipeMapping = {
         'Korean Spicy Bulgogi (Pork)',
         'Korean Salt and Pepper (Pork)',
         'Crispy Pork Lechon Kawali',
-        'Pork Shanghai',
+,       'Pork Shanghai',
         'Sinigang (Pork)',
         'Sizzling Pork Sisig',
         'Sizzling Liempo',
@@ -300,7 +301,6 @@ const recipeMapping = {
         'Pancit Bihon',
         'Pancit Canton + Bihon (Mixed)',
         'Spaghetti',
-        'Lumpiang Shanghai'
     ],
     'Pork Belly': [
         'Crispy Pork Lechon Kawali',
@@ -311,7 +311,9 @@ const recipeMapping = {
     ],
     'Ground Pork': [
         'Pork Shanghai',
-        'Lumpiang Shanghai',
+        'Lumpian Shanghai (S)',
+        'Lumpian Shanghai (L)',
+        'Lumpian Shanghai (M)',
         'Spaghetti'
     ],
     'Chicken': [
@@ -322,14 +324,18 @@ const recipeMapping = {
         'Sizzling Fried Chicken',
         'Budget Fried Chicken',
         'Clubhouse Sandwich',
-        'Chicken Buffalo Wings',
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)',
         'Pancit Bihon (S)',
         'Pancit Bihon (L)',
         'Pancit Bihon (M)'
 
     ],
     'Chicken Wings': [
-        'Chicken Buffalo Wings'
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Cream Dory': [
         'Cream Dory Fish Fillet',
@@ -350,17 +356,23 @@ const recipeMapping = {
         'Tinapa Rice'
     ],
     'Tuyo': [
-        'Tuyo Pesto'
-    ],
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',   
+     ],
     'Beef Shank': [
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)'
     ],
     'Oxtail': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Tripe': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Bacon': [
         'Creamy Carbonara'
@@ -392,20 +404,29 @@ const recipeMapping = {
         'Pancit Canton + Bihon (Mixed)',
         'Spaghetti',
         'Creamy Carbonara',
-        'Creamy Pesto',
-        'Tuyo Pesto',
-        'Kare-Kare',
-        'Chicken Buffalo Wings',
+        'Creamy Pesto (S) ',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',,
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)',
         'Fried Rice',
-        'Tinapa Rice',
-        'Tuyo Pesto',
+,        'Tinapa Rice',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
         'Cheesy Nachos',
         'Nachos Supreme',
         'French Fries',
         'Clubhouse Sandwich',
         'Fish and Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpiang Shanghai'
     ],
     'Onion': [
         'Korean Spicy Bulgogi (Pork)',
@@ -425,17 +446,24 @@ const recipeMapping = {
         'Pancit Canton + Bihon (Mixed)',
         'Spaghetti',
         'Creamy Carbonara',
-        'Creamy Pesto',
-        'Tuyo Pesto',
-        'Kare-Kare',
-        'Chicken Buffalo Wings',
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+,        'Kare-Kare (L)',,
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)',
         'Fried Rice',
         'Tinapa Rice',
         'Cheesy Nachos',
         'Nachos Supreme',
         'Clubhouse Sandwich',
         'Cheesy Dynamite Lumpia',
-        'Lumpiang Shanghai'
     ],
     'Chili': [
         'Korean Spicy Bulgogi (Pork)',
@@ -443,8 +471,12 @@ const recipeMapping = {
         'Sizzling Pork Sisig',
         'Sinigang (Pork)',
         'Sinigang (Shrimp)',
-        'Tuyo Pesto',
-        'Chicken Buffalo Wings'
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Chili flakes': [
         'Buttered Spicy Chicken',
@@ -494,7 +526,7 @@ const recipeMapping = {
     'Potato': [
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
-        'Paknet (Pakbet w/ Bagnet)',
+,        'Paknet (Pakbet w/ Bagnet)',
         'French Fries'
     ],
     'Carrot': [
@@ -504,21 +536,18 @@ const recipeMapping = {
         'Pancit Bihon',
         'Pancit Canton + Bihon (Mixed)',
         'Pork Shanghai',
-        'Lumpiang Shanghai'
+        'Lumpian Shanghai (S)',
+        'Lumpian Shanghai (L)',
+        'Lumpian Shanghai (M)'
     ],
-    'Carrots': [
-        'Special Bulalo (good for 2-3 Persons)',
-        'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
-        'Paknet (Pakbet w/ Bagnet)',
-        'Pancit Bihon',
-        'Pancit Canton + Bihon (Mixed)'
-    ],
+
     'Cabbage': [
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
         'Pancit Bihon',
         'Pancit Canton + Bihon (Mixed)'
     ],
+
     'Kangkong': [
         'Sinigang (Pork)',
         'Sinigang (Shrimp)'
@@ -528,23 +557,31 @@ const recipeMapping = {
     ],
     'Eggplant': [
         'Paknet (Pakbet w/ Bagnet)',
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Squash': [
         'Paknet (Pakbet w/ Bagnet)'
     ],
     'Okra': [
         'Paknet (Pakbet w/ Bagnet)',
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Ampalaya': [
         'Paknet (Pakbet w/ Bagnet)'
     ],
     'String beans': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Banana blossom': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Siling Green': [
         'Cheesy Dynamite Lumpia'
@@ -553,9 +590,11 @@ const recipeMapping = {
         'Clubhouse Sandwich'
     ],
     'Pine nuts': [
-        'Creamy Pesto'
-    ],
-    
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)'
+,    ],
+
     // ================ DAIRY & EGGS ================
     'Egg': [
         'Sizzling Pork Sisig',
@@ -564,7 +603,6 @@ const recipeMapping = {
         'Fried Rice',
         'Tinapa Rice',
         'Clubhouse Sandwich',
-        'Lumpiang Shanghai'
     ],
     'Butter': [
         'Buttered Honey Chicken',
@@ -572,7 +610,9 @@ const recipeMapping = {
         'Buttered Shrimp',
         'Cream Dory Fish Fillet',
         'Creamy Carbonara',
-        'Chicken Buffalo Wings'
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Mayonnaise': [
         'Sizzling Pork Sisig',
@@ -581,7 +621,9 @@ const recipeMapping = {
     'Cream': [
         'Cream Dory Fish Fillet',
         'Creamy Carbonara',
-        'Creamy Pesto',
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
         'Cookies & Cream Frappe',
         'Strawberry Cream Frappe',
         'Mango Cheesecake Frappe'
@@ -606,8 +648,11 @@ const recipeMapping = {
         'Cheesy Dynamite Lumpia',
         'Spaghetti',
         'Creamy Carbonara',
-        'Creamy Pesto'
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',    
     ],
+
     'Cheese sauce': [
         'Cheesy Nachos',
         'Nachos Supreme',
@@ -674,10 +719,14 @@ const recipeMapping = {
         'Sinigang (Pork)',
         'Sinigang (Shrimp)',
         'Paknet (Pakbet w/ Bagnet)',
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Bagoong': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Tamarind mix': [
         'Sinigang (Pork)',
@@ -690,7 +739,7 @@ const recipeMapping = {
         'Pork Shanghai',
         'Sizzling Pork Sisig',
         'Sizzling Liempo',
-        'Sizzling Porkchop',
+        'Sizzling Porkchop',,
         'Sizzling Fried Chicken',
         'Fried Chicken',
         'Budget Fried Chicken',
@@ -701,17 +750,25 @@ const recipeMapping = {
         'Fish and Fries',
         'French Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpiang Shanghai',
+        'Lumpian Shanghai (S)',
+        'Lumpian Shanghai (L)',
+        'Lumpian Shanghai (M)',
         'Fried Rice',
         'Tinapa Rice',
-        'Tuyo Pesto',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
         'Cheesy Nachos',
         'Nachos Supreme',
         'Pancit Bihon',
         'Pancit Canton + Bihon (Mixed)',
         'Spaghetti',
-        'Kare-Kare',
-        'Chicken Buffalo Wings'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',,
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Salt': [
         'Korean Spicy Bulgogi (Pork)',
@@ -735,11 +792,18 @@ const recipeMapping = {
         'Buttered Shrimp',
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
-        'Creamy Pesto',
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
         'Fried Rice',
         'Plain Rice',
         'Tinapa Rice',
-        'Tuyo Pesto'
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Black pepper': [
         'Korean Spicy Bulgogi (Pork)',
@@ -759,7 +823,14 @@ const recipeMapping = {
         'Paknet (Pakbet w/ Bagnet)',
         'Buttered Shrimp',
         'Creamy Carbonara',
-        'Chicken Buffalo Wings'
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
+    ],
+    'Pepper': [
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Peppercorn': [
         'Korean Salt and Pepper (Pork)',
@@ -771,9 +842,10 @@ const recipeMapping = {
     'Cornstarch': [
         'Crispy Pork Lechon Kawali',
         'Pork Shanghai',
-        'Lumpiang Shanghai',
         'Cheesy Dynamite Lumpia',
-        'Chicken Buffalo Wings'
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Bay leaves': [
         'Chicken Adobo',
@@ -797,7 +869,7 @@ const recipeMapping = {
         'Cafe Americano',
         'Cafe Latte',
         'Caramel Macchiato',
-        'Milk Tea',
+        'Milk Tea',,
         'Matcha Green Tea',
         'Cookies & Cream Frappe',
         'Strawberry Cream Frappe',
@@ -806,9 +878,8 @@ const recipeMapping = {
         'Spaghetti',
         'Buttered Shrimp'
     ],
-    'Breadcrumbs': [
+    'Breadcrumbs': [,
         'Pork Shanghai',
-        'Lumpiang Shanghai',
         'Fried Chicken',
         'Budget Fried Chicken',
         'Cream Dory Fish Fillet',
@@ -816,13 +887,14 @@ const recipeMapping = {
     ],
     'Flour': [
         'Pork Shanghai',
-        'Lumpiang Shanghai',
         'Fried Chicken',
         'Budget Fried Chicken',
         'Cream Dory Fish Fillet',
         'Fish and Fries',
         'French Fries',
-        'Chicken Buffalo Wings'
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Gravy': [
         'Clubhouse Sandwich',
@@ -832,11 +904,17 @@ const recipeMapping = {
         'Spaghetti'
     ],
     'Basil pesto': [
-        'Creamy Pesto',
-        'Tuyo Pesto'
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',    
     ],
     'Herbs': [
-        'Tuyo Pesto'
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',  
     ],
     'Water': [
         'Special Bulalo (good for 2-3 Persons)',
@@ -881,18 +959,28 @@ const recipeMapping = {
     'Ham': [
         'Clubhouse Sandwich'
     ],
-    'Buffalo sauce': [
-        'Chicken Buffalo Wings'
+    'Buffalo Sauce': [
+        'Buffalo Chicken Wings (S)',
+        'Buffalo Chicken Wings (L)',
+        'Buffalo Chicken Wings (M)'
     ],
     'Peanut butter': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Rice flour': [
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     'Olive oil': [
-        'Creamy Pesto',
-        'Tuyo Pesto'
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',    
     ],
     
     // ================ NOODLES, PASTA & RICE ================
@@ -909,9 +997,14 @@ const recipeMapping = {
     'Spaghetti pasta': [
         'Spaghetti',
         'Creamy Carbonara',
-        'Creamy Pesto',
-        'Tuyo Pesto'
+        'Creamy Pesto (S)',
+        'Creamy Pesto (M)',
+        'Creamy Pesto (L)',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',   
     ],
+
     'Rice': [
         'Korean Spicy Bulgogi (Pork)',
         'Korean Salt and Pepper (Pork)',
@@ -928,7 +1021,9 @@ const recipeMapping = {
         'Fried Chicken',
         'Budget Fried Chicken',
         'Tinapa Rice',
-        'Tuyo Pesto',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
         'Fried Rice',
         'Plain Rice',
         'Sinigang (Pork)',
@@ -937,7 +1032,9 @@ const recipeMapping = {
         'Buttered Shrimp',
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
-        'Kare-Kare'
+        'Kare-Kare (S)',
+        'Kare-Kare (M)',
+        'Kare-Kare (L)',
     ],
     
     // ================ BEVERAGE BASES ================
@@ -1107,7 +1204,6 @@ const recipeMapping = {
         'Strawberry & Cream MC',
         'All Frappe drinks'
     ],
-    
     // ================ SNACKS & SIDES ================
     'Nacho chips': [
         'Cheesy Nachos',
@@ -1118,7 +1214,9 @@ const recipeMapping = {
         'Nachos Supreme'
     ],
     'Lumpia wrapper': [
-        'Lumpiang Shanghai',
+        'Lumpian Shanghai (S)',
+        'Lumpian Shanghai (L)',
+        'Lumpian Shanghai (M)',
         'Cheesy Dynamite Lumpia',
         'Pork Shanghai'
     ],
@@ -1135,7 +1233,6 @@ const recipeMapping = {
         'All small food items',
         'French Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpiang Shanghai (6 pcs)',
         'Plain Rice',
         'Fried Rice'
     ],
@@ -1148,7 +1245,9 @@ const recipeMapping = {
         'Chicken Adobo',
         'Pork Shanghai',
         'Tinapa Rice',
-        'Tuyo Pesto',
+        'Tuyo Pesto (S)',
+        'Tuyo Pesto (M)',
+        'Tuyo Pesto (L)',
         'Budget Meals',
         'Nachos',
         'Fish and Fries'
@@ -1193,18 +1292,17 @@ const recipeMapping = {
         'All Frappe drinks',
         'Matcha Green Tea drinks'
     ],
-
     'Collins Glass': [
         'Cucumber Lemonade (Glass)',
         'Blue Lemonade (Glass)',
         'Red Tea (Glass)',
-        'Calamansi Juice (Glass)',
+        'Calamansi Juice (Glass)'
     ],
 
     'Plates (Small)': [
         'French Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpiang Shanghai (6 pcs)',
+        'Lumpian Shanghai (S)',
         'Plain Rice',
         'Fried Rice'
     ],
@@ -1216,7 +1314,7 @@ const recipeMapping = {
         'Chicken Adobo',
         'Pork Shanghai',
         'Tinapa Rice',
-        'Tuyo Pesto',
+        'Tuyo Pesto (M)',
         'Budget Meals',
         'Nachos',
         'Fish and Fries'
@@ -1764,8 +1862,8 @@ function showLogoutConfirmation(onConfirm, onCancel) {
 // ==================== MODAL FUNCTIONS ====================
 
 function openAddModal() {
-    // 🚫 Only allow adding items in Waste Management section
-    if (currentSection !== 'waste-management') {
+    // Allow adding items in both Inventory (raw ingredients) and Waste Management sections
+    if (currentSection !== 'inventory' && currentSection !== 'waste-management') {
         return;
     }
     
@@ -5078,18 +5176,31 @@ const menuItemIngredients = {
     'Pancit Bihon': ['Bihon Noodles', 'Chicken', 'Cabbage', 'Carrot', 'Garlic', 'Onion', 'Soy Sauce', 'Oyster Sauce', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
     'Pancit Canton': ['Pancit Canton', 'Chicken', 'Cabbage', 'Carrot', 'Garlic', 'Onion', 'Soy Sauce', 'Oyster Sauce', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
     'Pancit Canton + Bihon (Mixed)': ['Pancit Canton', 'Bihon Noodles', 'Chicken', 'Cabbage', 'Carrot', 'Garlic', 'Onion', 'Soy Sauce', 'Oyster Sauce', 'Chicken Broth', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Spaghetti': ['Spaghetti Pasta', 'Tomato Sauce', 'Ground Pork', 'Cheese', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Spaghetti (S)': ['Spaghetti Pasta', 'Tomato Sauce', 'Ground Pork', 'Cheese', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil', 'Tray', 'Napkins', 'Plastic Utensils Set'],
+    'Spaghetti (M)': ['Spaghetti Pasta', 'Tomato Sauce', 'Ground Pork', 'Cheese', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil', 'Tray', 'Napkins', 'Plastic Utensils Set'],
+    'Spaghetti (L)': ['Spaghetti Pasta', 'Tomato Sauce', 'Ground Pork', 'Cheese', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil', 'Tray', 'Napkins', 'Plastic Utensils Set'],
     'Creamy Carbonara': ['Spaghetti Pasta', 'Cream', 'Milk', 'Cheese', 'Egg', 'Garlic', 'Butter', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Creamy Pesto': ['Spaghetti Pasta', 'Cream', 'Cheese', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Tuyo Pesto': ['Spaghetti Pasta', 'Tuyo', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Kare-Kare': ['Ground Peanuts', 'Eggplant', 'Onion', 'Garlic', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Chicken Buffalo Wings': ['Chicken', 'Flour', 'Cornstarch', 'Butter', 'Garlic', 'Cooking Oil', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Creamy Pesto (S)': ['Spaghetti Pasta', 'Cream', 'Cheese', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Creamy Pesto (M)': ['Spaghetti Pasta', 'Cream', 'Cheese', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Creamy Pesto (L)': ['Spaghetti Pasta', 'Cream', 'Cheese', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (S)': ['Spaghetti Pasta', 'Tuyo', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (M)': ['Spaghetti Pasta', 'Tuyo', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (L)': ['Spaghetti Pasta', 'Tuyo', 'Garlic', 'Salt', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Kare-Kare (S)': ['Ground Peanuts', 'Eggplant', 'Onion', 'Garlic', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Kare-Kare (M)': ['Ground Peanuts', 'Eggplant', 'Onion', 'Garlic', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Kare-Kare (L)': ['Ground Peanuts', 'Eggplant', 'Onion', 'Garlic', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Buffalo Chicken Wings (S)': ['Chicken', 'Flour', 'Cornstarch', 'Butter', 'Garlic', 'Cooking Oil', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Buffalo Chicken Wings (M)': ['Chicken', 'Flour', 'Cornstarch', 'Butter', 'Garlic', 'Cooking Oil', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Buffalo Chicken Wings (L)': ['Chicken', 'Flour', 'Cornstarch', 'Butter', 'Garlic', 'Cooking Oil', 'Salt', 'Black Pepper', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Lumpian Shanghai (S)': ['Ground Pork', 'Carrots', 'Lumpia Wrapper', 'Cooking Oil'],
+    'Lumpian Shanghai (M)': ['Ground Pork', 'Carrots', 'Lumpia Wrapper', 'Cooking Oil'],
+    'Lumpian Shanghai (L)': ['Ground Pork', 'Carrots', 'Lumpia Wrapper', 'Cooking Oil'],
 
     // ==================== DRINKS ====================
     'Cucumber Lemonade (Glass)': ['Cucumber', 'Lemon', 'Sugar', 'Water', 'Salt'],
     'Cucumber Lemonade (Pitcher)': ['Cucumber', 'Lemon', 'Sugar', 'Water'],
-    'Blue Lemonade (Glass)': ['Lemon', 'Sugar', 'Water', 'Salt'],
     'Blue Lemonade (Pitcher)': ['Lemon', 'Sugar', 'Water'],
+    'Blue Lemonade (Glass)': ['Lemon', 'Sugar', 'Water', 'Salt'],
     'Red Tea (Glass)': ['Sugar', 'Water', 'Salt'],
     'Red Tea (Pitcher)': ['Sugar', 'Water'],
     'Calamansi Juice (Glass)': ['Calamansi', 'Sugar', 'Water', 'Salt'],
@@ -5146,10 +5257,12 @@ const menuItemIngredients = {
     'Rocky Road Frappe': ['Milk'],
 
     // ==================== FRAPPE - REGULAR ====================
-    'Choco Fudge Frappe': ['Milk'],
-    'Choco Mousse Frappe': ['Milk'],
-    'Coffee Crumble Frappe': ['Coffee Beans', 'Milk'],
-    'Vanilla Cream Frappe': ['Milk'],
+    'Choco Fudge Frappe (Regular)': ['Milk'],
+    'Choco Mousse Frappe (Regular)': [,'Milk'],
+    'Chocolate Coffee Frappe (Regular)': ['Chocolate Coffee Beans', 'Milk'],
+    'Coffee Crumble Frappe (Regular)': ['Coffee Beans', 'Milk'],
+    'Chocolate Coffee Crumbles Frappe (Regular)': ['Chocolate Coffee Beans', 'Milk', 'Cookie Crumbs'],
+    'Vanilla Cream Frappe (Regular)': ['Milk'],
 
     // ==================== SNACKS & APPETIZERS ====================
     'Cheesy Nachos': ['Cooking Oil', 'Onion', 'Cheese', 'Plates', 'Napkins'],
@@ -5158,13 +5271,17 @@ const menuItemIngredients = {
     'Clubhouse Sandwich': ['Bread', 'Chicken', 'Egg', 'Tomato', 'Mayonnaise', 'Napkins'],
     'Fish and Fries': ['Butter', 'Potato', 'Cooking Oil', 'Salt', 'Plates', 'Napkins'],
     'Cheesy Dynamite Lumpia': ['Cooking Oil', 'Cheese', 'Lumpia Wrapper', 'Cornstarch', 'Plates', 'Napkins'],
-    'Lumpiang Shanghai': ['Ground Pork', 'Carrot', 'Onion', 'Garlic', 'Lumpia Wrapper', 'Cooking Oil', 'Breadcrumbs', 'Flour', 'Plates', 'Napkins'],
+    'Lumpian Shanghai (S)': ['Ground Pork', 'Carrot', 'Lumpia Wrapper', 'Cooking Oil', 'Plates', 'Napkins'],
+    'Lumpian Shanghai (M)': ['Ground Pork', 'Carrot', 'Lumpia Wrapper', 'Cooking Oil', 'Plates', 'Napkins'],
+    'Lumpian Shanghai (L)': ['Ground Pork', 'Carrot', 'Lumpia Wrapper', 'Cooking Oil', 'Plates', 'Napkins'],
 
     // ==================== BUDGET MEALS ====================
     'Fried Chicken': ['Chicken', 'Flour', 'Garlic', 'Black Pepper', 'Cooking Oil', 'Salt', 'Rice', 'Plates', 'Napkins', 'Plastic Utensils Set'],
     'Budget Fried Chicken': ['Chicken', 'Cooking Oil', 'Salt', 'Breadcrumbs', 'Flour', 'Rice', 'Plates', 'Napkins', 'Plastic Utensils Set'],
     'Tinapa Rice': ['Tinapa', 'Rice', 'Garlic', 'Egg', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
-    'Tuyo Pesto': ['Tuyo', 'Spaghetti Pasta', 'Garlic', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (Budget S)': ['Tuyo', 'Spaghetti Pasta', 'Garlic', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (Budget M)': ['Tuyo', 'Spaghetti Pasta', 'Garlic', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
+    'Tuyo Pesto (Budget L)': ['Tuyo', 'Spaghetti Pasta', 'Garlic', 'Cooking Oil', 'Plates', 'Napkins', 'Plastic Utensils Set'],
     'Fried Rice': ['Rice', 'Garlic', 'Onion', 'Sesame Oil', 'Soy Sauce', 'Cooking Oil', 'Salt', 'Sugar', 'Egg', 'Water', 'Plates', 'Napkins'],
     'Plain Rice': ['Rice', 'Salt', 'Water', 'Plates', 'Napkins'],
 

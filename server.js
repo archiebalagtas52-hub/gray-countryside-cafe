@@ -30,8 +30,6 @@ import staffRoutes from "./routes/staffroute.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js";
 import mongoDBInventoryService from "./services/mongoDBInventoryService.js";
 import revenueBreakdownService from "./services/revenueBreakdownService.js";
-import notificationService from "./services/notificationService.js";
-
 
 dotenv.config();
 
@@ -180,8 +178,9 @@ const recipeMapping = {
     ],
     'Ground Pork': [
         'Pork Shanghai',
-        'Lumpia Shanghai',
-        'Lumpia Shanghai',
+        'Lumpian Shanghai (M)',
+        'Lumpian Shanghai (L)',
+        'Lumpian Shanghai (M)',
         'Spaghetti',
         'Spaghetti (S)',
         'Spaghetti (M)',
@@ -291,8 +290,11 @@ const recipeMapping = {
         'Clubhouse Sandwich',
         'Fish and Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpia Shanghai'
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',    
+        'Lumpia Shanghai (L)'
     ],
+
     'Onion': [
         'Korean Spicy Bulgogi (Pork)',
         'Korean Salt and Pepper (Pork)',
@@ -320,7 +322,9 @@ const recipeMapping = {
         'Cheesy Nachos',
         'Nachos Supreme',
         'Clubhouse Sandwich',
-        'Lumpia Shanghai'
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',   
+        'Lumpia Shanghai (L)',
     ],
     'Chili': [
         'Korean Spicy Bulgogi (Pork)',
@@ -414,19 +418,11 @@ const recipeMapping = {
         'Pancit Canton (S)',
         'Pancit Canton (M)',
         'Pancit Canton (L)',
-        'Lumpia Shanghai'
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
+        'Lumpia Shanghai (L)'
     ],
-    'Carrots': [
-        'Special Bulalo (good for 2-3 Persons)',
-        'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
-        'Paknet (Pakbet w/ Bagnet)',
-        'Pancit Bihon (S)',
-        'Pancit Bihon (M)',
-        'Pancit Bihon (L)',
-        'Pancit Canton (S)',
-        'Pancit Canton (M)',
-        'Pancit Canton (L)'
-    ],
+
     'Cabbage': [
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
@@ -487,8 +483,10 @@ const recipeMapping = {
         'Tinapa Rice',
         'Clubhouse Sandwich',
         'Fish and Fries',
-        'Lumpia Shanghai'
-    ],
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
+        'Lumpia Shanghai (L)',
+       ],
     'Butter': [
         'Buttered Honey Chicken',
         'Buttered Spicy Chicken',
@@ -662,7 +660,8 @@ const recipeMapping = {
         'French Fries (Medium)',
         'French Fries (Large)',
         'Cheesy Dynamite Lumpia',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Fried Rice',
         'Fried Rice (Small)',
         'Fried Rice (Medium)',
@@ -795,7 +794,8 @@ const recipeMapping = {
         'Korean Salt and Pepper (Pork)',
         'Crispy Pork Lechon Kawali',
         'Pork Shanghai',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Cheesy Dynamite Lumpia'
     ],
     'Bay leaves': [
@@ -914,14 +914,16 @@ const recipeMapping = {
     ],
     'Breadcrumbs': [
         'Pork Shanghai',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Fried Chicken',
         'Cream Dory Fish Fillet',
         'Fish and Fries'
     ],
     'Flour': [
         'Pork Shanghai',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Sizzling Fried Chicken',
         'Fried Chicken',
         'Cream Dory Fish Fillet',
@@ -941,8 +943,11 @@ const recipeMapping = {
         'Nachos Supreme (Small)',
         'Nachos Supreme (Medium)',
         'Nachos Supreme (Large)',
-        'Lumpia Shanghai'
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',  
+        'Lumpia Shanghai (L)'
     ],
+
     'Hotdog': [
         'Spaghetti',
         'Spaghetti (S)',
@@ -964,8 +969,11 @@ const recipeMapping = {
         'Special Bulalo (good for 2-3 Persons)',
         'Special Bulalo Buy 1 Take 1 (good for 6-8 Persons)',
         'Paknet (Pakbet w/ Bagnet)',
-        'Lumpia Shanghai'
-    ],
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)', 
+        'Lumpia Shanghai (L)',  
+     ],
+
     'Water': [
         'Special Bulalo',
         'Special Bulalo (good for 2-3 Persons)',
@@ -1212,6 +1220,10 @@ const recipeMapping = {
         'Iced Café Latte',
         'Iced Café Latte (Grande)',
         'Iced Café Latte (Tall)'
+    ],
+    'Chocolate Coffee Beans': [
+        'Chocolate Coffee Frappe',
+        'Chocolate Coffee Crumbles Frappe'
     ],
     'Espresso': [
         'Cafe Americano',
@@ -1516,7 +1528,6 @@ const recipeMapping = {
         'Red Tea (Tall)',
         'Red Tea Glass',
         'Red Tea (L)',
-        'Black Tea',
         'Black Tea (Grande)',
         'Black Tea (Tall)',
         'Lemon Tea',
@@ -1695,7 +1706,8 @@ const recipeMapping = {
         'Nachos Supreme'
     ],
     'Lumpia wrapper': [
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Cheesy Dynamite Lumpia',
         'Pork Shanghai'
     ],
@@ -2032,7 +2044,8 @@ const recipeMapping = {
         'Clubhouse Sandwich',
         'Fish and Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Tinapa Rice',
         'Tinapa Rice (Small)',
         'Tinapa Rice (Medium)',
@@ -2102,7 +2115,8 @@ const recipeMapping = {
         'Clubhouse Sandwich',
         'Fish and Fries',
         'Cheesy Dynamite Lumpia',
-        'Lumpia Shanghai',
+        'Lumpia Shanghai (S)',
+        'Lumpia Shanghai (M)',
         'Fried Rice',
         'Fried Rice (Small)',
         'Fried Rice (Medium)',
@@ -3025,6 +3039,45 @@ const recipeMapping = {
         'Salt',
         'Black pepper'
     ],
+    'Chicken Buffalo Wings (S)': [
+        'Chicken',
+        'Flour',
+        'Cornstarch',
+        'Butter',
+        'Garlic',
+        'Cooking Oil',
+        'Salt',
+        'Black Pepper',
+        'Plates',
+        'Napkins',
+        'Plastic Utensils Set'
+    ],
+    'Chicken Buffalo Wings (M)': [
+        'Chicken',
+        'Flour',
+        'Cornstarch',
+        'Butter',
+        'Garlic',
+        'Cooking Oil',
+        'Salt',
+        'Black Pepper',
+        'Plates',
+        'Napkins',
+        'Plastic Utensils Set'
+    ],
+    'Chicken Buffalo Wings (L)': [
+        'Chicken',
+        'Flour',
+        'Cornstarch',
+        'Butter',
+        'Garlic',
+        'Cooking Oil',
+        'Salt',
+        'Black Pepper',
+        'Plates',
+        'Napkins',
+        'Plastic Utensils Set'
+    ],
     'Caramel Milk Tea': [
         'Black tea',
         'Milk',
@@ -3310,6 +3363,27 @@ const recipeMapping = {
         'Plastic Cups',
         'Boba straws'
     ],
+    'Chocolate Coffee Frappe': [
+        'Chocolate Coffee Beans',
+        'Milk',
+        'Ice cream',
+        'Ice',
+        'Sugar',
+        'Whipped cream',
+        'Plastic Cups',
+        'Boba straws'
+    ],
+    'Chocolate Coffee Crumbles Frappe': [
+        'Chocolate Coffee Beans',
+        'Milk',
+        'Ice cream',
+        'Ice',
+        'Cookie crumbs',
+        'Sugar',
+        'Whipped cream',
+        'Plastic Cups',
+        'Boba straws'
+    ],
     'Vanilla Cream Frappe': [
         'Vanilla syrup',
         'Milk',
@@ -3467,6 +3541,8 @@ const recipeMapping = {
     'Soda (Mismo) Royal': [
         'Soda (Mismo) Royal'
     ],
+
+    
 };
 
 const reverseRecipeMapping = {};

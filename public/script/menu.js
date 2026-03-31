@@ -41,6 +41,7 @@ const ingredientInventory = {
     'Pork Chop': { name: 'Pork Chop', current: 50, max: 80, unit: 'kg', minThreshold: 8 },
     'Ground Pork': { name: 'Ground Pork', current: 40, max: 100, unit: 'kg', minThreshold: 10 },
     'Chicken': { name: 'Chicken', current: 100, max: 300, unit: 'kg', minThreshold: 15 },
+    'Chicken Wings': { name: 'Chicken Wings', current: 50, max: 100, unit: 'kg', minThreshold: 10 },
     'Beef': { name: 'Beef', current: 50, max: 100, unit: 'kg', minThreshold: 10 },
     'beef_shank': { name: 'Beef Shank', current: 50, max: 100, unit: 'kg', minThreshold: 10 },
     'Shrimp': { name: 'Shrimp', current: 50, max: 100, unit: 'kg', minThreshold: 8 },
@@ -82,6 +83,7 @@ const ingredientInventory = {
     'Vinegar': { name: 'Vinegar', current: 40, max: 50, unit: 'liter', minThreshold: 10 },
     'oyster_sauce': { name: 'Oyster Sauce', current: 30, max: 30, unit: 'liter', minThreshold: 5 },
     'fish_sauce': { name: 'Fish Sauce', current: 30, max: 30, unit: 'liter', minThreshold: 5 },
+    'Buffalo Sauce': { name: 'Buffalo Sauce', current: 20, max: 40, unit: 'liter', minThreshold: 5 },
     'Cooking oil': { name: 'Cooking Oil', current: 40, max: 50, unit: 'liter', minThreshold: 10 },
     'Sesame oil': { name: 'Sesame Oil', current: 15, max: 25, unit: 'liter', minThreshold: 5 },
     'Chicken_broth': { name: 'Chicken Broth', current: 20, max: 30, unit: 'liter', minThreshold: 5 },
@@ -105,6 +107,7 @@ const ingredientInventory = {
     'Sugar': { name: 'Sugar', current: 30, max: 50, unit: 'kg', minThreshold: 10 },
     'Salt': { name: 'Salt', current: 30, max: 50, unit: 'kg', minThreshold: 10 },
     'Black pepper': { name: 'Black Pepper', current: 20, max: 30, unit: 'kg', minThreshold: 5 },
+    'Pepper': { name: 'Pepper', current: 15, max: 25, unit: 'kg', minThreshold: 3 },
     'Bay leaves': { name: 'Bay Leaves', current: 10, max: 20, unit: 'piece', minThreshold: 3 },
     'Peppercorn': { name: 'Peppercorn', current: 5, max: 10, unit: 'kg', minThreshold: 1 },
 
@@ -758,7 +761,7 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Salted Caramel Frappe': {
+    'Salted Caramel Frappe (Regular)': {
         ingredients: { 
             'Ice': 0.2, 
             'Milk': 0.2, 
@@ -770,6 +773,20 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
+
+    'Salted Caramel Frappe (Premium)': {
+        ingredients: { 
+            'Ice': 0.2, 
+            'Milk': 0.2, 
+            'Caramel Syrup': 0.07, 
+            'Cream': 0.15,
+            'Sugar': 0.05,
+            'Salt': 0.003,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+
     'Iced Americano': {
         ingredients: { 
             'coffee_beans': 0.03, 
@@ -1376,19 +1393,10 @@ const productIngredientMap = {
         servingware: 'cup'
     },
 
-    'Black Tea': {
-        ingredients: { 
-            'Black Tea': 0.02,
-            'water': 0.2,
-            'Sugar': 0.05
-        },
-        servingware: 'cup'
-    },
-
     'Black Tea (Grande)': {
         ingredients: { 
             'Black Tea': 0.02,
-            'water': 0.25,
+            'Hot Water': 0.25,
             'Sugar': 0.05
         },
         servingware: 'cup'
@@ -1397,7 +1405,7 @@ const productIngredientMap = {
     'Black Tea (Tall)': {
         ingredients: { 
             'Black Tea': 0.02,
-            'water': 0.2,
+            'Hot Water': 0.2,
             'Sugar': 0.05
         },
         servingware: 'cup'
@@ -1518,12 +1526,48 @@ const productIngredientMap = {
     },
 
     // ==================== FRAPPE ====================
-    'Cookies & Cream Frappe': {
+    'Matcha Green Tea Frappe (Regular)': {
+        ingredients: { 
+            'Matcha Powder': 0.01, 
+            'Milk': 0.25, 
+            'Sugar': 0.05,
+            'Ice': 0.2,
+            'Cream': 0.1,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+
+    'Matcha Green Tea Frappe (Premium)': {
+        ingredients: { 
+            'Matcha Powder': 0.015, 
+            'Milk': 0.25, 
+            'Sugar': 0.05,
+            'Ice': 0.2,
+            'Cream': 0.15,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+
+    'Cookies & Cream Frappe (Regular)': {
         ingredients: { 
             'Ice': 0.2, 
             'Milk': 0.2, 
             'Cream': 0.1,
             'Cookie Crumbs': 0.03,
+            'Sugar': 0.05,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+
+    'Cookies & Cream Frappe (Premium)': {
+        ingredients: { 
+            'Ice': 0.2, 
+            'Milk': 0.2, 
+            'Cream': 0.15,
+            'Cookie Crumbs': 0.05,
             'Sugar': 0.05,
             'water': 0.1
         },
@@ -1565,18 +1609,7 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Strawberry & Cream Frappe (Premium)': {
-        ingredients: { 
-            'strawberry': 0.08, 
-            'Milk': 0.2, 
-            'Ice': 0.2, 
-            'Cream': 0.1,
-            'Sugar': 0.05,
-            'water': 0.1
-        },
-        servingware: 'cup'
-    },
-    'Strawberry & Cream Frappe (Regular)': {
+    'Strawberry Cream Frappe (Regular)': {
         ingredients: { 
             'strawberry': 0.05, 
             'Milk': 0.2, 
@@ -1587,8 +1620,19 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
+    'Strawberry Cream Frappe (Premium)': {
+        ingredients: { 
+            'strawberry': 0.08, 
+            'Milk': 0.2, 
+            'Ice': 0.2, 
+            'Cream': 0.15,
+            'Sugar': 0.05,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
 
-    'Strawberry Cheesecake (Premium)': {
+    'Strawberry Cheesecake Frappe (Premium)': {
         ingredients: { 
             'strawberry': 0.1, 
             'Cream cheese': 0.1, 
@@ -1598,7 +1642,7 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Strawberry Cheesecake (Regular)': {
+    'Strawberry Cheesecake Frappe (Regular)': {
         ingredients: { 
             'strawberry': 0.05, 
             'Cream cheese': 0.1, 
@@ -1609,7 +1653,7 @@ const productIngredientMap = {
         servingware: 'cup'
     },
 
-    'Mango Cheesecake Frappe': {
+    'Mango Cheesecake Frappe (Regular)': {
         ingredients: { 
             'mango': 0.1, 
             'Milk': 0.2, 
@@ -1621,7 +1665,19 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Rocky Road Frappe': {
+    'Mango Cheesecake Frappe (Premium)': {
+        ingredients: { 
+            'mango': 0.15, 
+            'Milk': 0.2, 
+            'Ice': 0.2,
+            'Cream': 0.12,
+            'Sugar': 0.05,
+            'Vanilla extract': 0.01,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+    'Rocky Road Frappe (Regular)': {
         ingredients: { 
             'Chocolate Syrup': 0.05, 
             'Marshmallows': 0.02, 
@@ -1629,6 +1685,19 @@ const productIngredientMap = {
             'Ice': 0.2, 
             'Milk': 0.2, 
             'Cream': 0.1,
+            'Sugar': 0.05,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+    'Rocky Road Frappe (Premium)': {
+        ingredients: { 
+            'Chocolate Syrup': 0.07, 
+            'Marshmallows': 0.03, 
+            'Nuts': 0.03, 
+            'Ice': 0.2, 
+            'Milk': 0.2, 
+            'Cream': 0.15,
             'Sugar': 0.05,
             'water': 0.1
         },
@@ -1658,7 +1727,7 @@ const productIngredientMap = {
         servingware: 'cup'
     },
 
-    'Choco Mousse Frappe': {
+    'Choco Mousse Frappe (Regular)': {
         ingredients: { 
             'Chocolate Mousse': 0.06, 
             'Ice': 0.2, 
@@ -1669,10 +1738,10 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Coffee Crumble Frappe': {
+    'Coffee Crumble Frappe (Regular)': {
         ingredients: { 
-            'coffee_beans': 0.03, 
-            'Coffee Crumbles': 0.03, 
+            'Chocolate Coffee beans': 0.03, 
+            'Chocolate Coffee Crumbles': 0.03, 
             'Ice': 0.2, 
             'Milk': 0.2, 
             'Cream': 0.1,
@@ -1681,7 +1750,30 @@ const productIngredientMap = {
         },
         servingware: 'cup'
     },
-    'Vanilla Cream Frappe': {
+    'Chocolate Coffee Frappe': {
+        ingredients: { 
+            'Chocolate Coffee Beans': 0.03, 
+            'Ice': 0.2, 
+            'Milk': 0.2, 
+            'Cream': 0.1,
+            'Sugar': 0.05,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+    'Chocolate Coffee Crumbles Frappe': {
+        ingredients: { 
+            'Chocolate Coffee Beans': 0.03, 
+            'Cookie Crumbs': 0.03, 
+            'Ice': 0.2, 
+            'Milk': 0.2, 
+            'Cream': 0.1,
+            'Sugar': 0.05,
+            'water': 0.1
+        },
+        servingware: 'cup'
+    },
+    'Vanilla Cream Frappe (Regular)': {
         ingredients: { 
             'Vanilla extract': 0.04, 
             'Cream': 0.15, 
@@ -1774,15 +1866,7 @@ const productIngredientMap = {
         },
         servingware: 'plate'
     },
-    'Lumpiang Shanghai': {
-        ingredients: { 
-            'Ground Pork': 0.15, 
-            'Vegetables': 0.1, 
-            'lumpia_wrapper': 15, 
-            'Cooking oil': 0.15 
-        },
-        servingware: 'plate'
-    },
+
     'Fried Chicken': {
         ingredients: { 
             'Chicken': 0.25, 
@@ -1806,7 +1890,7 @@ const productIngredientMap = {
         },
         servingware: 'meal'
     },
-    'Tuyo Pesto': {
+    'Tuyo Pesto (S)': {
         ingredients: { 
             'Tuyo': 0.08, 
             'Spaghetti pasta': 0.3, 
@@ -1816,7 +1900,27 @@ const productIngredientMap = {
         },
         servingware: 'meal'
     },
-    'Creamy Pesto': {
+    'Tuyo Pesto (M)': {
+        ingredients: { 
+            'Tuyo': 0.11, 
+            'Spaghetti pasta': 0.4, 
+            'Garlic': 0.03, 
+            'Cooking oil': 0.07, 
+            'Black pepper': 0.01 
+        },
+        servingware: 'meal'
+    },
+    'Tuyo Pesto (L)': {
+        ingredients: { 
+            'Tuyo': 0.13, 
+            'Spaghetti pasta': 0.5, 
+            'Garlic': 0.03, 
+            'Cooking oil': 0.08, 
+            'Black pepper': 0.02 
+        },
+        servingware: 'meal'
+    },
+    'Creamy Pesto (S)': {
         ingredients: { 
             'Spaghetti pasta': 0.3, 
             'Pesto sauce': 0.1, 
@@ -1824,6 +1928,28 @@ const productIngredientMap = {
             'Cream': 0.1,
             'Cooking oil': 0.05, 
             'Black pepper': 0.01
+        },
+        servingware: 'meal'
+    },
+    'Creamy Pesto (M)': {
+        ingredients: { 
+            'Spaghetti pasta': 0.4, 
+            'Pesto sauce': 0.13, 
+            'Garlic': 0.03,
+            'Cream': 0.13,
+            'Cooking oil': 0.07, 
+            'Black pepper': 0.01
+        },
+        servingware: 'meal'
+    },
+    'Creamy Pesto (L)': {
+        ingredients: { 
+            'Spaghetti pasta': 0.5, 
+            'Pesto sauce': 0.17, 
+            'Garlic': 0.03,
+            'Cream': 0.17,
+            'Cooking oil': 0.08, 
+            'Black pepper': 0.02
         },
         servingware: 'meal'
     },
@@ -1931,6 +2057,84 @@ const productIngredientMap = {
         servingware: 'pot'
     },
 
+    'Kare-Kare (S)': {
+        ingredients: { 
+            'Oxtail': 0.3, 
+            'Peanut Butter': 0.05, 
+            'Eggplant': 0.1, 
+            'String Beans': 0.1, 
+            'Banana Blossom': 0.1,
+            'Cooking oil': 0.05,
+            'Garlic': 0.02,
+            'Onion': 0.05,
+            'Salt': 0.01,
+            'Pepper': 0.005
+        },
+        servingware: 'pot'
+    },
+
+    'Kare-Kare (M)': {
+        ingredients: { 
+            'Oxtail': 0.5, 
+            'Peanut Butter': 0.08, 
+            'Eggplant': 0.15,
+            'String Beans': 0.15,
+            'Banana Blossom': 0.15,
+            'Cooking oil': 0.08,
+            'Garlic': 0.03,
+            'Onion': 0.08,
+            'Salt': 0.015,
+            'Pepper': 0.007
+        },
+        servingware: 'pot'
+    },
+
+    'Kare-Kare (L)': {
+        ingredients: { 
+            'Oxtail': 0.8, 
+            'Peanut Butter': 0.12, 
+            'Eggplant': 0.2,
+            'String Beans': 0.2,
+            'Banana Blossom': 0.2,
+            'Cooking oil': 0.1,
+            'Garlic': 0.05,
+            'Onion': 0.1,
+            'Salt': 0.02,
+            'Pepper': 0.01
+        },
+        servingware: 'pot'
+    },
+
+    'Lumpian Shanghai (S)': {
+        ingredients: { 
+            'Ground Pork': 0.1, 
+            'Carrots': 0.05, 
+            'lumpia_wrapper': 5, 
+            'Cooking oil': 0.05 
+        },
+        servingware: 'plate'
+    },
+    
+    'Lumpian Shanghai (M)': {
+        ingredients: { 
+            'Ground Pork': 0.2, 
+            'Carrots': 0.1, 
+            'lumpia_wrapper': 10, 
+            'Cooking oil': 0.1 
+        },
+        servingware: 'plate'
+    },
+
+    'Lumpian Shanghai (L)': {
+        ingredients: { 
+            'Ground Pork': 0.3, 
+            'Carrots': 0.15, 
+            'lumpia_wrapper': 15, 
+            'Cooking oil': 0.15 
+        },
+        servingware: 'plate'
+    },
+
     // ====================  PACKAGING SUPPLIES ====================
     'Plastic Cups (12oz)': {
         ingredients: {},
@@ -1971,7 +2175,44 @@ const productIngredientMap = {
     'Napkins (Pack of 50)': {
         ingredients: {},
         servingware: 'pack'
+    },
+
+    'Buffalo Chicken Wings (S)': {
+        ingredients: { 
+            'Chicken Wings': 0.5, 
+            'Buffalo Sauce': 0.1, 
+            'Butter': 0.05, 
+            'Garlic': 0.02, 
+            'Salt': 0.01, 
+            'Pepper': 0.005 
+        },
+        servingware: 'plate'
+    },
+
+    'Buffalo Chicken Wings (M)': {
+        ingredients: { 
+            'Chicken Wings': 1.0, 
+            'Buffalo Sauce': 0.2, 
+            'Butter': 0.1,
+            'Garlic': 0.04,
+            'Salt': 0.02,
+            'Pepper': 0.01
+        },
+        servingware: 'plate'
+    },
+
+    'Buffalo Chicken Wings (L)': {
+        ingredients: { 
+            'Chicken Wings': 1.5, 
+            'Buffalo Sauce': 0.3, 
+            'Butter': 0.15,
+            'Garlic': 0.06,
+            'Salt': 0.03,
+            'Pepper': 0.015
+        },
+        servingware: 'plate'
     }
+
 };
 
 // ==================== FALLBACK INVENTORY ITEMS ====================
@@ -4134,6 +4375,8 @@ function closeMissingIngredientsModal() {
     const modal = document.getElementById('missingIngredientsModal');
     if (modal) {
         modal.style.display = 'none';
+        modal.style.visibility = 'hidden';
+        modal.style.opacity = '0';
     }
 }
 
@@ -4152,11 +4395,13 @@ function showMissingIngredientsModal(itemName, missingList) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
+            z-index: 99999;
+            visibility: visible;
+            opacity: 1;
         `;
         document.body.appendChild(modal);
     }
@@ -4164,58 +4409,64 @@ function showMissingIngredientsModal(itemName, missingList) {
     // Update modal content
     const contentArea = document.getElementById('missingIngredientsContent');
     let modalHTML = `
-        <div style="background: white; border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                <div style="font-size: 40px; margin-right: 15px;"></div>
-                <div>
-                    <h2 style="margin: 0; color: #e74c3c;">Missing Ingredients</h2>
-                    <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Cannot add stock for: <strong>${escapeHtml(itemName)}</strong></p>
+        <div style="background: white; border-radius: 12px; overflow: hidden; max-width: 500px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+            <!-- Header Section -->
+            <div style="background: #4e8a6a; padding: 20px 30px; display: flex; align-items: center; gap: 15px;">
+                <div style="font-size: 35px; flex-shrink: 0;">⚠️</div>
+                <div style="flex: 1;">
+                    <h2 style="margin: 0; color: white; font-size: 20px; font-weight: 600;">Missing Ingredients</h2>
+                    <p style="margin: 5px 0 0 0; color: #e8f5e9; font-size: 13px;">Cannot add stock for: <strong>${escapeHtml(itemName)}</strong></p>
                 </div>
             </div>
             
-            <div style="background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
-                <h4 style="margin: 0 0 10px 0; color: #e74c3c; font-size: 14px;">❌ Required Ingredients Unavailable:</h4>
-                <ul style="margin: 0; padding-left: 20px; list-style: none;">
+            <!-- Body Section -->
+            <div style="padding: 30px;">
+                <div style="background: #fff5f5; border-left: 4px solid #e74c3c; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                    <h4 style="margin: 0 0 12px 0; color: #e74c3c; font-size: 14px; font-weight: 600;">Required Ingredients Unavailable:</h4>
+                    <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;">
     `;
     
     if (Array.isArray(missingList) && missingList.length > 0) {
         missingList.forEach(item => {
             modalHTML += `
-                    <li style="color: #e74c3c; margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 14px;">
-                        <span style="position: absolute; left: 0;">❌</span> ${escapeHtml(item)}
-                    </li>
+                        <li style="color: #e74c3c; margin: 0; font-size: 14px; display: flex; align-items: center; gap: 10px; line-height: 1.4;">
+                            <span style="flex-shrink: 0; display: inline-block; width: 18px; text-align: center;">❌</span><span>${escapeHtml(item)}</span>
+                        </li>
             `;
         });
     } else {
         modalHTML += `
-                    <li style="color: #e74c3c; margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 14px;">
-                        <span style="position: absolute; left: 0;">❌</span> Some ingredients are out of stock or insufficient
-                    </li>
+                        <li style="color: #e74c3c; margin: 0; font-size: 14px; display: flex; align-items: center; gap: 10px; line-height: 1.4;">
+                            <span style="flex-shrink: 0; display: inline-block; width: 18px; text-align: center;">❌</span><span>Some ingredients are out of stock or insufficient</span>
+                        </li>
         `;
     }
     
     modalHTML += `
-                </ul>
-            </div>
-                
-            <div style="display: flex; gap: 10px;">
-                <button onclick="closeMissingIngredientsModal()" style="
-                    flex: 1;
-                    padding: 12px 20px;
-                    border: 1px solid #ddd;
-                    background: #f8f9fa;
-                    color: #333;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-weight: 500;
-                    transition: all 0.2s;
-                ">Close</button>
+                    </ul>
+                </div>
+                    
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="closeMissingIngredientsModal()" style="
+                        flex: 1;
+                        padding: 12px 20px;
+                        border: 1px solid #ddd;
+                        background: #f8f9fa;
+                        color: #333;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 500;
+                        transition: all 0.2s;
+                    ">Close</button>
+                </div>
             </div>
         </div>
     `;
     
     modal.innerHTML = modalHTML;
     modal.style.display = 'flex';
+    modal.style.visibility = 'visible';
+    modal.style.opacity = '1';
     
     // Close modal when clicking outside
     modal.onclick = function(event) {
@@ -4264,12 +4515,12 @@ async function showProductMissingIngredientsModal(productName) {
             if (availability.availableIngredients && availability.availableIngredients.length > 0) {
                 html += `
                     <div style="margin-bottom: 20px;">
-                        <h4 style="margin: 0 0 10px 0; color: #27ae60; font-size: 14px;">✓ Available Ingredients:</h4>
-                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                        <h4 style="margin: 0 0 10px 0; color: #27ae60; font-size: 14px; font-weight: 600;">✓ Available Ingredients:</h4>
+                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;">
                 `;
                 availability.availableIngredients.forEach(ing => {
-                    html += `<li style="color: #27ae60; margin-bottom: 5px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0;">✓</span> ${escapeHtml(ing)}
+                    html += `<li style="color: #27ae60; margin: 0; font-size: 14px; display: flex; align-items: center; gap: 10px; line-height: 1.4;">
+                                <span style="flex-shrink: 0; display: inline-block; width: 18px; text-align: center;">✓</span><span>${escapeHtml(ing)}</span>
                             </li>`;
                 });
                 html += `
@@ -4282,12 +4533,12 @@ async function showProductMissingIngredientsModal(productName) {
             if (availability.missingIngredients && availability.missingIngredients.length > 0) {
                 html += `
                     <div>
-                        <h4 style="margin: 0 0 10px 0; color: #e74c3c; font-size: 14px;">❌ Missing Ingredients:</h4>
-                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                        <h4 style="margin: 0 0 10px 0; color: #e74c3c; font-size: 14px; font-weight: 600;">❌ Missing Ingredients:</h4>
+                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;">
                 `;
                 availability.missingIngredients.forEach(ing => {
-                    html += `<li style="color: #e74c3c; margin-bottom: 5px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0;">❌</span> ${escapeHtml(ing)}
+                    html += `<li style="color: #e74c3c; margin: 0; font-size: 14px; display: flex; align-items: center; gap: 10px; line-height: 1.4;">
+                                <span style="flex-shrink: 0; display: inline-block; width: 18px; text-align: center;">❌</span><span>${escapeHtml(ing)}</span>
                             </li>`;
                 });
                 html += `
@@ -5145,7 +5396,7 @@ async function updateFromItemNameSelect() {
                 elements.maximumStock.title = 'Enter maximum stock manually';
                 elements.maximumStock.placeholder = 'Enter maximum stock';
                 
-                // Create info helper text with link to view ingredients
+                // Create info helper text with link to view ingredients for THIS product
                 const helper = document.createElement('div');
                 helper.id = 'maxStockHelper';
                 helper.style.cssText = `
@@ -5158,7 +5409,7 @@ async function updateFromItemNameSelect() {
                     font-size: 12px;
                     color: #1565c0;
                 `;
-                helper.innerHTML = `<small style="cursor: pointer; color: #2196f3; text-decoration: underline; font-weight: 600;" onclick="showAllProductsMissingIngredientsModal()">📦 View ingredient details</small>`;
+                helper.innerHTML = `<small style="cursor: pointer; color: #2196f3; text-decoration: underline; font-weight: 600;" onclick="showProductMissingIngredientsModal('${itemName}')">📦 View Missing Ingredients</small>`;
                 elements.maximumStock.parentNode.appendChild(helper);
             }
         }
